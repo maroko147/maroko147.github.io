@@ -6,7 +6,6 @@
     <title>MMMC Corporation</title>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        /* Reset and base styles */
         * {
             margin: 0;
             padding: 0;
@@ -18,7 +17,6 @@
             line-height: 1.5;
         }
 
-        /* Navigation */
         nav {
             position: fixed;
             width: 100%;
@@ -47,7 +45,8 @@
         }
 
         .nav-links {
-            display: none;
+            display: flex;
+            align-items: center;
         }
 
         .nav-links a {
@@ -60,20 +59,6 @@
             color: #111827;
         }
 
-        .contact-button {
-            background-color: #000;
-            color: #fff;
-            padding: 0.5rem 1.5rem;
-            border-radius: 0.125rem;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-
-        .contact-button:hover {
-            background-color: #1f2937;
-        }
-
         .mobile-menu {
             display: block;
             padding: 0.5rem;
@@ -82,7 +67,6 @@
             cursor: pointer;
         }
 
-        /* Hero Section */
         .hero {
             position: relative;
             height: 100vh;
@@ -122,113 +106,6 @@
             margin-bottom: 2rem;
         }
 
-        .hero button {
-            background-color: white;
-            color: black;
-            padding: 0.75rem 2rem;
-            font-size: 1.125rem;
-            font-weight: 500;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-
-        .hero button:hover {
-            background-color: #f3f4f6;
-        }
-
-        /* Belief Section */
-        .belief {
-            padding: 6rem 0;
-            background-color: white;
-            text-align: center;
-        }
-
-        .belief h2 {
-            font-size: 2.25rem;
-            font-weight: bold;
-            color: #111827;
-            margin-bottom: 4rem;
-        }
-
-        .belief p {
-            font-size: 1.875rem;
-            font-weight: 300;
-            color: #4b5563;
-            max-width: 56rem;
-            margin: 0 auto;
-        }
-
-        /* Revenue Streams Section */
-        .revenue {
-            padding: 6rem 0;
-            background-color: #f9fafb;
-        }
-
-        .revenue-container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-
-        .revenue h2 {
-            font-size: 2.25rem;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 4rem;
-            color: #111827;
-        }
-
-        .revenue-grid {
-            display: grid;
-            grid-template-columns: repeat(1, 1fr);
-            gap: 3rem;
-        }
-
-        .revenue-card {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: box-shadow 0.2s;
-        }
-
-        .revenue-card:hover {
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .icon-container {
-            width: 3rem;
-            height: 3rem;
-            background-color: black;
-            border-radius: 0.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .icon-container i {
-            color: white;
-        }
-
-        .revenue-card h3 {
-            font-size: 1.25rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-
-        .revenue-card p {
-            color: #4b5563;
-            margin-bottom: 1rem;
-        }
-
-        .revenue-card .success-rate {
-            font-size: 0.875rem;
-            color: #6b7280;
-        }
-
-        /* Team Section */
         .team {
             padding: 6rem 0;
             background-color: #f9fafb;
@@ -267,7 +144,7 @@
         }
 
         .team-content button {
-            background-color: black;
+            background-color: lightblue;
             color: white;
             padding: 0.75rem 2rem;
             font-size: 1.125rem;
@@ -279,38 +156,18 @@
         }
 
         .team-content button:hover {
-            background-color: #1f2937;
+            background-color: #87ceeb;
         }
 
-        /* Media Queries */
-        @media (min-width: 768px) {
-            .nav-links {
-                display: flex;
-                align-items: center;
-            }
-
-            .mobile-menu {
-                display: none;
-            }
-
-            .revenue-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .team-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .revenue-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
+        .footer {
+            background-color: grey;
+            padding: 20px;
+            text-align: center;
+            color: white;
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav>
         <div class="nav-container">
             <div class="nav-content">
@@ -328,79 +185,23 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <div class="hero">
-        <img class="hero-image" src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80" alt="Firemní pozadí">
-        <div class="hero-content">
-            <h1>MMMC Corporation</h1>
-            <p>Specializujeme se na údržbu elektrických vedení a mnohem více</p>
-            <button>PŘIPOJTE SE K NÁM!</button>
-        </div>
-    </div>
-
-    <!-- Belief Section -->
-    <div class="belief">
-        <div class="belief-container">
-            <h2>V CO VĚŘÍME</h2>
-            <p>Rozvíjejte své podnikání, budujte svou značku a stavte zákazníky na první místo</p>
-        </div>
-    </div>
-
-    <!-- Revenue Streams Section -->
-    <div class="revenue">
-        <div class="revenue-container">
-            <h2>Co ponoukáme</h2>
-            <div class="revenue-grid">
-                <!-- Method 1 -->
-                <div class="revenue-card">
-                    <div class="icon-container">
-                        <i data-lucide="dollar-sign"></i>
-                    </div>
-                    <h3>Údržba elektrických vedení</h3>
-                    <p>Jezdete po San Andreas a opravujte elektricé vedení. Průměrný příjemza zakázku: 15 000 - 55 000 Kč</p>
-                    <p class="success-rate">Úspěšnost: 95%</p>
-                </div>
-
-                <!-- Method 2 -->
-                <div class="revenue-card">
-                    <div class="icon-container">
-                        <i data-lucide="briefcase"></i>
-                    </div>
-                    <h3>Rozvážení učtú za energie</h3>
-                    <p>Odborné poradenství pro optimalizaci elektrických systémů a energetickou účinnost. Průměrný měsíční příjem: 10 000 - 20 000 $</p>
-                    <p class="success-rate">Úspěšnost: 90%</p>
-                </div>
-
-                <!-- Method 3 -->
-                <div class="revenue-card">
-                    <div class="icon-container">
-                        <i data-lucide="trending-up"></i>
-                    </div>
-                    <h3>Systémová integrace</h3>
-                    <p>Moderní řešení integrace a automatizace elektrických systémů. Průměrný měsíční příjem: 20 000 - 35 000 $</p>
-                    <p class="success-rate">Úspěšnost: 88%</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Team Section -->
     <div class="team">
-    <div class="team-container">
-        <div class="team-grid">
-            <img class="team-image" src="https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?auto=format&fit=crop&q=80" alt="Abstraktní geometrický vzor">
-            <div class="team-content">
-                <h2>Náš tým</h2>
-                <p>Jsme oddaný tým profesionálů, kteří se zavázali k poskytování špičkových služeb v oblasti údržby elektrických vedení. Naše odbornost sahá napříč různými oblastmi a zajišťuje komplexní řešení pro všechny vaše potřeby.</p>
-                <button style="background-color: lightblue; color: white; border: none; padding: 10px 20px; cursor: pointer;">KONTAKTUJTE NÁS</button>
+        <div class="team-container">
+            <div class="team-grid">
+                <img class="team-image" src="https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?auto=format&fit=crop&q=80" alt="Abstraktní geometrický vzor">
+                <div class="team-content">
+                    <h2>Náš tým</h2>
+                    <p>Jsme oddaný tým profesionálů, kteří se zavázali k poskytování špičkových služeb v oblasti údržby elektrických vedení.</p>
+                    <button>KONTAKTUJTE NÁS</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-    <script>
-        // Initialize Lucide icons
-        lucide.createIcons();
-    </script>
+    <div class="footer">
+        <h3>O stránce</h3>
+        <p>Tato stránka poskytuje informace o MMMC Corporation a jejích službách. Naším cílem je poskytovat kvalitní údržbu elektrických vedení a související služby.</p>
+        <p>&copy; 2025 MMMC Corporation. Všechna práva vyhrazena.</p>
+    </div>
 </body>
 </html>
