@@ -50,12 +50,12 @@
             font-size: 80px;
             font-weight: bold;
             text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
-            margin-bottom: 10px; /* Added space between title and subtitle */
+            margin-bottom: 10px;
         }
         .hero p {
             font-size: 24px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-            margin-top: 10px; /* Added some space above the subtitle */
+            margin-top: 10px;
         }
         .container {
             max-width: 1200px;
@@ -82,8 +82,8 @@
             align-items: center;
             gap: 15px;
             text-align: center;
-            opacity: 0; /* Start as hidden */
-            transform: translateX(-100px); /* Move off-screen */
+            opacity: 0;
+            transform: translateX(-100px);
             transition: transform 0.5s ease, opacity 0.5s ease;
         }
         .service-box img {
@@ -92,7 +92,7 @@
         }
         .service-box.show {
             opacity: 1;
-            transform: translateX(0); /* Bring to normal position */
+            transform: translateX(0);
         }
         footer {
             background-color: rgba(34, 34, 34, 0.8);
@@ -101,11 +101,39 @@
             padding: 15px;
             position: relative;
         }
-        /* Navbar dropdown */
+
+        /* Hamburger menu button */
+        .menu-button {
+            width: 50px;
+            height: 40px;
+            background-color: white;
+            border: 2px solid black;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu-button div {
+            width: 30px;
+            height: 5px;
+            background-color: black;
+            border-radius: 5px;
+        }
+
+        .menu-button:hover {
+            background-color: #f1f1f1; /* Slightly darken when hovered */
+        }
+
         .dropdown {
             position: relative;
             display: inline-block;
         }
+
         .dropdown-content {
             display: none;
             position: absolute;
@@ -114,19 +142,23 @@
             min-width: 160px;
             z-index: 1;
         }
+
         .dropdown-content a {
             color: black;
             padding: 12px 16px;
             text-decoration: none;
             display: block;
         }
+
         .dropdown-content a:hover {
             background-color: #ddd;
         }
+
         .dropdown:hover .dropdown-content {
             display: block;
             animation: dropdown-animation 0.5s ease-in-out;
         }
+
         @keyframes dropdown-animation {
             0% {
                 opacity: 0;
@@ -137,6 +169,7 @@
                 transform: translateY(0);
             }
         }
+
         @media (max-width: 768px) {
             .services {
                 flex-direction: column;
@@ -153,7 +186,11 @@
     <div class="navbar">
         <div class="logo">MMM Corporation</div>
         <div class="dropdown">
-            <button class="dropbtn">Menu</button>
+            <div class="menu-button">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
             <div class="dropdown-content">
                 <a href="#about">O nás</a>
                 <a href="#services">Naše služby</a>
@@ -192,19 +229,17 @@
     </footer>
 
     <script>
-        // Intersection Observer to trigger animation when the cards are in view
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('show');
-                    observer.unobserve(entry.target); // Stop observing once the card is in view
+                    observer.unobserve(entry.target);
                 }
             });
         }, {
-            threshold: 0.5 // Trigger animation when 50% of the card is in the viewport
+            threshold: 0.5
         });
 
-        // Observe each service box
         const serviceBoxes = document.querySelectorAll('.service-box');
         serviceBoxes.forEach(box => {
             observer.observe(box);
