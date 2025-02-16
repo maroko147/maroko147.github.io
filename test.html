@@ -74,7 +74,7 @@
             justify-content: center;
         }
         .services h2 {
-            font-size: 48px;
+            font-size: 60px;
             text-align: center;
             margin-bottom: 40px;
             font-weight: bold;
@@ -93,7 +93,7 @@
             text-align: center;
             opacity: 0;
             transform: translateX(-100px);
-            transition: transform 0.5s ease, opacity 0.5s ease;
+            transition: transform 1s ease, opacity 1s ease; /* Slowed down the animation */
         }
         .service-box img {
             width: 100px;
@@ -113,8 +113,8 @@
 
         /* Hamburger menu button with rounded background */
         .menu-button {
-            width: 50px;
-            height: 40px;
+            width: 60px; /* Increased width */
+            height: 50px; /* Increased height */
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -127,23 +127,23 @@
         }
 
         .menu-button div {
-            width: 35px;
-            height: 5px;
+            width: 45px; /* Increased width */
+            height: 7px; /* Increased height */
             background-color: black;
             border-radius: 5px;
             transition: all 0.3s ease; /* Smooth transition for hover effect */
         }
 
         .menu-button div:nth-child(1) {
-            width: 40px; /* Top bar longer */
+            width: 50px; /* Top bar longer */
         }
 
         .menu-button div:nth-child(2) {
-            width: 30px; /* Middle bar shorter */
+            width: 40px; /* Middle bar shorter */
         }
 
         .menu-button div:nth-child(3) {
-            width: 25px; /* Bottom bar even shorter */
+            width: 35px; /* Bottom bar even shorter */
         }
 
         .menu-button:hover {
@@ -200,20 +200,20 @@
     </section>
 
     <section class="container">
-        <h2>Naše služby</h2>
+        <h2 style="text-align: center; font-size: 60px;">Naše služby</h2>
         <div class="services">
             <div class="service-box">
-                <img src="https://via.placeholder.com/100" alt="Oprava nadzemních elektrických vodičů">
+                <img src="https://source.unsplash.com/100x100/?powerlines" alt="Oprava nadzemních elektrických vodičů">
                 <h3>Oprava nadzemních vodičů</h3>
                 <p>Specializujeme se na opravy nadzemních elektrických vedení pro zajištění bezpečnosti a efektivity.</p>
             </div>
             <div class="service-box">
-                <img src="https://via.placeholder.com/100" alt="Údržba podzemních napájecích kabelů">
+                <img src="https://source.unsplash.com/100x100/?cables" alt="Údržba podzemních napájecích kabelů">
                 <h3>Údržba podzemních kabelů</h3>
                 <p>Naši odborníci se starají o opravy podzemních napájecích kabelů pomocí pokročilých nástrojů a zkušeností.</p>
             </div>
             <div class="service-box">
-                <img src="https://via.placeholder.com/100" alt="Nouzové elektrické služby">
+                <img src="https://source.unsplash.com/100x100/?electrician" alt="Nouzové elektrické služby">
                 <h3>Nouzové elektrické služby</h3>
                 <p>24/7 nouzová odezva na elektrické poruchy a urgentní opravy.</p>
             </div>
@@ -225,21 +225,23 @@
     </footer>
 
     <script>
-        const serviceBoxes = document.querySelectorAll('.service-box');
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show');
-                } else {
-                    entry.target.classList.remove('show');
-                }
-            });
-        }, {
-            threshold: 0.5
-        });
+        // Add animation reset on scroll up for "Naše služby"
+        let services = document.querySelectorAll('.service-box');
+        let isScrolling = false;
 
-        serviceBoxes.forEach(box => {
-            observer.observe(box);
+        window.addEventListener('scroll', () => {
+            if (!isScrolling) {
+                isScrolling = true;
+                setTimeout(() => {
+                    services.forEach((service, index) => {
+                        service.classList.remove('show');
+                        if (service.getBoundingClientRect().top < window.innerHeight) {
+                            service.classList.add('show');
+                        }
+                    });
+                    isScrolling = false;
+                }, 100);
+            }
         });
     </script>
 </body>
