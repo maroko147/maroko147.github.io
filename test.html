@@ -122,6 +122,13 @@
             margin: 10px 0;
         }
         
+        /* New styles for the heading */
+        #services-heading {
+            text-align: center;
+            font-size: 50px; /* Make the heading much bigger */
+            margin-bottom: 40px; /* Adds space below the heading */
+        }
+
         @media (max-width: 768px) {
             .services {
                 flex-direction: column;
@@ -131,6 +138,9 @@
                 flex-direction: column;
                 text-align: center;
                 gap: 15px;
+            }
+            #services-heading {
+                font-size: 35px; /* Make the font a bit smaller on mobile devices */
             }
         }
     </style>
@@ -156,7 +166,7 @@
     </section>
     
     <div class="container">
-        <h2>Naše služby</h2>
+        <h2 id="services-heading">Naše služby</h2>
         <div class="services">
             <div class="service-box">
                 <img src="https://source.unsplash.com/100x100/?powerlines" alt="Oprava nadzemních elektrických vodičů">
