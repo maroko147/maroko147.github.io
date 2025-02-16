@@ -9,10 +9,8 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80') no-repeat center center/cover;
+            background-color: #f4f4f4; /* Set a default background for the rest of the page */
             color: #333;
-            height: 100%;
-            background-attachment: scroll; /* Scrollable background */
         }
         .navbar {
             display: flex;
@@ -39,7 +37,8 @@
             text-align: center;
             padding: 100px 20px 50px; /* Increased top padding to avoid overlap */
             color: white;
-            position: relative;
+            background: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80') no-repeat center center/cover;
+            background-attachment: fixed; /* Background stays fixed during scrolling */
         }
         .hero h1, .hero p {
             position: relative;
