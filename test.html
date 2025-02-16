@@ -101,7 +101,7 @@
             background-color: rgba(34, 34, 34, 0.8);
             color: white;
             text-align: center;
-            padding: 15px;
+            padding: 25px 20px; /* Increased padding for higher bar */
             position: relative;
         }
 
@@ -214,7 +214,6 @@
 <body>
     <div class="navbar">
         <div class="logo">MMM Corporation</div>
-        <!-- Removed the middle buttons (Naše služby, O nás, Kontakt) -->
         <div class="menu-button" id="menuButton">
             <div></div>
             <div></div>
@@ -249,7 +248,8 @@
     </section>
 
     <footer>
-        Kontaktujte nás: contact@mmmcorp.com | Telefon: (123) 456-7890
+        <div>Kontaktujte nás: contact@mmmcorp.com</div>
+        <div>Telefon: (123) 456-7890</div>
     </footer>
 
     <script>
@@ -288,8 +288,8 @@
             if (isScrolling) return;
             isScrolling = true;
             setTimeout(() => {
-                services.forEach((box, index) => {
-                    const boxPosition = box.getBoundingClientRect().top;
+                services.forEach(box => {
+                    let boxPosition = box.getBoundingClientRect().top;
                     if (boxPosition < window.innerHeight) {
                         box.classList.add('show');
                     }
