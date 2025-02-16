@@ -70,6 +70,15 @@
             justify-content: space-between;
             gap: 20px;
             flex-wrap: wrap;
+            text-align: center;
+            justify-content: center;
+        }
+        .services h2 {
+            font-size: 48px;
+            text-align: center;
+            margin-bottom: 40px;
+            font-weight: bold;
+            color: #333;
         }
         .service-box {
             background: white;
@@ -111,10 +120,10 @@
             justify-content: space-between;
             align-items: flex-end; /* Align bars to the right */
             cursor: pointer;
-            background-color: #f1f1f1; /* Light background color */
-            border-radius: 20px; /* Rounded corners for the button */
+            background-color: transparent; /* No background by default */
             transition: background-color 0.3s ease, transform 0.3s ease;
             padding: 5px; /* Add some space inside the button */
+            border-radius: 20px; /* Rounded corners for the button */
         }
 
         .menu-button div {
@@ -146,156 +155,89 @@
             background-color: #333; /* Change color of the bars */
         }
 
-        .menu-button div:nth-child(1):hover {
-            width: 45px; /* Top bar becomes a bit longer */
+        .menu-button:hover {
+            background-color: #ddd; /* Light background on hover */
         }
 
-        .menu-button div:nth-child(2):hover {
-            width: 35px; /* Middle bar becomes a bit longer */
+        /* Naše služby Section */
+        .services h2 {
+            font-size: 60px; /* Make the title bigger */
+            text-align: center;
+            margin-bottom: 40px;
         }
 
-        .menu-button div:nth-child(3):hover {
-            width: 30px; /* Bottom bar becomes a bit longer */
+        /* Hover effect for service boxes */
+        .service-box {
+            transition: all 0.5s ease;
         }
 
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: white;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-            min-width: 160px;
-            z-index: 1;
-            left: -120px; /* Moved the menu to the left by 100px */
-            top: 150%; /* Moved the dropdown 50px down */
-            border-radius: 10px; /* Rounded edges */
-            animation: dropdown-animation 0.5s ease-in-out;
-            transition: opacity 0.5s ease-out, transform 0.5s ease-out; /* Add transition for delay */
-            opacity: 0; /* Initially hidden */
-            transform: translateY(-10px); /* Start from above */
-            pointer-events: none; /* Prevent interaction with invisible items */
-        }
-
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            border-radius: 10px; /* Rounded edges for links */
-        }
-
-        .dropdown-content a:hover {
-            background-color: #ddd;
-        }
-
-        /* Ensuring the menu stays open after hovering */
-        .dropdown-content.active {
-            display: block;
+        .service-box:hover {
+            transform: translateX(0);
             opacity: 1;
-            transform: translateY(0);
-            pointer-events: auto; /* Allow clicks */
         }
 
-        @keyframes dropdown-animation {
-            0% {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        /* Show when in view */
+        .service-box.show {
+            opacity: 1;
+            transform: translateX(0);
         }
 
-        @media (max-width: 768px) {
-            .services {
-                flex-direction: column;
-                align-items: center;
-            }
-            .service-box {
-                flex-direction: column;
-                gap: 10px;
-            }
-        }
     </style>
 </head>
 <body>
     <div class="navbar">
         <div class="logo">MMM Corporation</div>
-        <div class="dropdown">
-            <div class="menu-button" id="menu-button">
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-            <div class="dropdown-content" id="dropdown-menu">
-                <a href="#about">O nás</a>
-                <a href="#services">Naše služby</a>
-            </div>
+        <div class="nav-links">
+            <a href="#">O nás</a>
+            <a href="#">Naše služby</a>
+            <a href="#">Kontakt</a>
         </div>
     </div>
-    
-    <section class="hero" id="about">
+
+    <section class="hero">
         <h1>MMM Corporation</h1>
         <p>Specializujeme se na údržbu elektrických systémů a mnohem více</p>
     </section>
-    
-    <div class="container" id="services">
+
+    <section class="container">
         <h2>Naše služby</h2>
         <div class="services">
-            <div class="service-box" id="service1">
-                <img src="https://source.unsplash.com/100x100/?powerlines" alt="Oprava nadzemních elektrických vodičů">
+            <div class="service-box">
+                <img src="https://via.placeholder.com/100" alt="Oprava nadzemních elektrických vodičů">
                 <h3>Oprava nadzemních vodičů</h3>
                 <p>Specializujeme se na opravy nadzemních elektrických vedení pro zajištění bezpečnosti a efektivity.</p>
             </div>
-            <div class="service-box" id="service2">
-                <img src="https://source.unsplash.com/100x100/?cables" alt="Údržba podzemních napájecích kabelů">
+            <div class="service-box">
+                <img src="https://via.placeholder.com/100" alt="Údržba podzemních napájecích kabelů">
                 <h3>Údržba podzemních kabelů</h3>
                 <p>Naši odborníci se starají o opravy podzemních napájecích kabelů pomocí pokročilých nástrojů a zkušeností.</p>
             </div>
-            <div class="service-box" id="service3">
-                <img src="https://source.unsplash.com/100x100/?electrician" alt="Nouzové elektrické služby">
+            <div class="service-box">
+                <img src="https://via.placeholder.com/100" alt="Nouzové elektrické služby">
                 <h3>Nouzové elektrické služby</h3>
                 <p>24/7 nouzová odezva na elektrické poruchy a urgentní opravy.</p>
             </div>
         </div>
-    </div>
+    </section>
 
     <footer>
         Kontaktujte nás: contact@mmmcorp.com | Telefon: (123) 456-7890
     </footer>
 
     <script>
-        const menuButton = document.getElementById('menu-button');
-        const dropdownMenu = document.getElementById('dropdown-menu');
-
-        menuButton.addEventListener('click', function() {
-            dropdownMenu.classList.toggle('active');  // Toggle dropdown menu visibility
-        });
-
-        // Close the menu if the user clicks outside of it
-        window.addEventListener('click', function(event) {
-            if (!menuButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
-                dropdownMenu.classList.remove('active');
-            }
-        });
-
-        const observer = new IntersectionObserver((entries, observer) => {
+        const serviceBoxes = document.querySelectorAll('.service-box');
+        const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('show');
-                    observer.unobserve(entry.target);
+                } else {
+                    entry.target.classList.remove('show');
                 }
             });
         }, {
             threshold: 0.5
         });
 
-        const serviceBoxes = document.querySelectorAll('.service-box');
         serviceBoxes.forEach(box => {
             observer.observe(box);
         });
