@@ -43,6 +43,16 @@
             font-size: 40px;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
         }
+        .office-section {
+            text-align: center;
+            padding: 50px;
+            background: url('https://source.unsplash.com/1600x900/?office') no-repeat center center/cover;
+            color: white;
+        }
+        .office-section h2 {
+            font-size: 35px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
         .container {
             padding: 20px;
             max-width: 1000px;
@@ -60,15 +70,13 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             flex: 1;
             display: flex;
-            flex-direction: column;
-            position: relative;
+            flex-direction: row;
+            align-items: center;
+            gap: 15px;
         }
         .service-box img {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
         }
         footer {
             background-color: #222;
@@ -95,23 +103,35 @@
         <h1>Spolehlivé služby opravy elektrických vodičů</h1>
         <p>Zajištění bezpečnosti a efektivity v elektrické údržbě</p>
     </section>
+    
+    <section class="office-section">
+        <h2>Profesionální tým v moderní kanceláři</h2>
+        <p>Naše společnost pracuje s nejnovějšími technologiemi v přátelském a efektivním prostředí.</p>
+    </section>
+    
     <div class="container">
         <h2>Naše služby</h2>
         <div class="services">
             <div class="service-box">
-                <img src="https://source.unsplash.com/50x50/?electrical-poles" alt="Nadzemní vodiče">
-                <h3>Oprava nadzemních vodičů</h3>
-                <p>Specializujeme se na opravy nadzemních elektrických vedení pro zajištění bezpečnosti a efektivity.</p>
+                <img src="https://source.unsplash.com/50x50/?powerlines" alt="Nadzemní vodiče">
+                <div>
+                    <h3>Oprava nadzemních vodičů</h3>
+                    <p>Specializujeme se na opravy nadzemních elektrických vedení pro zajištění bezpečnosti a efektivity.</p>
+                </div>
             </div>
             <div class="service-box">
-                <img src="https://source.unsplash.com/50x50/?electrical-cables" alt="Podzemní kabely">
-                <h3>Údržba podzemních kabelů</h3>
-                <p>Naši odborníci se starají o opravy podzemních napájecích kabelů pomocí pokročilých nástrojů a zkušeností.</p>
+                <img src="https://source.unsplash.com/50x50/?cables" alt="Podzemní kabely">
+                <div>
+                    <h3>Údržba podzemních kabelů</h3>
+                    <p>Naši odborníci se starají o opravy podzemních napájecích kabelů pomocí pokročilých nástrojů a zkušeností.</p>
+                </div>
             </div>
             <div class="service-box">
-                <img src="https://source.unsplash.com/50x50/?electric-repair" alt="Nouzové služby">
-                <h3>Nouzové elektrické služby</h3>
-                <p>24/7 nouzová odezva na elektrické poruchy a urgentní opravy.</p>
+                <img src="https://source.unsplash.com/50x50/?electrician" alt="Nouzové služby">
+                <div>
+                    <h3>Nouzové elektrické služby</h3>
+                    <p>24/7 nouzová odezva na elektrické poruchy a urgentní opravy.</p>
+                </div>
             </div>
         </div>
     </div>
