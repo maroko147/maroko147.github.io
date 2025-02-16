@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MMM Corporation - Electrical Repairs</title>
+    <title>MMM Corporation - Opravy Elektrických Vodičů</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,13 +12,26 @@
             background-color: #f4f4f4;
             color: #333;
         }
-        header {
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             background-color: #222;
+            padding: 15px 20px;
             color: white;
-            padding: 20px;
-            text-align: center;
+        }
+        .navbar .logo {
             font-size: 24px;
             font-weight: bold;
+        }
+        .navbar .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
         }
         .hero {
             text-align: center;
@@ -32,21 +45,30 @@
         }
         .container {
             padding: 20px;
-            max-width: 800px;
+            max-width: 1000px;
             margin: auto;
         }
         .services {
             display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
         }
         .service-box {
             background: white;
             padding: 20px;
-            margin: 10px;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            flex: 1 1 300px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .service-box img {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 40px;
+            height: 40px;
         }
         footer {
             background-color: #222;
@@ -60,32 +82,43 @@
     </style>
 </head>
 <body>
+    <div class="navbar">
+        <div class="logo">MMM Corporation</div>
+        <div class="nav-links">
+            <a href="#about">O nás</a>
+            <a href="#pricing">Ceník</a>
+            <a href="#contact">Kontakt</a>
+        </div>
+    </div>
     <header>
-        MMM Corporation - Electrical Wire Repairs
+        MMM Corporation - Opravy Elektrických Vodičů
     </header>
     <section class="hero">
-        <h1>Reliable Electrical Wire Repair Services</h1>
-        <p>Ensuring safety and efficiency in electrical maintenance</p>
+        <h1>Spolehlivé služby opravy elektrických vodičů</h1>
+        <p>Zajištění bezpečnosti a efektivity v elektrické údržbě</p>
     </section>
     <div class="container">
-        <h2>Our Services</h2>
+        <h2>Naše služby</h2>
         <div class="services">
             <div class="service-box">
-                <h3>Overhead Wire Repair</h3>
-                <p>We specialize in fixing overhead electrical wiring systems to ensure safety and efficiency.</p>
+                <img src="https://source.unsplash.com/50x50/?powerline" alt="Nadzemní vodiče">
+                <h3>Oprava nadzemních vodičů</h3>
+                <p>Specializujeme se na opravy nadzemních elektrických vedení pro zajištění bezpečnosti a efektivity.</p>
             </div>
             <div class="service-box">
-                <h3>Underground Cable Maintenance</h3>
-                <p>Our experts handle underground power cable repairs with advanced tools and expertise.</p>
+                <img src="https://source.unsplash.com/50x50/?underground" alt="Podzemní kabely">
+                <h3>Údržba podzemních kabelů</h3>
+                <p>Naši odborníci se starají o opravy podzemních napájecích kabelů pomocí pokročilých nástrojů a zkušeností.</p>
             </div>
             <div class="service-box">
-                <h3>Emergency Electrical Services</h3>
-                <p>24/7 emergency response for electrical faults and urgent repairs.</p>
+                <img src="https://source.unsplash.com/50x50/?emergency" alt="Nouzové služby">
+                <h3>Nouzové elektrické služby</h3>
+                <p>24/7 nouzová odezva na elektrické poruchy a urgentní opravy.</p>
             </div>
         </div>
     </div>
     <footer>
-        Contact us: contact@mmmcorp.com | Phone: (123) 456-7890
+        Kontaktujte nás: contact@mmmcorp.com | Telefon: (123) 456-7890
     </footer>
 </body>
 </html>
