@@ -36,7 +36,7 @@
         }
         .hero {
             background: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80') no-repeat center center/cover;
-            height: 900px; /* Increased height */
+            height: 750px; /* Shortened the height */
             color: white;
             display: flex;
             flex-direction: column;
@@ -151,6 +151,7 @@
             z-index: 1;
             left: 0;
             top: 100%; /* Ensure the dropdown is aligned correctly */
+            animation: dropdown-animation 0.5s ease-in-out;
         }
 
         .dropdown-content a {
@@ -166,7 +167,6 @@
 
         .dropdown:hover .dropdown-content {
             display: block;
-            animation: dropdown-animation 0.5s ease-in-out;
         }
 
         @keyframes dropdown-animation {
