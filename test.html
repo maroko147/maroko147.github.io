@@ -253,4 +253,51 @@
 
     <script>
         // Toggle the visibility of the dropdown menu when clicking the hamburger menu
-        const menuButton = document.getElementById
+        const menuButton = document.getElementById('menuButton');
+        const menu = document.createElement('div');
+        menu.classList.add('menu');
+
+        // Create menu items
+        const menuItems = ['O nás', 'Naše služby', 'Kontakt'];
+        menuItems.forEach(item => {
+            const link = document.createElement('a');
+            link.href = '#';
+            link.textContent = item;
+            menu.appendChild(link);
+        });
+
+        document.body.appendChild(menu);
+
+        menuButton.addEventListener('click', () => {
+            menu.classList.toggle('show');
+        });
+
+        // Close the menu if clicking anywhere outside the menu or hamburger
+        document.addEventListener('click', (e) => {
+            if (!menu.contains(e.target) && !menuButton.contains(e.target)) {
+                menu.classList.remove('show');
+            }
+        });
+
+        // Add animation reset on scroll up for "Naše služby"
+        let services = document.querySelectorAll('.service-box');
+        let isScrolling = false;
+
+        window.addEventListener('scroll', () => {
+            if (isScrolling) return;
+            isScrolling = true;
+            setTimeout(() => {
+                services.forEach(box => {
+                    let boxPosition = box.getBoundingClientRect().top;
+                    if (boxPosition < window.innerHeight) {
+                        box.classList.add('show');
+                    } else {
+                        box.classList.remove('show');
+                    }
+                });
+                isScrolling = false;
+            }, 100);
+        });
+    </script>
+</body>
+</html>
