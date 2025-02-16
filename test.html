@@ -42,10 +42,24 @@
         .navbar a:hover {
             background-color: #ddd; /* Slight gray background when hovered */
         }
-        
-        /* Dropdown menu */
+
+        /* Dropdown button */
         .dropdown {
             position: relative;
+        }
+
+        .dropdown-button {
+            color: black;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown-button:hover {
+            background-color: #ddd; /* Slight gray background when hovered */
         }
 
         .dropdown-content {
@@ -165,18 +179,12 @@
     <div class="navbar">
         <div class="logo">MMM Corporation</div>
         <div class="nav-links">
+            <!-- Dropdown for the menu -->
             <div class="dropdown">
-                <a href="#">O nás</a>
+                <a href="#" class="dropdown-button">Menu</a>
                 <div class="dropdown-content">
-                    <a href="#about">Informace o nás</a>
-                    <a href="#contact">Kontakt</a>
-                </div>
-            </div>
-            <div class="dropdown">
-                <a href="#">Naše služby</a>
-                <div class="dropdown-content">
-                    <a href="#services">Služby</a>
-                    <a href="#pricing">Ceník</a>
+                    <a href="#about">O nás</a>
+                    <a href="#services">Naše služby</a>
                 </div>
             </div>
         </div>
