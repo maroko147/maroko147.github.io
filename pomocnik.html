@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Math Practice for 4th Graders</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      color: #4CAF50;
+    }
+    .container {
+      margin-top: 30px;
+    }
+    .button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 10px;
+    }
+    .button:hover {
+      background-color: #45a049;
+    }
+    .problem {
+      font-size: 24px;
+      margin-top: 20px;
+    }
+    input[type="number"] {
+      padding: 10px;
+      font-size: 18px;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Math Practice for 4th Graders</h1>
+  <p>Choose a math operation to practice:</p>
+  
+  <div class="container">
+    <button class="button" onclick="startAddition()">Addition</button>
+    <button class="button" onclick="startSubtraction()">Subtraction</button>
+    <button class="button" onclick="startMultiplication()">Multiplication</button>
+    <button class="button" onclick="startDivision()">Division</button>
+  </div>
+
+  <div id="mathProblem" class="problem"></div>
+  <input type="number" id="answer" placeholder="Your answer">
+  <button class="button" onclick="checkAnswer()">Check Answer</button>
+
+  <div id="result" class="result"></div>
+
+  <script>
+    let num1, num2, correctAnswer, operation;
+
+    function generateProblem() {
+      num1 = Math.floor(Math.random() * 20) + 1;
+      num2 = Math.floor(Math.random() * 20) + 1;
+    }
+
+    function startAddition() {
+      operation = 'addition';
+      generateProblem();
+      correctAnswer = num1 + num2;
+      document.getElementById('mathProblem').innerText = `${num1} + ${num2} = ?`;
+      document.getElementById('result').innerText = '';
+    }
+
+    function startSubtraction() {
+      operation = 'subtraction';
+      generateProblem();
+      correctAnswer = num1 - num2;
+      document.getElementById('mathProblem').innerText = `${num1} - ${num2} = ?`;
+      document.getElementById('result').innerText = '';
+    }
+
+    function startMultiplication() {
+      operation = 'multiplication';
+      generateProblem();
+      correctAnswer = num1 * num2;
+      document.getElementById('mathProblem').innerText = `${num1} * ${num2} = ?`;
+      document.getElementById('result').innerText = '';
+    }
+
+    function startDivision() {
+      operation = 'division';
+      generateProblem();
+      correctAnswer = num1 / num2;
+      document.getElementById('mathProblem').innerText = `${num1} ÷ ${num2} = ?`;
+      document.getElementById('result').innerText = '';
+    }
+
+    function checkAnswer() {
+      const userAnswer = parseFloat(document.getElementById('answer').value);
+      const resultDiv = document.getElementById('result');
+      
+      if (userAnswer === correctAnswer) {
+        resultDiv.innerText = 'Correct! Great job!';
+        resultDiv.style.color = 'green';
+      } else {
+        resultDiv.innerText = `Oops! The correct answer is ${correctAnswer}. Try again!`;
+        resultDiv.style.color = 'red';
+      }
+    }
+  </script>
+
+</body>
+  </html>
+  
