@@ -38,20 +38,42 @@
             padding: 50px;
             background: url('https://source.unsplash.com/1600x900/?electricity') no-repeat center center/cover;
             color: white;
+            position: relative;
         }
-        .hero h1 {
-            font-size: 40px;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        .hero h1, .hero p {
+            position: relative;
+            z-index: 2;
+        }
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
         }
         .office-section {
             text-align: center;
             padding: 50px;
             background: url('https://source.unsplash.com/1600x900/?office') no-repeat center center/cover;
             color: white;
+            position: relative;
         }
-        .office-section h2 {
-            font-size: 35px;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        .office-section h2, .office-section p {
+            position: relative;
+            z-index: 2;
+        }
+        .office-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
         }
         .container {
             padding: 20px;
@@ -87,6 +109,18 @@
             bottom: 0;
             width: 100%;
         }
+        
+        @media (max-width: 768px) {
+            .services {
+                flex-direction: column;
+                align-items: center;
+            }
+            .service-box {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -99,7 +133,7 @@
         </div>
     </div>
     
-    <section class="hero">
+    <section class="hero" id="about">
         <h1>Spolehlivé služby opravy elektrických vodičů</h1>
         <p>Zajištění bezpečnosti a efektivity v elektrické údržbě</p>
     </section>
@@ -113,21 +147,21 @@
         <h2>Naše služby</h2>
         <div class="services">
             <div class="service-box">
-                <img src="https://source.unsplash.com/50x50/?powerlines" alt="Nadzemní vodiče">
+                <img src="https://source.unsplash.com/50x50/?powerlines" alt="Oprava nadzemních elektrických vodičů">
                 <div>
                     <h3>Oprava nadzemních vodičů</h3>
                     <p>Specializujeme se na opravy nadzemních elektrických vedení pro zajištění bezpečnosti a efektivity.</p>
                 </div>
             </div>
             <div class="service-box">
-                <img src="https://source.unsplash.com/50x50/?cables" alt="Podzemní kabely">
+                <img src="https://source.unsplash.com/50x50/?cables" alt="Údržba podzemních napájecích kabelů">
                 <div>
                     <h3>Údržba podzemních kabelů</h3>
                     <p>Naši odborníci se starají o opravy podzemních napájecích kabelů pomocí pokročilých nástrojů a zkušeností.</p>
                 </div>
             </div>
             <div class="service-box">
-                <img src="https://source.unsplash.com/50x50/?electrician" alt="Nouzové služby">
+                <img src="https://source.unsplash.com/50x50/?electrician" alt="Nouzové elektrické služby">
                 <div>
                     <h3>Nouzové elektrické služby</h3>
                     <p>24/7 nouzová odezva na elektrické poruchy a urgentní opravy.</p>
@@ -135,6 +169,17 @@
             </div>
         </div>
     </div>
+    
+    <section id="pricing">
+        <h2>Ceník</h2>
+        <p>Podrobnosti o našich cenách...</p>
+    </section>
+
+    <section id="contact">
+        <h2>Kontakt</h2>
+        <p>Kontaktní údaje...</p>
+    </section>
+
     <footer>
         Kontaktujte nás: contact@mmmcorp.com | Telefon: (123) 456-7890
     </footer>
