@@ -21,14 +21,14 @@
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         }
         .navbar .logo {
-            font-size: 28px; /* Adjusted size of the logo text */
+            font-size: 28px;
             font-weight: bold;
             color: black;
-            letter-spacing: 1px; /* Slightly increased spacing for better readability */
+            letter-spacing: 1px;
         }
         .hero {
             background: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80') no-repeat center center/cover;
-            height: 875px; /* Set height to 875px */
+            height: 875px;
             color: white;
             display: flex;
             flex-direction: column;
@@ -61,7 +61,7 @@
             display: flex;
             justify-content: space-between;
             gap: 20px;
-            flex-wrap: wrap; /* Allows wrapping of cards if necessary */
+            flex-wrap: wrap;
             text-align: center;
             justify-content: center;
         }
@@ -77,7 +77,7 @@
             padding: 40px;
             border-radius: 15px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            flex: 0 0 calc(33.333% - 20px); /* Adjusted size for bigger cards */
+            flex: 0 0 calc(33.333% - 20px);
             margin-bottom: 20px;
             display: flex;
             flex-direction: column;
@@ -87,11 +87,11 @@
             opacity: 0;
             transform: translateX(-100px);
             transition: transform 1s ease, opacity 1s ease;
-            height: 350px; /* Made cards taller */
+            height: 350px;
         }
         .service-box img {
-            width: 120px; /* Increased width of images */
-            height: 120px; /* Increased height of images */
+            width: 120px;
+            height: 120px;
         }
         .service-box.show {
             opacity: 1;
@@ -101,82 +101,55 @@
             background-color: rgba(34, 34, 34, 0.8);
             color: white;
             text-align: center;
-            padding: 25px 20px; /* Increased padding for higher bar */
+            padding: 25px 20px;
             position: relative;
+            height: 250px; /* Set height of contact section to 250px */
         }
-
         /* Hamburger menu button with rounded background */
         .menu-button {
-            width: 60px; /* Increased width */
-            height: 50px; /* Increased height */
+            width: 60px;
+            height: 50px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            align-items: flex-end; /* Align bars to the right */
+            align-items: flex-end;
             cursor: pointer;
-            background-color: transparent; /* No background by default */
+            background-color: transparent;
             transition: background-color 0.3s ease, transform 0.3s ease;
-            padding: 5px; /* Add some space inside the button */
-            border-radius: 20px; /* Rounded corners for the button */
+            padding: 5px;
+            border-radius: 20px;
         }
 
         .menu-button div {
-            width: 45px; /* Increased width */
-            height: 7px; /* Increased height */
+            width: 45px;
+            height: 7px;
             background-color: black;
             border-radius: 5px;
-            transition: all 0.3s ease; /* Smooth transition for hover effect */
+            transition: all 0.3s ease;
         }
 
         .menu-button div:nth-child(1) {
-            width: 50px; /* Top bar longer */
+            width: 50px;
         }
 
         .menu-button div:nth-child(2) {
-            width: 40px; /* Middle bar shorter */
+            width: 40px;
         }
 
         .menu-button div:nth-child(3) {
-            width: 35px; /* Bottom bar even shorter */
+            width: 35px;
         }
 
         .menu-button:hover {
-            background-color: #ddd; /* Slightly darken when hovered */
-            transform: scale(1.1); /* Slightly enlarge the button on hover */
+            background-color: #ddd;
+            transform: scale(1.1);
         }
 
         .menu-button:hover div {
-            background-color: #333; /* Change color of the bars */
+            background-color: #333;
         }
 
-        .menu-button:hover {
-            background-color: #ddd; /* Light background on hover */
-        }
-
-        /* Naše služby Section */
-        .services h2 {
-            font-size: 60px; /* Make the title bigger */
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        /* Hover effect for service boxes */
-        .service-box {
-            transition: all 0.5s ease;
-        }
-
-        .service-box:hover {
-            transform: translateX(0);
-            opacity: 1;
-        }
-
-        /* Show when in view */
-        .service-box.show {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        /* Menu */
+        /* Show the dropdown menu */
         .menu {
             position: absolute;
             top: 70px;
@@ -189,7 +162,6 @@
             border-radius: 10px;
             flex-direction: column;
             z-index: 1000;
-            transition: all 0.3s ease;
         }
 
         .menu a {
@@ -205,7 +177,6 @@
             background-color: #f1f1f1;
         }
 
-        /* Show the menu when clicked */
         .menu.show {
             display: flex;
         }
@@ -292,6 +263,8 @@
                     let boxPosition = box.getBoundingClientRect().top;
                     if (boxPosition < window.innerHeight) {
                         box.classList.add('show');
+                    } else {
+                        box.classList.remove('show');
                     }
                 });
                 isScrolling = false;
