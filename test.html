@@ -171,7 +171,6 @@
             background-color: #ddd;
         }
 
-        /* Increase the hitbox size by 200px around the menu */
         .dropdown:hover .dropdown-content {
             display: block;
             opacity: 1;
@@ -184,13 +183,16 @@
             pointer-events: auto;
         }
 
+        .dropdown-content:hover {
+            pointer-events: auto; /* Allow interaction when hovering directly over the dropdown */
+        }
+
+        /* Ensuring the menu stays open after hovering */
         .dropdown:hover .dropdown-content {
             display: block;
             opacity: 1;
-        }
-
-        .dropdown-content:hover {
-            pointer-events: auto; /* Allow interaction when hovering directly over the dropdown */
+            transform: translateY(0);
+            pointer-events: auto; /* Allow clicks */
         }
 
         @keyframes dropdown-animation {
