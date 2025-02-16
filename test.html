@@ -21,9 +21,10 @@
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         }
         .navbar .logo {
-            font-size: 24px;
+            font-size: 28px; /* Adjusted size of the logo text */
             font-weight: bold;
             color: black;
+            letter-spacing: 1px; /* Slightly increased spacing for better readability */
         }
         .navbar .nav-links {
             display: flex;
@@ -297,18 +298,17 @@
         let isScrolling = false;
 
         window.addEventListener('scroll', () => {
-            if (!isScrolling) {
-                isScrolling = true;
-                setTimeout(() => {
-                    services.forEach((service, index) => {
-                        service.classList.remove('show');
-                        if (service.getBoundingClientRect().top < window.innerHeight) {
-                            service.classList.add('show');
-                        }
-                    });
-                    isScrolling = false;
-                }, 100);
-            }
+            if (isScrolling) return;
+            isScrolling = true;
+            setTimeout(() => {
+                services.forEach((box, index) => {
+                    const boxPosition = box.getBoundingClientRect().top;
+                    if (boxPosition < window.innerHeight) {
+                        box.classList.add('show');
+                    }
+                });
+                isScrolling = false;
+            }, 100);
         });
     </script>
 </body>
