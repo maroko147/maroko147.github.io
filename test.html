@@ -84,26 +84,29 @@
         }
         .services {
             display: flex;
-            justify-content: space-around;
-            gap: 30px;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
             flex-wrap: wrap;
+            margin-top: 40px;
         }
         .service-box {
             background: white;
-            padding: 30px;
-            border-radius: 20px; /* Round corners */
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            padding: 50px;
+            border-radius: 30px; /* Round corners */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
             flex: 1;
-            min-width: 250px; /* Ensures the cards are large enough */
-            max-width: 350px; /* Prevents them from growing too large */
+            min-width: 300px; /* Increased card width */
+            max-width: 400px; /* Prevents it from growing too large */
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             align-items: center;
-            gap: 20px;
+            text-align: center;
+            gap: 25px;
         }
         .service-box img {
-            width: 80px; /* Increase icon size */
-            height: 80px;
+            width: 100px; /* Increased icon size */
+            height: 100px;
         }
         footer {
             background-color: rgba(34, 34, 34, 0.8);
@@ -127,7 +130,7 @@
             .service-box {
                 flex-direction: column;
                 text-align: center;
-                gap: 10px;
+                gap: 15px;
             }
         }
     </style>
@@ -156,21 +159,21 @@
         <h2>Naše služby</h2>
         <div class="services">
             <div class="service-box">
-                <img src="https://source.unsplash.com/80x80/?powerlines" alt="Oprava nadzemních elektrických vodičů">
+                <img src="https://source.unsplash.com/100x100/?powerlines" alt="Oprava nadzemních elektrických vodičů">
                 <div>
                     <h3>Oprava nadzemních vodičů</h3>
                     <p>Specializujeme se na opravy nadzemních elektrických vedení pro zajištění bezpečnosti a efektivity.</p>
                 </div>
             </div>
             <div class="service-box">
-                <img src="https://source.unsplash.com/80x80/?cables" alt="Údržba podzemních napájecích kabelů">
+                <img src="https://source.unsplash.com/100x100/?cables" alt="Údržba podzemních napájecích kabelů">
                 <div>
                     <h3>Údržba podzemních kabelů</h3>
                     <p>Naši odborníci se starají o opravy podzemních napájecích kabelů pomocí pokročilých nástrojů a zkušeností.</p>
                 </div>
             </div>
             <div class="service-box">
-                <img src="https://source.unsplash.com/80x80/?electrician" alt="Nouzové elektrické služby">
+                <img src="https://source.unsplash.com/100x100/?electrician" alt="Nouzové elektrické služby">
                 <div>
                     <h3>Nouzové elektrické služby</h3>
                     <p>24/7 nouzová odezva na elektrické poruchy a urgentní opravy.</p>
@@ -182,11 +185,6 @@
     <section id="pricing">
         <h2>Ceník</h2>
         <p>Podrobnosti o našich cenách...</p>
-    </section>
-
-    <section id="contact">
-        <h2>Kontakt</h2>
-        <p>Kontaktní údaje...</p>
     </section>
 
     <footer>
