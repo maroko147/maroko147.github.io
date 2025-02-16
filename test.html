@@ -85,22 +85,25 @@
         .services {
             display: flex;
             justify-content: space-around;
-            gap: 20px;
+            gap: 30px;
+            flex-wrap: wrap;
         }
         .service-box {
             background: white;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 20px; /* Round corners */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
             flex: 1;
+            min-width: 250px; /* Ensures the cards are large enough */
+            max-width: 350px; /* Prevents them from growing too large */
             display: flex;
             flex-direction: row;
             align-items: center;
-            gap: 15px;
+            gap: 20px;
         }
         .service-box img {
-            width: 50px;
-            height: 50px;
+            width: 80px; /* Increase icon size */
+            height: 80px;
         }
         footer {
             background-color: rgba(34, 34, 34, 0.8);
@@ -153,21 +156,21 @@
         <h2>Naše služby</h2>
         <div class="services">
             <div class="service-box">
-                <img src="https://source.unsplash.com/50x50/?powerlines" alt="Oprava nadzemních elektrických vodičů">
+                <img src="https://source.unsplash.com/80x80/?powerlines" alt="Oprava nadzemních elektrických vodičů">
                 <div>
                     <h3>Oprava nadzemních vodičů</h3>
                     <p>Specializujeme se na opravy nadzemních elektrických vedení pro zajištění bezpečnosti a efektivity.</p>
                 </div>
             </div>
             <div class="service-box">
-                <img src="https://source.unsplash.com/50x50/?cables" alt="Údržba podzemních napájecích kabelů">
+                <img src="https://source.unsplash.com/80x80/?cables" alt="Údržba podzemních napájecích kabelů">
                 <div>
                     <h3>Údržba podzemních kabelů</h3>
                     <p>Naši odborníci se starají o opravy podzemních napájecích kabelů pomocí pokročilých nástrojů a zkušeností.</p>
                 </div>
             </div>
             <div class="service-box">
-                <img src="https://source.unsplash.com/50x50/?electrician" alt="Nouzové elektrické služby">
+                <img src="https://source.unsplash.com/80x80/?electrician" alt="Nouzové elektrické služby">
                 <div>
                     <h3>Nouzové elektrické služby</h3>
                     <p>24/7 nouzová odezva na elektrické poruchy a urgentní opravy.</p>
