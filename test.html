@@ -9,169 +9,128 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4; /* Set a default background for the rest of the page */
-            color: #333;
-            width: 100%; /* Make the body width responsive */
+            background-color: #f4f4f4;
             overflow-x: hidden; /* Prevent horizontal scrolling */
         }
         .navbar {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            background-color: white; /* Changed to white */
+            background-color: white;
             padding: 15px 20px;
-            color: black; /* Changed text color to black */
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         }
         .navbar .logo {
             font-size: 24px;
             font-weight: bold;
+            color: black;
         }
         .navbar .nav-links {
             display: flex;
             gap: 20px;
-            position: relative; /* This is to position the dropdown menu relative to the parent */
         }
         .navbar a {
-            color: black; /* Changed text color to black */
-            text-decoration: none;
-            font-size: 18px;
-            padding: 10px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease; /* Animation for button hover */
-        }
-        .navbar a:hover {
-            background-color: #ddd; /* Slight gray background when hovered */
-        }
-
-        /* Dropdown button */
-        .dropdown {
-            position: relative;
-        }
-
-        .dropdown-button {
             color: black;
             text-decoration: none;
             font-size: 18px;
-            padding: 10px 20px;
-            border-radius: 5px;
-            background-color: white;
-            transition: background-color 0.3s ease;
         }
-
-        .dropdown-button:hover {
-            background-color: #ddd; /* Slight gray background when hovered */
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: white;
-            min-width: 160px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-20px); /* Start position for the slide animation */
-            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s ease 0.3s; /* Add sliding effect */
-            border-radius: 5px;
-            margin-top: 10px;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0); /* Slide down to its original position */
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            font-size: 16px;
-        }
-
-        .dropdown-content a:hover {
-            background-color: #ddd;
-        }
-
         .hero {
-            text-align: center;
-            padding: 100px 20px; /* Reduced padding to make the hero section shorter */
-            color: white;
             background: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80') no-repeat center center/cover;
-            background-attachment: scroll; /* Change to scroll so the image moves with the page */
-            height: 60vh; /* Reduced height for the hero section */
-        }
-        .hero h1 {
-            font-size: 80px; /* Increased font size for the company name */
-            font-weight: bold;
-            color: white; /* Ensures the text is white */
-        }
-
-        .hero p {
-            font-size: 24px; /* Slightly smaller font size for the description */
-            margin-top: 10px;
-            color: white; /* Ensures the text is white */
-        }
-
-        .container {
-            padding: 20px;
-            width: 100%; /* Make the container width responsive */
-            max-width: 1200px; /* Add a max-width to prevent it from becoming too large */
-            margin: auto; /* Center the container */
-            background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 10px;
-        }
-        .services {
+            height: 500px;
+            color: white;
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 50px;
+            text-align: center;
+            position: relative;
+        }
+        .hero h1 {
+            font-size: 80px;
+            font-weight: bold;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7); /* Add shadow */
+        }
+        .hero p {
+            font-size: 24px;
+            margin-top: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow */
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .services {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
             flex-wrap: wrap;
-            margin-top: 40px;
         }
         .service-box {
             background: white;
-            padding: 50px;
-            border-radius: 30px; /* Round corners */
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
             flex: 1;
-            min-width: 300px; /* Increased card width */
-            max-width: 400px; /* Prevents it from growing too large */
             display: flex;
             flex-direction: column;
             align-items: center;
+            gap: 15px;
             text-align: center;
-            gap: 25px;
+            transition: transform 0.3s ease-in-out;
         }
         .service-box img {
-            width: 100px; /* Increased icon size */
+            width: 100px;
             height: 100px;
+        }
+        .service-box:hover {
+            transform: translateY(-10px);
         }
         footer {
             background-color: rgba(34, 34, 34, 0.8);
             color: white;
             text-align: center;
-            padding: 20px;
+            padding: 15px;
             position: relative;
-            bottom: 0;
-            width: 100%;
-            font-size: 18px;
         }
-        footer p {
-            margin: 10px 0;
+        /* Navbar dropdown */
+        .dropdown {
+            position: relative;
+            display: inline-block;
         }
-        
-        /* New styles for the heading */
-        #services-heading {
-            text-align: center;
-            font-size: 50px; /* Make the heading much bigger */
-            margin-bottom: 40px; /* Adds space below the heading */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            min-width: 160px;
+            z-index: 1;
         }
-
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+            animation: dropdown-animation 0.5s ease-in-out;
+        }
+        @keyframes dropdown-animation {
+            0% {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
         @media (max-width: 768px) {
             .services {
                 flex-direction: column;
@@ -179,11 +138,7 @@
             }
             .service-box {
                 flex-direction: column;
-                text-align: center;
-                gap: 15px;
-            }
-            #services-heading {
-                font-size: 35px; /* Make the font a bit smaller on mobile devices */
+                gap: 10px;
             }
         }
     </style>
@@ -191,14 +146,11 @@
 <body>
     <div class="navbar">
         <div class="logo">MMM Corporation</div>
-        <div class="nav-links">
-            <!-- Dropdown for the menu -->
-            <div class="dropdown">
-                <a href="#" class="dropdown-button">Menu</a>
-                <div class="dropdown-content">
-                    <a href="#about">O nás</a>
-                    <a href="#services">Naše služby</a>
-                </div>
+        <div class="dropdown">
+            <button class="dropbtn">Menu</button>
+            <div class="dropdown-content">
+                <a href="#about">O nás</a>
+                <a href="#services">Naše služby</a>
             </div>
         </div>
     </div>
@@ -208,36 +160,29 @@
         <p>Specializujeme se na údržbu elektrických systémů a mnohem více</p>
     </section>
     
-    <div class="container">
-        <h2 id="services-heading">Naše služby</h2>
+    <div class="container" id="services">
+        <h2>Naše služby</h2>
         <div class="services">
             <div class="service-box">
-                <img src="https://www.kindpng.com/picc/m/78-786320_power-lines-electric-power-line-png-transparent-png.png" alt="Oprava nadzemních elektrických vodičů">
-                <div>
-                    <h3>Oprava nadzemních vodičů</h3>
-                    <p>Specializujeme se na opravy nadzemních elektrických vedení pro zajištění bezpečnosti a efektivity.</p>
-                </div>
+                <img src="https://source.unsplash.com/100x100/?powerlines" alt="Oprava nadzemních elektrických vodičů">
+                <h3>Oprava nadzemních vodičů</h3>
+                <p>Specializujeme se na opravy nadzemních elektrických vedení pro zajištění bezpečnosti a efektivity.</p>
             </div>
             <div class="service-box">
-                <img src="https://www.kindpng.com/picc/m/78-786320_power-lines-electric-power-line-png-transparent-png.png" alt="Údržba podzemních napájecích kabelů">
-                <div>
-                    <h3>Údržba podzemních kabelů</h3>
-                    <p>Naši odborníci se starají o opravy podzemních napájecích kabelů pomocí pokročilých nástrojů a zkušeností.</p>
-                </div>
+                <img src="https://source.unsplash.com/100x100/?cables" alt="Údržba podzemních napájecích kabelů">
+                <h3>Údržba podzemních kabelů</h3>
+                <p>Naši odborníci se starají o opravy podzemních napájecích kabelů pomocí pokročilých nástrojů a zkušeností.</p>
             </div>
             <div class="service-box">
-                <img src="https://www.kindpng.com/picc/m/78-786320_power-lines-electric-power-line-png-transparent-png.png" alt="Nouzové elektrické služby">
-                <div>
-                    <h3>Nouzové elektrické služby</h3>
-                    <p>24/7 nouzová odezva na elektrické poruchy a urgentní opravy.</p>
-                </div>
+                <img src="https://source.unsplash.com/100x100/?electrician" alt="Nouzové elektrické služby">
+                <h3>Nouzové elektrické služby</h3>
+                <p>24/7 nouzová odezva na elektrické poruchy a urgentní opravy.</p>
             </div>
         </div>
     </div>
 
-    <footer id="contact">
-        <p>Kontaktujte nás: <br> contact@mmmcorp.com</p>
-        <p>Telefon: <br> (123) 456-7890</p>
+    <footer>
+        Kontaktujte nás: contact@mmmcorp.com | Telefon: (123) 456-7890
     </footer>
 </body>
 </html>
