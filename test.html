@@ -156,6 +156,7 @@
             transition: opacity 0.5s ease-out, transform 0.5s ease-out; /* Add transition for delay */
             opacity: 0; /* Initially hidden */
             transform: translateY(-10px); /* Start from above */
+            pointer-events: none; /* Prevent interaction with invisible items */
         }
 
         .dropdown-content a {
@@ -170,19 +171,26 @@
             background-color: #ddd;
         }
 
-        /* Display the dropdown when hovering over the menu button or the dropdown itself */
+        /* Increase the hitbox size by 200px around the menu */
         .dropdown:hover .dropdown-content {
             display: block;
             opacity: 1;
             transform: translateY(0); /* Smooth transition to normal position */
         }
 
+        /* Add a larger hitbox area for hover effect */
+        .dropdown:hover .dropdown-content,
         .dropdown:hover .menu-button {
-            background-color: #f1f1f1; /* Slightly darken the button when hovered */
+            pointer-events: auto;
         }
 
         .dropdown:hover .dropdown-content {
             display: block;
+            opacity: 1;
+        }
+
+        .dropdown-content:hover {
+            pointer-events: auto; /* Allow interaction when hovering directly over the dropdown */
         }
 
         @keyframes dropdown-animation {
