@@ -153,6 +153,9 @@
             top: 150%; /* Moved the dropdown 50px down */
             border-radius: 10px; /* Rounded edges */
             animation: dropdown-animation 0.5s ease-in-out;
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out; /* Add transition for delay */
+            opacity: 0; /* Initially hidden */
+            transform: translateY(-10px); /* Start from above */
         }
 
         .dropdown-content a {
@@ -167,8 +170,11 @@
             background-color: #ddd;
         }
 
+        /* Display the dropdown when hovering over the menu button or the dropdown itself */
         .dropdown:hover .dropdown-content {
             display: block;
+            opacity: 1;
+            transform: translateY(0); /* Smooth transition to normal position */
         }
 
         .dropdown:hover .menu-button {
