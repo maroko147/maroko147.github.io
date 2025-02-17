@@ -21,27 +21,29 @@
       position: relative;
     }
 
-    .back-button {
-      background-color: #ff6347;
-      color: white;
-      padding: 10px 20px;
-      font-size: 18px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
+    #back-button {
       position: absolute;
-      top: 20px;
+      top: 10px;
       right: 20px;
+      background-color: #ffffff;
+      color: #4CAF50;
+      border: 2px solid #4CAF50;
+      padding: 12px 25px;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 25px;
+      transition: all 0.3s ease;
     }
 
-    .back-button:hover {
-      background-color: #ff4500;
+    #back-button:hover {
+      background-color: #4CAF50;
+      color: white;
     }
 
     .content {
       text-align: center;
-      margin-top: 50px;
+      margin-top: 60px;
+      padding: 20px;
     }
 
     select, input[type="text"], button {
@@ -98,9 +100,13 @@
     }
 
     .incorrect-answer {
-      font-size: 30px;
+      font-size: 36px;
       color: darkorange;
       font-weight: bold;
+      text-decoration: underline;
+      background-color: yellow;
+      padding: 5px;
+      border-radius: 5px;
     }
 
     .dropdown {
@@ -138,7 +144,7 @@
 
   <header>
     <h1>Learn English</h1>
-    <a href="index.html" class="back-button">Back to Main</a>
+    <a href="index.html" id="back-button">Back to Main</a>
   </header>
 
   <div class="content">
@@ -292,77 +298,40 @@
         "book": "kniha"
       },
       6: {
-        "universe": "vesmír",
-        "soccer": "futbal",
-        "reliable": "spoľahlivý",
-        "technology": "technológia",
-        "vacuum": "vysávač",
+        "history": "história",
         "evolution": "evolúcia",
-        "space": "vesmír",
-        "scientific": "vedecký",
-        "planet": "planéta",
-        "black hole": "čierna diera",
-        "stars": "hviezdy",
-        "galaxy": "galaxia",
-        "experiment": "experiment",
-        "molecule": "molekula",
-        "chemistry": "chémia",
+        "earth": "zem",
         "biology": "biológia",
+        "chemistry": "chémia",
         "physics": "fyzika",
         "mathematics": "matematika",
-        "computation": "výpočty",
-        "computer": "počítač",
-        "education": "vzdelanie"
+        "geography": "geografia",
+        "philosophy": "filozofia",
+        "astronomy": "astronómia",
+        "psychology": "psychológia",
+        "geology": "geológia",
+        "scientist": "vedec",
+        "research": "výskum",
+        "experiment": "experiment",
+        "theory": "teória",
+        "laws of nature": "prírodné zákony",
+        "solution": "riešenie",
+        "system": "systém",
+        "evidence": "dôkaz",
+        "universe": "vesmír"
       },
       7: {
-        "chemistry": "chémia",
-        "biology": "biológia",
-        "environment": "prostredie",
-        "physics": "fyzika",
-        "experiment": "experiment",
-        "astronomy": "astronómia",
-        "geography": "geografia",
-        "history": "história",
-        "math": "matematika",
-        "technology": "technológia",
-        "engineering": "inžinierstvo",
-        "robotics": "robotika",
-        "ecology": "ekológia",
-        "solar system": "slnečná sústava",
-        "ecosystem": "ekosystém",
-        "computer science": "informatika"
-      },
-      8: {
-        "literature": "literatúra",
+        "economics": "ekonómia",
+        "government": "vláda",
+        "laws": "zákony",
+        "business": "podnikanie",
+        "debate": "debatovanie",
         "politics": "politika",
-        "sociology": "sociológia",
-        "law": "právo",
-        "psychology": "psychológia",
-        "geometry": "geometria",
-        "algebra": "algebra",
-        "statistics": "štatistika",
-        "economics": "ekonómia",
-        "philosophy": "filozofia",
-        "art": "umenie",
-        "language": "jazyk",
-        "music": "hudba",
-        "cinema": "kino",
-        "architecture": "architektúra"
-      },
-      9: {
-        "business": "obchod",
-        "marketing": "marketing",
-        "management": "manažment",
-        "finance": "financie",
-        "accounting": "účtovníctvo",
-        "law": "právo",
-        "psychology": "psychológia",
-        "literature": "literatúra",
-        "history": "história",
-        "mathematics": "matematika",
-        "statistics": "štatistika",
-        "philosophy": "filozofia",
-        "economics": "ekonómia",
+        "democracy": "demokracia",
+        "human rights": "ľudské práva",
+        "international relations": "medzinárodné vzťahy",
+        "trade": "obchod",
+        "economy": "ekonomika",
         "business ethics": "etika podnikania",
         "public speaking": "verejné vystupovanie",
         "psychological research": "psychologický výskum",
