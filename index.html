@@ -6,10 +6,14 @@
   <title>Learning Website - Home</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Arial', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f4f4f4;
+      background: linear-gradient(to bottom right, #e0f7fa, #80deea);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     header {
@@ -17,48 +21,73 @@
       color: white;
       padding: 20px;
       text-align: center;
-      font-size: 32px;
+      font-size: 36px;
+      font-family: 'Roboto', sans-serif;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      margin-bottom: 50px;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      flex-wrap: wrap;
     }
 
     .card {
       background-color: #fff;
-      width: 45%;
-      padding: 50px;
+      width: 350px;
+      height: 500px;
+      padding: 30px;
       border-radius: 15px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
       text-align: center;
       cursor: pointer;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      font-size: 24px;
       text-decoration: none;
-      font-size: 36px;
-      margin: 20px;
-      display: inline-block;
-      vertical-align: top;
     }
 
     .card:hover {
-      transform: scale(1.1);
+      transform: scale(1.05);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
     }
 
     .card img {
       width: 100%;
       height: auto;
-      border-radius: 8px;
+      border-radius: 10px;
+      margin-bottom: 20px;
     }
 
     .card h2 {
-      margin-bottom: 30px;
-      font-size: 48px;
-      font-weight: bold;
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: #333;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .card p {
+      font-size: 20px;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .card h2, .card p {
+      font-family: 'Arial', sans-serif;
     }
   </style>
 </head>
 <body>
+
   <header>
     <h1>Welcome to My Learning Website</h1>
   </header>
 
-  <div style="text-align: center; margin-top: 50px;">
+  <div class="container">
     <a href="maths.html" class="card">
       <h2>Maths</h2>
       <img src="https://trawden.lancs.sch.uk/images/Maths.jpg" alt="Maths Image">
@@ -71,5 +100,6 @@
       <p>Click here to learn English</p>
     </a>
   </div>
+
 </body>
 </html>
