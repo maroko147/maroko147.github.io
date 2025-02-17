@@ -104,6 +104,17 @@
       text-align: center;
       margin-bottom: 20px;
     }
+
+    /* Answer input field */
+    .answer-input {
+      font-size: 20px;
+      padding: 10px;
+      width: 200px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
   </style>
 </head>
 <body>
@@ -150,28 +161,36 @@
   <div id="addition" class="hidden questions">
     <h3>Practice Addition</h3>
     <p>What is 12 + 8?</p>
-    <button class="button">Submit Answer</button>
+    <input type="number" class="answer-input" id="addition-answer" placeholder="Enter your answer">
+    <button class="button" onclick="checkAnswer('addition')">Submit Answer</button>
+    <div id="addition-feedback" class="feedback"></div>
   </div>
 
   <!-- Questions for Subtraction (hidden initially) -->
   <div id="subtraction" class="hidden questions">
     <h3>Practice Subtraction</h3>
     <p>What is 15 - 7?</p>
-    <button class="button">Submit Answer</button>
+    <input type="number" class="answer-input" id="subtraction-answer" placeholder="Enter your answer">
+    <button class="button" onclick="checkAnswer('subtraction')">Submit Answer</button>
+    <div id="subtraction-feedback" class="feedback"></div>
   </div>
 
   <!-- Questions for Multiplication (hidden initially) -->
   <div id="multiplication" class="hidden questions">
     <h3>Practice Multiplication</h3>
     <p>What is 6 x 3?</p>
-    <button class="button">Submit Answer</button>
+    <input type="number" class="answer-input" id="multiplication-answer" placeholder="Enter your answer">
+    <button class="button" onclick="checkAnswer('multiplication')">Submit Answer</button>
+    <div id="multiplication-feedback" class="feedback"></div>
   </div>
 
   <!-- Questions for Division (hidden initially) -->
   <div id="division" class="hidden questions">
     <h3>Practice Division</h3>
     <p>What is 18 ÷ 2?</p>
-    <button class="button">Submit Answer</button>
+    <input type="number" class="answer-input" id="division-answer" placeholder="Enter your answer">
+    <button class="button" onclick="checkAnswer('division')">Submit Answer</button>
+    <div id="division-feedback" class="feedback"></div>
   </div>
 
   <script>
@@ -202,6 +221,33 @@
     function backToMainContent() {
       document.getElementById('maths-content').classList.add('hidden');
       document.getElementById('main-content').classList.remove('hidden');
+    }
+
+    // Check the answer for each operation
+    function checkAnswer(operation) {
+      let correctAnswer;
+      let userAnswer;
+
+      if (operation === 'addition') {
+        correctAnswer = 12 + 8;
+        userAnswer = parseInt(document.getElementById('addition-answer').value);
+      } else if (operation === 'subtraction') {
+        correctAnswer = 15 - 7;
+        userAnswer = parseInt(document.getElementById('subtraction-answer').value);
+      } else if (operation === 'multiplication') {
+        correctAnswer = 6 * 3;
+        userAnswer = parseInt(document.getElementById('multiplication-answer').value);
+      } else if (operation === 'division') {
+        correctAnswer = 18 / 2;
+        userAnswer = parseInt(document.getElementById('division-answer').value);
+      }
+
+      // Feedback message
+      if (userAnswer === correctAnswer) {
+        document.getElementById(operation + '-feedback').innerHTML = "Correct! Great job!";
+      } else {
+        document.getElementById(operation + '-feedback').innerHTML = "Oops! Try again.";
+      }
     }
   </script>
 
