@@ -19,6 +19,30 @@
       padding: 20px;
       text-align: center;
       font-size: 32px;
+      position: relative;
+    }
+
+    /* Position the Back to Main button */
+    .back-to-main-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .back-to-main-button:hover {
+      background-color: #45a049;
+    }
+
+    .back-to-main-button:focus {
+      outline: none;
     }
 
     /* Main content styles */
@@ -146,6 +170,8 @@
   <!-- Header -->
   <header>
     <h1>Welcome to My Learning Website</h1>
+    <!-- Back to Main button -->
+    <button class="back-to-main-button" onclick="backToMainContent()">Back to Main</button>
   </header>
 
   <!-- Main content with 2 clickable cards -->
@@ -184,7 +210,7 @@
     <button class="button" onclick="showMathOperation('division')">Division</button>
 
     <!-- Back button to return to main content -->
-    <button class="button" onclick="backToMainContent()">Back to Main</button>
+    <!-- This button is now positioned in the header above -->
   </div>
 
   <!-- Questions for Addition (hidden initially) -->
