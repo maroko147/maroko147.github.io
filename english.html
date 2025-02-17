@@ -109,6 +109,18 @@
       border-radius: 5px;
     }
 
+    .correct-answer {
+      font-size: 36px;
+      color: white;
+      background-color: #4CAF50;
+      font-weight: bold;
+      padding: 10px;
+      border-radius: 5px;
+      display: inline-block;
+      text-transform: uppercase;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
     .dropdown {
       width: 80%;
       max-width: 350px;
@@ -275,7 +287,7 @@
         document.getElementById('feedback').innerText = 'Correct!';
         document.getElementById('feedback').className = 'feedback correct';
       } else {
-        document.getElementById('feedback').innerHTML = `Incorrect. Try again. <br><span class="incorrect-answer">${currentAnswer}</span>`;
+        document.getElementById('feedback').innerHTML = `Incorrect. Try again. <br><span class="correct-answer">${currentAnswer}</span>`;
         document.getElementById('feedback').className = 'feedback incorrect';
       }
 
