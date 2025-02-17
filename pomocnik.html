@@ -163,6 +163,14 @@
       color: red;
     }
 
+    /* Feedback text after answering */
+    .answer-feedback {
+      font-size: 24px;
+      margin-top: 20px;
+      font-weight: bold;
+      text-align: center;
+    }
+
   </style>
 </head>
 <body>
@@ -220,6 +228,7 @@
     <input type="number" class="answer-input" id="addition-answer" placeholder="Enter your answer">
     <button class="button" onclick="checkAnswer('addition')">Submit Answer</button>
     <div id="addition-feedback" class="feedback"></div>
+    <div id="addition-answer-feedback" class="answer-feedback"></div> <!-- New element for feedback -->
   </div>
 
   <!-- Questions for Subtraction (hidden initially) -->
@@ -229,6 +238,7 @@
     <input type="number" class="answer-input" id="subtraction-answer" placeholder="Enter your answer">
     <button class="button" onclick="checkAnswer('subtraction')">Submit Answer</button>
     <div id="subtraction-feedback" class="feedback"></div>
+    <div id="subtraction-answer-feedback" class="answer-feedback"></div> <!-- New element for feedback -->
   </div>
 
   <!-- Questions for Multiplication (hidden initially) -->
@@ -238,6 +248,7 @@
     <input type="number" class="answer-input" id="multiplication-answer" placeholder="Enter your answer">
     <button class="button" onclick="checkAnswer('multiplication')">Submit Answer</button>
     <div id="multiplication-feedback" class="feedback"></div>
+    <div id="multiplication-answer-feedback" class="answer-feedback"></div> <!-- New element for feedback -->
   </div>
 
   <!-- Questions for Division (hidden initially) -->
@@ -247,6 +258,7 @@
     <input type="number" class="answer-input" id="division-answer" placeholder="Enter your answer">
     <button class="button" onclick="checkAnswer('division')">Submit Answer</button>
     <div id="division-feedback" class="feedback"></div>
+    <div id="division-answer-feedback" class="answer-feedback"></div> <!-- New element for feedback -->
   </div>
 
   <script>
@@ -305,6 +317,7 @@
         question = `${num1} + ${num2}`;
         document.getElementById('addition-question').innerText = `What is ${question}?`;
         document.getElementById('addition-feedback').innerText = "";
+        document.getElementById('addition-answer-feedback').innerText = "";  // Clear feedback text
       } else if (operation === 'subtraction') {
         num1 = Math.floor(Math.random() * (maxNumber + 1)) + maxNumber / 2;  // Ensure num1 is larger
         num2 = Math.floor(Math.random() * (maxNumber + 1));
@@ -316,6 +329,7 @@
         question = `${num1} - ${num2}`;
         document.getElementById('subtraction-question').innerText = `What is ${question}?`;
         document.getElementById('subtraction-feedback').innerText = "";
+        document.getElementById('subtraction-answer-feedback').innerText = "";  // Clear feedback text
       } else if (operation === 'multiplication') {
         num1 = Math.floor(Math.random() * (maxNumber + 1));
         num2 = Math.floor(Math.random() * (maxNumber + 1));
@@ -327,6 +341,7 @@
         question = `${num1} x ${num2}`;
         document.getElementById('multiplication-question').innerText = `What is ${question}?`;
         document.getElementById('multiplication-feedback').innerText = "";
+        document.getElementById('multiplication-answer-feedback').innerText = "";  // Clear feedback text
       } else if (operation === 'division') {
         num1 = Math.floor(Math.random() * (maxNumber + 1));
         num2 = Math.floor(Math.random() * (maxNumber + 1)) + 1;  // Avoid divide by zero
@@ -338,6 +353,7 @@
         question = `${num1 * num2} ÷ ${num2}`;  // Make sure division is exact
         document.getElementById('division-question').innerText = `What is ${question}?`;
         document.getElementById('division-feedback').innerText = "";
+        document.getElementById('division-answer-feedback').innerText = "";  // Clear feedback text
       }
 
       // Store the correct answer in a global variable
@@ -358,20 +374,25 @@
         userAnswer = parseInt(document.getElementById('division-answer').value);
       }
 
-      // Log both the current answer and the user's answer for debugging purposes
-      console.log("Correct Answer:", window.currentAnswer);
-      console.log("User Answer:", userAnswer);
-
       let feedbackElement = document.getElementById(operation + '-feedback');
-      
+      let answerFeedbackElement = document.getElementById(operation + '-answer-feedback');  // New element for feedback
+
       if (userAnswer === window.currentAnswer) {
         feedbackElement.innerText = "Correct! Great job!";
         feedbackElement.classList.remove('incorrect');
         feedbackElement.classList.add('correct');
+
+        answerFeedbackElement.innerText = "Your answer is correct!";
+        answerFeedbackElement.classList.remove('incorrect');
+        answerFeedbackElement.classList.add('correct');
       } else {
         feedbackElement.innerText = "Oops! Try again.";
         feedbackElement.classList.remove('correct');
         feedbackElement.classList.add('incorrect');
+
+        answerFeedbackElement.innerText = "Your answer is incorrect. Try again!";
+        answerFeedbackElement.classList.remove('correct');
+        answerFeedbackElement.classList.add('incorrect');
       }
 
       // Clear the answer input field
@@ -381,24 +402,18 @@
       generateMathProblem(operation);
     }
 
-    // Reset all problems, inputs, and feedback
+    // Reset all problems and feedbacks when going back to the main content
     function resetProblems() {
       document.getElementById('addition-feedback').innerText = "";
       document.getElementById('subtraction-feedback').innerText = "";
       document.getElementById('multiplication-feedback').innerText = "";
       document.getElementById('division-feedback').innerText = "";
-      
-      document.getElementById('addition-answer').value = "";
-      document.getElementById('subtraction-answer').value = "";
-      document.getElementById('multiplication-answer').value = "";
-      document.getElementById('division-answer').value = "";
 
-      document.getElementById('addition').classList.add('hidden');
-      document.getElementById('subtraction').classList.add('hidden');
-      document.getElementById('multiplication').classList.add('hidden');
-      document.getElementById('division').classList.add('hidden');
+      document.getElementById('addition-answer-feedback').innerText = "";
+      document.getElementById('subtraction-answer-feedback').innerText = "";
+      document.getElementById('multiplication-answer-feedback').innerText = "";
+      document.getElementById('division-answer-feedback').innerText = "";
     }
   </script>
-
 </body>
 </html>
