@@ -1,1 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning Website - Home</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
 
+    header {
+      background-color: #333;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 32px;
+    }
+
+    .card {
+      background-color: #fff;
+      width: 45%;
+      padding: 50px;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      text-decoration: none;
+      font-size: 36px;
+      margin: 20px;
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    .card:hover {
+      transform: scale(1.1);
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .card h2 {
+      margin-bottom: 30px;
+      font-size: 48px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Welcome to My Learning Website</h1>
+  </header>
+
+  <div style="text-align: center; margin-top: 50px;">
+    <a href="maths.html" class="card">
+      <h2>Maths</h2>
+      <img src="https://via.placeholder.com/500" alt="Maths Image">
+      <p>Click here to practice Maths</p>
+    </a>
+
+    <a href="english.html" class="card">
+      <h2>English</h2>
+      <img src="https://via.placeholder.com/500" alt="English Image">
+      <p>Click here to learn English</p>
+    </a>
+  </div>
+</body>
+</html>
