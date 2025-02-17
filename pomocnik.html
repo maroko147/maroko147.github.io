@@ -254,27 +254,47 @@
       let num1, num2, question;
 
       if (operation === 'addition') {
-        num1 = Math.floor(Math.random() * maxNumber) + 1;
-        num2 = Math.floor(Math.random() * maxNumber) + 1;
+        num1 = Math.floor(Math.random() * (maxNumber + 1));
+        num2 = Math.floor(Math.random() * (maxNumber + 1));
+        // Make sure the sum doesn't exceed max number
+        while (num1 + num2 > maxNumber) {
+          num1 = Math.floor(Math.random() * (maxNumber + 1));
+          num2 = Math.floor(Math.random() * (maxNumber + 1));
+        }
         question = `${num1} + ${num2}`;
         document.getElementById('addition-question').innerText = `What is ${question}?`;
         document.getElementById('addition-feedback').innerText = "";
       } else if (operation === 'subtraction') {
-        num1 = Math.floor(Math.random() * maxNumber) + 10;  // Ensure num1 is larger than num2
-        num2 = Math.floor(Math.random() * maxNumber) + 1;
+        num1 = Math.floor(Math.random() * (maxNumber + 1)) + maxNumber / 2;  // Ensure num1 is larger
+        num2 = Math.floor(Math.random() * (maxNumber + 1));
+        // Ensure the subtraction doesn't exceed the max number
+        while (num1 - num2 > maxNumber || num1 < num2) {
+          num1 = Math.floor(Math.random() * (maxNumber + 1)) + maxNumber / 2;
+          num2 = Math.floor(Math.random() * (maxNumber + 1));
+        }
         question = `${num1} - ${num2}`;
         document.getElementById('subtraction-question').innerText = `What is ${question}?`;
         document.getElementById('subtraction-feedback').innerText = "";
       } else if (operation === 'multiplication') {
-        num1 = Math.floor(Math.random() * maxNumber) + 1;
-        num2 = Math.floor(Math.random() * maxNumber) + 1;
+        num1 = Math.floor(Math.random() * (maxNumber + 1));
+        num2 = Math.floor(Math.random() * (maxNumber + 1));
+        // Ensure the product doesn't exceed the max number
+        while (num1 * num2 > maxNumber) {
+          num1 = Math.floor(Math.random() * (maxNumber + 1));
+          num2 = Math.floor(Math.random() * (maxNumber + 1));
+        }
         question = `${num1} x ${num2}`;
         document.getElementById('multiplication-question').innerText = `What is ${question}?`;
         document.getElementById('multiplication-feedback').innerText = "";
       } else if (operation === 'division') {
-        num1 = Math.floor(Math.random() * maxNumber) + 1;
-        num2 = Math.floor(Math.random() * maxNumber) + 1;
-        question = `${num1 * num2} ÷ ${num2}`;  // Make sure the division is clean
+        num1 = Math.floor(Math.random() * (maxNumber + 1));
+        num2 = Math.floor(Math.random() * (maxNumber + 1)) + 1;  // Avoid divide by zero
+        // Ensure the division result doesn't exceed max number
+        while (num1 / num2 > maxNumber) {
+          num1 = Math.floor(Math.random() * (maxNumber + 1));
+          num2 = Math.floor(Math.random() * (maxNumber + 1)) + 1;
+        }
+        question = `${num1 * num2} ÷ ${num2}`;  // Make sure division is exact
         document.getElementById('division-question').innerText = `What is ${question}?`;
         document.getElementById('division-feedback').innerText = "";
       }
