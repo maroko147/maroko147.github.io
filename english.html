@@ -37,18 +37,212 @@
     .back-button:hover {
       background-color: #ff4500;
     }
+
+    .content {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    select, input[type="text"], button {
+      font-size: 20px;
+      padding: 12px;
+      margin: 15px;
+      border-radius: 8px;
+      border: 2px solid #ddd;
+      transition: all 0.3s ease;
+      width: 80%;
+      max-width: 350px;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #45a049;
+      transform: scale(1.05);
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    input[type="text"]:focus, select:focus, button:focus {
+      outline: none;
+      border-color: #4CAF50;
+      box-shadow: 0 0 8px rgba(76, 175, 80, 0.6);
+    }
+
+    .question {
+      font-size: 36px;
+      margin-top: 20px;
+      color: #333;
+    }
+
+    .feedback {
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 20px;
+      transition: all 0.5s ease;
+    }
+
+    .correct {
+      color: green;
+    }
+
+    .incorrect {
+      color: red;
+    }
+
+    .dropdown {
+      width: 80%;
+      max-width: 350px;
+      background: linear-gradient(to right, #ffffff, #f1f1f1);
+      border: 2px solid #4CAF50;
+      border-radius: 12px;
+      padding: 10px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+      transition: all 0.3s ease;
+    }
+
+    .dropdown-container {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+    }
+
+    .dropdown-container:after {
+      content: "▼";
+      font-size: 20px;
+      color: #333;
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
   </style>
 </head>
 <body>
+
   <header>
     <h1>Learn English</h1>
   </header>
 
-  <div style="text-align: center; margin-top: 50px;">
-    <p>English learning content will be added here.</p>
+  <div class="content">
+    <h2>Select your grade level:</h2>
+    <select id="grade-level" class="dropdown">
+      <option value="1">1st Grade</option>
+      <option value="2">2nd Grade</option>
+      <option value="3">3rd Grade</option>
+      <option value="4">4th Grade</option>
+      <option value="5">5th Grade</option>
+      <option value="6">6th Grade</option>
+    </select>
+
+    <h3 class="question" id="question">What is this word?</h3>
+    <input type="text" id="answer" placeholder="Your answer">
+    <button onclick="checkAnswer()">Check Answer</button>
+
+    <div id="feedback" class="feedback"></div>
 
     <!-- Back to Main button -->
     <a href="index.html" class="back-button">Back to Main</a>
   </div>
+
+  <script>
+    const words = {
+      1: {
+        "apple": "jablko",
+        "dog": "pes",
+        "cat": "mačka",
+        "house": "dom",
+        "ball": "lopta"
+      },
+      2: {
+        "tree": "strom",
+        "book": "kniha",
+        "car": "auto",
+        "school": "škola",
+        "apple": "jablko"
+      },
+      3: {
+        "friend": "priateľ",
+        "computer": "počítač",
+        "table": "stôl",
+        "city": "mesto",
+        "water": "voda"
+      },
+      4: {
+        "family": "rodina",
+        "holiday": "prázdniny",
+        "game": "hra",
+        "school": "škola",
+        "computer": "počítač"
+      },
+      5: {
+        "library": "knižnica",
+        "adventure": "dobrodružstvo",
+        "homework": "domáca úloha",
+        "vacation": "dovolenka",
+        "mountain": "hora"
+      },
+      6: {
+        "universe": "vesmír",
+        "soccer": "futbal",
+        "reliable": "spoľahlivý",
+        "technology": "technológia",
+        "vacuum": "vysávač"
+      }
+    };
+
+    let currentGrade = 1;
+    let currentWord = '';
+    let currentAnswer = '';
+
+    // Event listener to handle grade selection change
+    document.getElementById('grade-level').addEventListener('change', function() {
+      currentGrade = parseInt(this.value);
+      generateWord();
+    });
+
+    function generateWord() {
+      const wordsList = words[currentGrade];
+      const wordKeys = Object.keys(wordsList);
+      const randomIndex = Math.floor(Math.random() * wordKeys.length);
+      currentWord = wordKeys[randomIndex];
+      currentAnswer = wordsList[currentWord];
+
+      document.getElementById('question').textContent = `What is "${currentWord}" in Slovak?`;
+      document.getElementById('answer').value = '';  // Clear the input field
+      document.getElementById('feedback').textContent = '';  // Clear the feedback
+    }
+
+    function checkAnswer() {
+      const userAnswer = document.getElementById('answer').value.trim().toLowerCase();
+      const feedback = document.getElementById('feedback');
+
+      if (userAnswer === currentAnswer) {
+        feedback.textContent = "Correct!";
+        feedback.className = "feedback correct";
+      } else {
+        feedback.textContent = "Incorrect, try again!";
+        feedback.className = "feedback incorrect";
+      }
+
+      // Generate next word after feedback is shown
+      setTimeout(() => {
+        generateWord();
+      }, 1500);
+    }
+
+    // Initial word generation
+    generateWord();
+  </script>
+
 </body>
 </html>
