@@ -16,40 +16,44 @@
     header {
       background-color: #333;
       color: white;
-      padding: 10px;
+      padding: 20px;
       text-align: center;
+      font-size: 32px; /* Larger font size for the header */
     }
 
     /* Main content styles */
     .container {
       display: flex;
       justify-content: center;
-      margin-top: 20px;
-      gap: 20px;
+      margin-top: 40px;
+      gap: 40px;
     }
 
     .card {
       background-color: #fff;
-      width: 45%;
-      padding: 20px;
-      border-radius: 10px;
+      width: 60%; /* Making the cards wider */
+      padding: 50px;
+      border-radius: 15px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       text-align: center;
       cursor: pointer;
       transition: transform 0.3s ease;
       text-decoration: none;
+      font-size: 36px; /* Larger text size inside the cards */
     }
 
     .card:hover {
-      transform: scale(1.05); /* Zoom effect on hover */
+      transform: scale(1.1); /* Larger zoom effect on hover */
     }
 
     .card h2 {
-      margin-bottom: 20px;
+      margin-bottom: 30px;
+      font-size: 48px; /* Large title inside the card */
+      font-weight: bold;
     }
 
     .card p {
-      font-size: 18px;
+      font-size: 24px;
       color: #333;
     }
 
@@ -72,16 +76,16 @@
   <div class="container">
     <!-- Card 1 -->
     <a href="page1.html" class="card">
-      <h2>Card 1 Title</h2>
-      <img src="https://via.placeholder.com/500" alt="Placeholder Image">
-      <p>This is a description of the first card. Click here to visit the first page.</p>
+      <h2>English</h2>
+      <img src="https://via.placeholder.com/500" alt="English Image">
+      <p>Click here to visit the English page.</p>
     </a>
 
     <!-- Card 2 -->
     <a href="page2.html" class="card">
-      <h2>Card 2 Title</h2>
-      <img src="https://via.placeholder.com/500" alt="Placeholder Image">
-      <p>This is a description of the second card. Click here to visit the second page.</p>
+      <h2>Maths</h2>
+      <img src="https://via.placeholder.com/500" alt="Maths Image">
+      <p>Click here to visit the Maths page.</p>
     </a>
   </div>
 
