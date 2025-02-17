@@ -34,47 +34,47 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 50px;
-      flex-wrap: wrap;
+      gap: 30px;
+      flex-wrap: wrap; /* Ensures cards wrap if the screen is too small */
       margin-top: 20px;
-      max-width: 1200px; /* Max width for container */
+      max-width: 1000px; /* Set a max width for the container */
     }
 
     .card {
       background-color: #fff;
-      width: 500px; /* Make the card much bigger */
-      height: 700px; /* Make the card much bigger */
-      padding: 40px;
+      width: 400px; /* Reduced width for cards */
+      height: 550px; /* Reduced height for cards */
+      padding: 30px;
       border-radius: 20px;
       box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
       text-align: center;
       cursor: pointer;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      font-size: 30px; /* Increase the text size */
+      font-size: 30px; /* Increased text size */
       text-decoration: none;
     }
 
     .card:hover {
-      transform: scale(1.1);
+      transform: scale(1.05);
       box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
     }
 
     .card img {
       width: 100%;
-      height: 350px; /* Increase image size */
+      height: 250px; /* Reduced height for images */
       border-radius: 15px;
       margin-bottom: 20px;
     }
 
     .card h2 {
-      font-size: 48px;
+      font-size: 36px;
       margin-bottom: 20px;
       color: #333;
       font-family: 'Roboto', sans-serif;
     }
 
     .card p {
-      font-size: 24px;
+      font-size: 20px;
       color: #555;
       line-height: 1.6;
     }
