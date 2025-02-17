@@ -18,6 +18,7 @@
       padding: 20px;
       text-align: center;
       font-size: 32px;
+      position: relative;
     }
 
     .back-button {
@@ -29,13 +30,9 @@
       border-radius: 8px;
       cursor: pointer;
       transition: background-color 0.3s ease;
-      margin-top: 20px;
-      text-align: center;
-      display: inline-block;
       position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
+      top: 20px;
+      right: 20px;
     }
 
     .back-button:hover {
@@ -100,6 +97,12 @@
       color: red;
     }
 
+    .incorrect-answer {
+      font-size: 30px;
+      color: darkorange;
+      font-weight: bold;
+    }
+
     .dropdown {
       width: 80%;
       max-width: 350px;
@@ -135,6 +138,7 @@
 
   <header>
     <h1>Learn English</h1>
+    <a href="index.html" class="back-button">Back to Main</a>
   </header>
 
   <div class="content">
@@ -151,14 +155,11 @@
       <option value="9">9th Grade</option>
     </select>
 
-    <h3 class="question" id="question">What is this word?</h3>
+    <h3 class="question" id="question">What is the word?</h3>
     <input type="text" id="answer" placeholder="Your answer">
     <button onclick="checkAnswer()">Check Answer</button>
 
     <div id="feedback" class="feedback"></div>
-
-    <!-- Back to Main button -->
-    <a href="index.html" class="back-button">Back to Main</a>
   </div>
 
   <script>
@@ -314,62 +315,58 @@
         "education": "vzdelanie"
       },
       7: {
+        "chemistry": "chémia",
+        "biology": "biológia",
         "environment": "prostredie",
-        "pollution": "znečistenie",
-        "law": "zákon",
-        "education": "vzdelanie",
-        "knowledge": "znalosť",
-        "world": "svet",
-        "globalization": "globalizácia",
-        "culture": "kultúra",
-        "ethics": "etika",
-        "history": "história"
+        "physics": "fyzika",
+        "experiment": "experiment",
+        "astronomy": "astronómia",
+        "geography": "geografia",
+        "history": "história",
+        "math": "matematika",
+        "technology": "technológia",
+        "engineering": "inžinierstvo",
+        "robotics": "robotika",
+        "ecology": "ekológia",
+        "solar system": "slnečná sústava",
+        "ecosystem": "ekosystém",
+        "computer science": "informatika"
       },
       8: {
+        "literature": "literatúra",
+        "politics": "politika",
+        "sociology": "sociológia",
+        "law": "právo",
+        "psychology": "psychológia",
+        "geometry": "geometria",
+        "algebra": "algebra",
+        "statistics": "štatistika",
+        "economics": "ekonómia",
         "philosophy": "filozofia",
-        "revolution": "revolúcia",
-        "constitution": "ústava",
-        "government": "vláda",
-        "science": "veda",
-        "civilization": "civilizácia",
-        "freedom": "sloboda",
-        "independence": "nezávislosť",
-        "justice": "spravodlivosť",
-        "democracy": "demokracia",
-        "development": "rozvoj",
-        "globalization": "globalizácia",
-        "culture": "kultúra",
-        "society": "spoločnosť",
-        "economy": "ekonomika",
-        "ethics": "etika",
-        "human rights": "ľudské práva",
-        "environment": "prostredie",
-        "pollution": "znečistenie",
-        "biology": "biológia",
-        "mathematics": "matematika"
+        "art": "umenie",
+        "language": "jazyk",
+        "music": "hudba",
+        "cinema": "kino",
+        "architecture": "architektúra"
       },
       9: {
+        "business": "obchod",
+        "marketing": "marketing",
+        "management": "manažment",
+        "finance": "financie",
+        "accounting": "účtovníctvo",
+        "law": "právo",
+        "psychology": "psychológia",
+        "literature": "literatúra",
+        "history": "história",
+        "mathematics": "matematika",
+        "statistics": "štatistika",
         "philosophy": "filozofia",
-        "revolution": "revolúcia",
-        "constitution": "ústava",
-        "government": "vláda",
-        "science": "veda",
-        "civilization": "civilizácia",
-        "freedom": "sloboda",
-        "independence": "nezávislosť",
-        "justice": "spravodlivosť",
-        "democracy": "demokracia",
-        "development": "rozvoj",
-        "globalization": "globalizácia",
-        "culture": "kultúra",
-        "society": "spoločnosť",
-        "economy": "ekonomika",
-        "ethics": "etika",
-        "human rights": "ľudské práva",
-        "environment": "prostredie",
-        "pollution": "znečistenie",
-        "biology": "biológia",
-        "mathematics": "matematika"
+        "economics": "ekonómia",
+        "business ethics": "etika podnikania",
+        "public speaking": "verejné vystupovanie",
+        "psychological research": "psychologický výskum",
+        "research methods": "výskumné metódy"
       }
     };
 
@@ -410,7 +407,7 @@
         document.getElementById('feedback').innerText = 'Correct!';
         document.getElementById('feedback').className = 'feedback correct';
       } else {
-        document.getElementById('feedback').innerText = 'Incorrect. Try again.';
+        document.getElementById('feedback').innerHTML = `Incorrect. Try again. <br><span class="incorrect-answer">${currentAnswer}</span>`;
         document.getElementById('feedback').className = 'feedback incorrect';
       }
 
