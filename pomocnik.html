@@ -260,7 +260,7 @@
       document.getElementById('maths-content').classList.add('hidden');
       document.getElementById('main-content').classList.remove('hidden');
       
-      // Clear all current problems and inputs
+      // Clear all current problems, answers and feedbacks
       resetProblems();
     }
 
@@ -351,7 +351,7 @@
       generateMathProblem(operation);
     }
 
-    // Reset all problems and inputs
+    // Reset all problems, inputs, and feedback
     function resetProblems() {
       document.getElementById('addition-feedback').innerText = "";
       document.getElementById('subtraction-feedback').innerText = "";
@@ -362,6 +362,11 @@
       document.getElementById('subtraction-answer').value = "";
       document.getElementById('multiplication-answer').value = "";
       document.getElementById('division-answer').value = "";
+
+      document.getElementById('addition').classList.add('hidden');
+      document.getElementById('subtraction').classList.add('hidden');
+      document.getElementById('multiplication').classList.add('hidden');
+      document.getElementById('division').classList.add('hidden');
     }
   </script>
 
