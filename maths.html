@@ -328,7 +328,6 @@
 
       document.getElementById('question').innerText = question;
       document.getElementById('answer').value = '';
-      document.getElementById('feedback').style.opacity = 0; // Hide feedback at first
     }
 
     function checkAnswer() {
@@ -345,7 +344,6 @@
       }
 
       document.getElementById('feedback').style.opacity = 1; // Show feedback
-      generateMathProblem(); // Generate new question after checking answer
     }
 
     // Generate the first problem on page load
