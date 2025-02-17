@@ -111,9 +111,6 @@
     </select>
     <br>
 
-    <button onclick="generateMathProblem()">Generate Problem</button>
-    <br>
-
     <h3 id="question">What is ?</h3>
     <input type="number" id="answer" placeholder="Your answer">
     <button onclick="checkAnswer()">Check Answer</button>
@@ -197,8 +194,12 @@
         feedback.classList.add('incorrect');
       }
 
-      // Do not generate a new problem until user presses "Generate Problem" again
+      // Wait for 2 seconds before generating the next problem
+      setTimeout(generateMathProblem, 2000);
     }
+
+    // Automatically generate the first math problem when the page loads
+    window.onload = generateMathProblem;
   </script>
 
 </body>
