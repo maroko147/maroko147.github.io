@@ -92,7 +92,7 @@
       font-weight: bold;
       margin-top: 20px;
       opacity: 0; /* Start as invisible */
-      transition: opacity 0.5s ease;
+      transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition for fade and movement */
     }
 
     .correct {
@@ -143,6 +143,27 @@
       header {
         font-size: 28px;
       }
+    }
+
+    /* Feedback animation */
+    @keyframes feedbackAnimation {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      50% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+    }
+
+    .feedback-visible {
+      opacity: 1 !important;
+      animation: feedbackAnimation 2s ease-in-out;
     }
 
   </style>
@@ -328,6 +349,7 @@
 
       document.getElementById('question').innerText = question;
       document.getElementById('answer').value = '';
+      document.getElementById('feedback').classList.remove('feedback-visible'); // Reset animation
     }
 
     function checkAnswer() {
@@ -343,7 +365,7 @@
         document.getElementById('feedback').classList.remove("correct");
       }
 
-      document.getElementById('feedback').style.opacity = 1; // Show feedback
+      document.getElementById('feedback').classList.add('feedback-visible'); // Show feedback with animation
 
       // Generate the next problem after checking answer
       setTimeout(generateMathProblem, 2000); // Delay to let the feedback be seen
