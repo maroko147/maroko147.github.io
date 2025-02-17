@@ -91,8 +91,8 @@
       font-size: 24px;
       font-weight: bold;
       margin-top: 20px;
-      transition: all 0.5s ease;
-      opacity: 0;
+      opacity: 0; /* Start as invisible */
+      transition: opacity 0.5s ease;
     }
 
     .correct {
@@ -328,7 +328,7 @@
 
       document.getElementById('question').innerText = question;
       document.getElementById('answer').value = '';
-      document.getElementById('feedback').innerText = ''; // Clear feedback
+      document.getElementById('feedback').style.opacity = 0; // Hide feedback at first
     }
 
     function checkAnswer() {
@@ -344,7 +344,8 @@
         document.getElementById('feedback').classList.remove("correct");
       }
 
-      generateMathProblem(); // Generate new question when answer is checked
+      document.getElementById('feedback').style.opacity = 1; // Show feedback
+      generateMathProblem(); // Generate new question after checking answer
     }
 
     // Generate the first problem on page load
