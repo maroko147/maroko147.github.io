@@ -98,6 +98,15 @@
       margin-bottom: 20px;
     }
 
+    /* Dropdown and other input elements */
+    .dropdown {
+      font-size: 24px;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
     /* Questions for each operation */
     .questions {
       font-size: 24px;
@@ -144,7 +153,13 @@
   <!-- Maths content selection (hidden initially) -->
   <div id="maths-content" class="hidden">
     <div class="instructions">
-      <p>Choose an operation to practice:</p>
+      <p>Choose the largest number you know:</p>
+      <select id="max-number" class="dropdown">
+        <option value="10">10</option>
+        <option value="100">100</option>
+        <option value="1000">1000</option>
+        <option value="10000">10000</option>
+      </select>
     </div>
 
     <!-- Buttons for different operations -->
@@ -194,6 +209,8 @@
   </div>
 
   <script>
+    let maxNumber = 10; // Default value
+
     // Show Maths content
     function showMathsContent() {
       document.getElementById('main-content').classList.add('hidden');
@@ -207,6 +224,9 @@
 
     // Show specific math operation content
     function showMathOperation(operation) {
+      // Get the max number from the dropdown
+      maxNumber = parseInt(document.getElementById('max-number').value);
+
       // Hide all operations
       document.getElementById('addition').classList.add('hidden');
       document.getElementById('subtraction').classList.add('hidden');
@@ -226,31 +246,31 @@
       document.getElementById('main-content').classList.remove('hidden');
     }
 
-    // Generate random problems for each operation
+    // Generate random problems for each operation based on max number
     function generateMathProblem(operation) {
       let num1, num2, question;
-      
+
       if (operation === 'addition') {
-        num1 = Math.floor(Math.random() * 20) + 1;
-        num2 = Math.floor(Math.random() * 20) + 1;
+        num1 = Math.floor(Math.random() * maxNumber) + 1;
+        num2 = Math.floor(Math.random() * maxNumber) + 1;
         question = `${num1} + ${num2}`;
         document.getElementById('addition-question').innerText = `What is ${question}?`;
         document.getElementById('addition-feedback').innerText = "";
       } else if (operation === 'subtraction') {
-        num1 = Math.floor(Math.random() * 20) + 10;  // Ensure num1 is larger than num2
-        num2 = Math.floor(Math.random() * 10) + 1;
+        num1 = Math.floor(Math.random() * maxNumber) + 10;  // Ensure num1 is larger than num2
+        num2 = Math.floor(Math.random() * maxNumber) + 1;
         question = `${num1} - ${num2}`;
         document.getElementById('subtraction-question').innerText = `What is ${question}?`;
         document.getElementById('subtraction-feedback').innerText = "";
       } else if (operation === 'multiplication') {
-        num1 = Math.floor(Math.random() * 10) + 1;
-        num2 = Math.floor(Math.random() * 10) + 1;
+        num1 = Math.floor(Math.random() * maxNumber) + 1;
+        num2 = Math.floor(Math.random() * maxNumber) + 1;
         question = `${num1} x ${num2}`;
         document.getElementById('multiplication-question').innerText = `What is ${question}?`;
         document.getElementById('multiplication-feedback').innerText = "";
       } else if (operation === 'division') {
-        num1 = Math.floor(Math.random() * 10) + 1;
-        num2 = Math.floor(Math.random() * 10) + 1;
+        num1 = Math.floor(Math.random() * maxNumber) + 1;
+        num2 = Math.floor(Math.random() * maxNumber) + 1;
         question = `${num1 * num2} ÷ ${num2}`;  // Make sure the division is clean
         document.getElementById('division-question').innerText = `What is ${question}?`;
         document.getElementById('division-feedback').innerText = "";
