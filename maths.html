@@ -63,6 +63,14 @@
     .back-button:hover {
       background-color: #ff4500;
     }
+
+    .dropdown {
+      font-size: 20px;
+      padding: 10px;
+      border-radius: 10px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -71,18 +79,94 @@
   </header>
 
   <div style="text-align: center; margin-top: 50px;">
-    <button class="button" onclick="startPractice('addition')">Addition</button>
-    <button class="button" onclick="startPractice('subtraction')">Subtraction</button>
-    <button class="button" onclick="startPractice('multiplication')">Multiplication</button>
-    <button class="button" onclick="startPractice('division')">Division</button>
+    <label for="numberSelect" style="font-size: 20px;">Choose a number limit for the math problems:</label>
+    <select id="numberSelect" class="dropdown" onchange="updateProblemLimit()">
+      <option value="10">10</option>
+      <option value="100">100</option>
+      <option value="1000">1000</option>
+      <option value="10000">10000</option>
+    </select>
+
+    <div style="margin-top: 30px;">
+      <button class="button" onclick="generateProblem('addition')">Addition</button>
+      <button class="button" onclick="generateProblem('subtraction')">Subtraction</button>
+      <button class="button" onclick="generateProblem('multiplication')">Multiplication</button>
+      <button class="button" onclick="generateProblem('division')">Division</button>
+    </div>
 
     <!-- Back to Main button -->
     <a href="index.html" class="back-button">Back to Main</a>
+
+    <div id="problemContainer" style="margin-top: 50px; font-size: 24px;">
+      <!-- Math problem will appear here -->
+    </div>
+
+    <div id="answerContainer" style="margin-top: 20px;">
+      <input type="number" id="userAnswer" placeholder="Your answer" style="font-size: 24px; padding: 10px; border-radius: 10px;"/>
+      <button class="button" onclick="checkAnswer()">Check Answer</button>
+    </div>
+
+    <div id="feedback" style="font-size: 24px; margin-top: 20px;"></div>
   </div>
 
   <script>
-    function startPractice(operation) {
-      alert(`You selected ${operation} practice.`);
+    let selectedLimit = 10;
+
+    // Function to update the selected number limit
+    function updateProblemLimit() {
+      selectedLimit = parseInt(document.getElementById('numberSelect').value);
+      generateProblem('addition'); // Regenerate a problem whenever the limit is changed
+    }
+
+    // Function to generate a random math problem based on selected limit
+    function generateProblem(operation) {
+      const num1 = Math.floor(Math.random() * selectedLimit);
+      const num2 = Math.floor(Math.random() * selectedLimit);
+      let problemText = '';
+      let correctAnswer = 0;
+
+      switch (operation) {
+        case 'addition':
+          problemText = `${num1} + ${num2} = ?`;
+          correctAnswer = num1 + num2;
+          break;
+        case 'subtraction':
+          problemText = `${num1} - ${num2} = ?`;
+          correctAnswer = num1 - num2;
+          break;
+        case 'multiplication':
+          problemText = `${num1} × ${num2} = ?`;
+          correctAnswer = num1 * num2;
+          break;
+        case 'division':
+          // Ensure we don't divide by zero
+          if (num2 === 0) num2 = 1;
+          problemText = `${num1} ÷ ${num2} = ?`;
+          correctAnswer = num1 / num2;
+          break;
+      }
+
+      // Store the correct answer in a global variable
+      window.correctAnswer = correctAnswer;
+
+      // Display the problem
+      document.getElementById('problemContainer').innerHTML = problemText;
+      document.getElementById('feedback').innerHTML = '';  // Clear feedback
+      document.getElementById('userAnswer').value = '';  // Clear previous answer
+    }
+
+    // Function to check if the user's answer is correct
+    function checkAnswer() {
+      const userAnswer = parseFloat(document.getElementById('userAnswer').value);
+      const feedback = document.getElementById('feedback');
+      
+      if (userAnswer === window.correctAnswer) {
+        feedback.innerHTML = 'Correct!';
+        feedback.style.color = 'green';
+      } else {
+        feedback.innerHTML = `Incorrect! The correct answer is ${window.correctAnswer}.`;
+        feedback.style.color = 'red';
+      }
     }
   </script>
 </body>
