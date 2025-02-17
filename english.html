@@ -6,19 +6,24 @@
   <title>English Learning</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Arial', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f4f4f4;
+      background-color: #f0f4f7;
+      color: #333;
+      line-height: 1.6;
+      transition: background-color 0.3s ease;
     }
 
     header {
-      background-color: #333;
+      background-color: #4CAF50;
       color: white;
       padding: 20px;
       text-align: center;
-      font-size: 32px;
+      font-size: 36px;
+      font-weight: bold;
       position: relative;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
     #back-button {
@@ -43,13 +48,26 @@
     .content {
       text-align: center;
       margin-top: 60px;
-      padding: 20px;
+      padding: 30px 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      width: 90%;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      transition: all 0.3s ease;
     }
 
-    select, input[type="text"], button {
-      font-size: 20px;
+    h2 {
+      font-size: 28px;
+      color: #333;
+    }
+
+    .dropdown, input[type="text"], button {
+      font-size: 18px;
       padding: 12px;
-      margin: 15px;
+      margin: 15px 0;
       border-radius: 8px;
       border: 2px solid #ddd;
       transition: all 0.3s ease;
@@ -79,7 +97,7 @@
     }
 
     .question {
-      font-size: 36px;
+      font-size: 28px;
       margin-top: 20px;
       color: #333;
     }
@@ -89,6 +107,11 @@
       font-weight: bold;
       margin-top: 20px;
       transition: all 0.5s ease;
+      opacity: 0;
+    }
+
+    .feedback.visible {
+      opacity: 1;
     }
 
     .correct {
@@ -150,6 +173,22 @@
       transform: translateY(-50%);
     }
 
+    @media screen and (max-width: 768px) {
+      .content {
+        width: 100%;
+        padding: 20px;
+      }
+
+      .question {
+        font-size: 24px;
+      }
+
+      .dropdown, input[type="text"], button {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -283,12 +322,18 @@
     // Function to check the user's answer
     function checkAnswer() {
       const userAnswer = document.getElementById('answer').value.trim().toLowerCase();
+      const feedbackElement = document.getElementById('feedback');
+
+      feedbackElement.classList.add('visible');  // Make feedback visible
+
       if (userAnswer === currentAnswer.toLowerCase()) {
-        document.getElementById('feedback').innerText = 'Correct!';
-        document.getElementById('feedback').className = 'feedback correct';
+        feedbackElement.innerText = 'Correct!';
+        feedbackElement.classList.add('correct');
+        feedbackElement.classList.remove('incorrect');
       } else {
-        document.getElementById('feedback').innerHTML = `Incorrect. Try again. <br><span class="correct-answer">${currentAnswer}</span>`;
-        document.getElementById('feedback').className = 'feedback incorrect';
+        feedbackElement.innerHTML = `Incorrect. Try again. <br><span class="correct-answer">${currentAnswer}</span>`;
+        feedbackElement.classList.add('incorrect');
+        feedbackElement.classList.remove('correct');
       }
 
       // Generate a new word after checking the answer
