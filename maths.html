@@ -18,6 +18,24 @@
       padding: 20px;
       text-align: center;
       font-size: 32px;
+      position: relative;
+    }
+
+    /* Back to main button in top-right corner */
+    #back-button {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    #back-button:hover {
+      background-color: #45a049;
     }
 
     .content {
@@ -30,6 +48,8 @@
       padding: 10px;
       margin: 10px;
       border-radius: 5px;
+      width: 100%;
+      max-width: 300px;
     }
 
     button {
@@ -59,12 +79,26 @@
     .incorrect {
       color: red;
     }
+
+    /* Responsive design: Stack elements on smaller screens */
+    @media (max-width: 600px) {
+      header {
+        font-size: 24px;
+      }
+
+      button, .dropdown, input {
+        width: 80%; /* Adjust button width for smaller screens */
+        font-size: 16px;
+      }
+    }
+
   </style>
 </head>
 <body>
 
   <header>
     <h1>Maths Practice</h1>
+    <button id="back-button" onclick="goToMainPage()">Back to Main</button>
   </header>
 
   <div class="content">
@@ -89,6 +123,11 @@
   <script>
     let maxNumber = 10; // Default value
     let currentAnswer = 0; // Store the current correct answer
+
+    // Function to navigate to the main page
+    function goToMainPage() {
+      window.location.href = "index.html"; // Redirect to the main page (modify this URL if needed)
+    }
 
     // Generate math problem based on the selected max number
     function generateMathProblem() {
