@@ -13,7 +13,9 @@
       height: 100vh;
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
+      flex-direction: column;
+      padding-top: 50px;
     }
 
     header {
@@ -21,7 +23,7 @@
       color: white;
       padding: 20px;
       text-align: center;
-      font-size: 36px;
+      font-size: 48px;
       font-family: 'Roboto', sans-serif;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -33,51 +35,48 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 30px;
+      gap: 50px;
       flex-wrap: wrap;
+      margin-bottom: 50px;
     }
 
     .card {
       background-color: #fff;
-      width: 350px;
-      height: 500px;
-      padding: 30px;
-      border-radius: 15px;
+      width: 500px; /* Make the card much bigger */
+      height: 700px; /* Make the card much bigger */
+      padding: 40px;
+      border-radius: 20px;
       box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
       text-align: center;
       cursor: pointer;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      font-size: 24px;
+      font-size: 30px; /* Increase the text size */
       text-decoration: none;
     }
 
     .card:hover {
-      transform: scale(1.05);
+      transform: scale(1.1);
       box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
     }
 
     .card img {
       width: 100%;
-      height: auto;
-      border-radius: 10px;
+      height: 350px; /* Increase image size */
+      border-radius: 15px;
       margin-bottom: 20px;
     }
 
     .card h2 {
-      font-size: 36px;
+      font-size: 48px;
       margin-bottom: 20px;
       color: #333;
       font-family: 'Roboto', sans-serif;
     }
 
     .card p {
-      font-size: 20px;
+      font-size: 24px;
       color: #555;
       line-height: 1.6;
-    }
-
-    .card h2, .card p {
-      font-family: 'Arial', sans-serif;
     }
   </style>
 </head>
