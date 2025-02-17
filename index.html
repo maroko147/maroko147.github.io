@@ -15,30 +15,32 @@
       justify-content: center;
       align-items: center;
       min-height: 100vh;
+      flex-direction: column;
     }
 
     header {
       background-color: #4CAF50;
       color: white;
-      padding: 30px;
+      padding: 40px 20px;
       text-align: center;
       font-size: 40px;
       border-bottom: 4px solid #388E3C;
       width: 100%;
+      margin-bottom: 50px; /* Added space below the title */
     }
 
     .card-container {
       display: flex;
       justify-content: center;
-      gap: 30px;
+      gap: 50px;
       margin-top: 50px;
       flex-wrap: wrap;
     }
 
     .card {
       background-color: #fff;
-      width: 300px;
-      padding: 20px;
+      width: 350px;
+      padding: 30px;
       border-radius: 12px;
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
       text-align: center;
@@ -46,14 +48,15 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       text-decoration: none;
       color: #333;
-      font-size: 24px;
+      font-size: 28px;
       position: relative;
       overflow: hidden;
       box-sizing: border-box;
+      min-height: 450px; /* Adjusted height to make cards bigger */
     }
 
     .card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-10px);
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     }
 
@@ -62,6 +65,8 @@
       height: auto;
       border-radius: 8px;
       transition: transform 0.3s ease;
+      max-height: 200px; /* Limited image height */
+      object-fit: cover;
     }
 
     .card:hover img {
@@ -70,15 +75,15 @@
 
     .card h2 {
       margin: 20px 0;
-      font-size: 32px;
+      font-size: 36px;
       font-weight: bold;
       color: #4CAF50;
     }
 
     .card p {
-      font-size: 18px;
+      font-size: 20px;
       color: #777;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
     }
 
     .card:before {
@@ -103,17 +108,22 @@
     }
 
     @media (max-width: 768px) {
+      header {
+        font-size: 32px;
+      }
+
       .card-container {
         flex-direction: column;
         align-items: center;
       }
 
-      header {
-        font-size: 32px;
-      }
-
       .card {
         width: 80%;
+        margin-bottom: 30px;
+      }
+
+      .card h2 {
+        font-size: 32px;
       }
     }
   </style>
