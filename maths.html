@@ -113,6 +113,8 @@
       font-weight: bold;
       color: #333;
       transition: all 0.3s ease;
+      -webkit-appearance: none;
+      -moz-appearance: none;
     }
 
     .dropdown option {
@@ -122,31 +124,10 @@
       color: #333;
     }
 
-    .dropdown:hover {
-      border-color: #45a049;
-      background-color: #f9f9f9;
-    }
-
-    .dropdown:focus {
-      outline: none;
-      border-color: #4CAF50;
-      box-shadow: 0 0 8px rgba(76, 175, 80, 0.6);
-    }
-
     .dropdown-container {
       position: relative;
       display: inline-block;
       width: 100%;
-    }
-
-    .dropdown-container:after {
-      content: "▼";
-      font-size: 20px;
-      color: #333;
-      position: absolute;
-      right: 12px;
-      top: 50%;
-      transform: translateY(-50%);
     }
 
     @media (max-width: 600px) {
@@ -290,30 +271,30 @@
           currentAnswer = num1 / num2;
         }
       } else if (gradeLevel === 4) {
-        // 4th Grade: Addition, subtraction, multiplication, division (numbers up to 1000)
+        // 4th Grade: Addition, subtraction, multiplication, division (numbers up to 100)
         const operation = Math.floor(Math.random() * 4); // 0 = addition, 1 = subtraction, 2 = multiplication, 3 = division
 
         if (operation === 0) {
-          num1 = Math.floor(Math.random() * 1001);  // Numbers between 0-1000
-          num2 = Math.floor(Math.random() * 1001);
+          num1 = Math.floor(Math.random() * 101);  // Numbers between 0-100
+          num2 = Math.floor(Math.random() * 101);
           question = `${num1} + ${num2}`;
           currentAnswer = num1 + num2;
         } else if (operation === 1) {
-          num1 = Math.floor(Math.random() * 1001);  // Numbers between 0-1000
-          num2 = Math.floor(Math.random() * (num1 + 1)); // Ensure num2 <= num1
+          num1 = Math.floor(Math.random() * 101);  // Numbers between 0-100
+          num2 = Math.floor(Math.random() * 101);
           question = `${num1} - ${num2}`;
           currentAnswer = num1 - num2;
         } else if (operation === 2) {
-          num1 = Math.floor(Math.random() * 11);  // Numbers between 0-10 for multiplication
+          num1 = Math.floor(Math.random() * 11);  // Numbers between 0-10
           num2 = Math.floor(Math.random() * 11);  // Numbers between 0-10
           question = `${num1} * ${num2}`;
           currentAnswer = num1 * num2;
         } else {
-          num1 = Math.floor(Math.random() * 1001);  // Numbers between 0-1000
-          num2 = Math.floor(Math.random() * 20) + 1;  // Numbers between 1-20 for division
+          num1 = Math.floor(Math.random() * 101);  // Numbers between 0-100
+          num2 = Math.floor(Math.random() * 10) + 1;  // Numbers between 1-10 for division
           while (num1 % num2 !== 0) {  // Ensure whole number division
-            num1 = Math.floor(Math.random() * 1001);
-            num2 = Math.floor(Math.random() * 20) + 1;
+            num1 = Math.floor(Math.random() * 101);
+            num2 = Math.floor(Math.random() * 10) + 1;
           }
           question = `${num1} ÷ ${num2}`;
           currentAnswer = num1 / num2;
