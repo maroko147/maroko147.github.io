@@ -344,6 +344,9 @@
       }
 
       document.getElementById('feedback').style.opacity = 1; // Show feedback
+
+      // Generate the next problem after checking answer
+      setTimeout(generateMathProblem, 2000); // Delay to let the feedback be seen
     }
 
     // Generate the first problem on page load
