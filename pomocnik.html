@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Maths Practice for 4th Graders</title>
+  <title>Welcome to the Learning Website</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
       margin: 0;
       padding: 0;
+      background-color: #f4f4f4;
     }
-
+    
     /* Header styles */
     header {
       background-color: #333;
@@ -25,38 +25,42 @@
     .container {
       display: flex;
       justify-content: center;
-      flex-direction: column;
-      align-items: center;
       margin-top: 40px;
+      gap: 40px;
     }
 
-    .button {
-      background-color: #4CAF50;
-      color: white;
-      padding: 20px 40px;
-      font-size: 24px;
-      margin: 10px;
-      border: none;
-      border-radius: 10px;
+    .card {
+      background-color: #fff;
+      width: 45%;
+      padding: 50px;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
       cursor: pointer;
-      transition: background-color 0.3s ease;
-      width: 300px;
-      text-align: center;
+      transition: transform 0.3s ease;
+      text-decoration: none;
+      font-size: 36px;
     }
 
-    .button:hover {
-      background-color: #45a049;
+    .card:hover {
+      transform: scale(1.1);
     }
 
-    .button:focus {
-      outline: none;
+    .card h2 {
+      margin-bottom: 30px;
+      font-size: 48px;
+      font-weight: bold;
     }
 
-    /* Instruction text */
-    .instructions {
+    .card p {
       font-size: 24px;
-      text-align: center;
-      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
     }
 
   </style>
@@ -65,20 +69,24 @@
 
   <!-- Header -->
   <header>
-    <h1>Maths Practice for 4th Graders</h1>
+    <h1>Welcome to My Learning Website</h1>
   </header>
 
-  <!-- Main content with buttons for different math operations -->
+  <!-- Main content with 2 clickable cards -->
   <div class="container">
-    <div class="instructions">
-      <p>Choose an operation to practice:</p>
-    </div>
+    <!-- Card 1 - English -->
+    <a href="english.html" class="card">
+      <h2>English</h2>
+      <img src="https://via.placeholder.com/500" alt="English Image">
+      <p>Click here to learn English</p>
+    </a>
 
-    <!-- Buttons for different operations -->
-    <button class="button" onclick="window.location.href='addition.html'">Addition</button>
-    <button class="button" onclick="window.location.href='subtraction.html'">Subtraction</button>
-    <button class="button" onclick="window.location.href='multiplication.html'">Multiplication</button>
-    <button class="button" onclick="window.location.href='division.html'">Division</button>
+    <!-- Card 2 - Maths -->
+    <a href="maths.html" class="card">
+      <h2>Maths</h2>
+      <img src="https://via.placeholder.com/500" alt="Maths Image">
+      <p>Click here to practice Maths</p>
+    </a>
   </div>
 
 </body>
