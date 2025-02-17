@@ -46,158 +46,120 @@
       outline: none;
     }
 
-    .back-button a {
-      text-decoration: none;
-      font-size: 18px;
-      color: #333;
-      background-color: #ff6347;
-      padding: 10px 20px;
-      border-radius: 8px;
-    }
-
-    .back-button a:hover {
-      background-color: #ff4500;
-    }
-
-    #problemContainer {
+    .feedback {
       font-size: 24px;
+      font-weight: bold;
       margin-top: 20px;
     }
 
-    #answerContainer {
-      margin-top: 20px;
+    .correct {
+      color: green;
     }
 
-    #feedback {
-      font-size: 20px;
-      margin-top: 20px;
+    .incorrect {
+      color: red;
     }
   </style>
 </head>
 <body>
+
   <header>
     <h1>Maths Practice</h1>
   </header>
 
   <div class="content">
-    <label for="numberSelect">Choose a number limit for the math problems:</label>
-    <select id="numberSelect" class="dropdown" onchange="updateProblemLimit()">
+    <h2>Choose the largest number you know:</h2>
+    <select id="max-number" class="dropdown">
       <option value="10">10</option>
       <option value="100">100</option>
       <option value="1000">1000</option>
       <option value="10000">10000</option>
     </select>
+    <br>
 
-    <div class="buttons">
-      <button class="button" onclick="generateProblem('addition')">Addition</button>
-      <button class="button" onclick="generateProblem('subtraction')">Subtraction</button>
-      <button class="button" onclick="generateProblem('multiplication')">Multiplication</button>
-      <button class="button" onclick="generateProblem('division')">Division</button>
-    </div>
+    <button onclick="generateMathProblem()">Generate Problem</button>
+    <br>
 
-    <div class="back-button">
-      <a href="index.html">Back to Main</a>
-    </div>
-
-    <div id="problemContainer">
-      <!-- Math problem will appear here -->
-    </div>
-
-    <div id="answerContainer">
-      <input type="number" id="userAnswer" placeholder="Your answer">
-      <button class="button" onclick="checkAnswer()">Check Answer</button>
-    </div>
-
-    <div id="feedback"></div>
+    <h3 id="question">What is ?</h3>
+    <input type="number" id="answer" placeholder="Your answer">
+    <button onclick="checkAnswer()">Check Answer</button>
+    <div id="feedback" class="feedback"></div>
   </div>
 
   <script>
-    let selectedLimit = 10;
-    let correctAnswer = 0;
-    let currentOperation = 'addition'; // Store current operation to generate the next one
+    let maxNumber = 10; // Default value
+    let currentAnswer = 0; // Store the current correct answer
 
-    // Update the problem limit based on user selection
-    function updateProblemLimit() {
-      selectedLimit = parseInt(document.getElementById('numberSelect').value);
-      generateProblem(currentOperation); // Regenerate a problem when the limit changes
-    }
+    // Generate math problem based on the selected max number
+    function generateMathProblem() {
+      maxNumber = parseInt(document.getElementById('max-number').value);
 
-    // Function to generate a random math problem based on selected limit
-    function generateProblem(operation) {
-      let num1, num2;
-      let problemText = '';
-      correctAnswer = 0;
-      currentOperation = operation; // Store the operation for future problem generation
+      let num1, num2, question;
 
-      switch (operation) {
-        case 'addition':
-          num1 = Math.floor(Math.random() * (selectedLimit + 1));
-          num2 = Math.floor(Math.random() * (selectedLimit + 1));
-          while (num1 + num2 > selectedLimit) {
-            num1 = Math.floor(Math.random() * (selectedLimit + 1));
-            num2 = Math.floor(Math.random() * (selectedLimit + 1));
-          }
-          problemText = `${num1} + ${num2} = ?`;
-          correctAnswer = num1 + num2;
-          break;
+      const operation = Math.floor(Math.random() * 4); // Random operation: 0=addition, 1=subtraction, 2=multiplication, 3=division
 
-        case 'subtraction':
-          num1 = Math.floor(Math.random() * (selectedLimit + 1));
-          num2 = Math.floor(Math.random() * (num1 + 1));  // Ensure num1 >= num2
-          while (num1 - num2 > selectedLimit) {
-            num1 = Math.floor(Math.random() * (selectedLimit + 1));
-            num2 = Math.floor(Math.random() * (num1 + 1));
-          }
-          problemText = `${num1} - ${num2} = ?`;
-          correctAnswer = num1 - num2;
-          break;
-
-        case 'multiplication':
-          num1 = Math.floor(Math.random() * (selectedLimit + 1));
-          num2 = Math.floor(Math.random() * (selectedLimit + 1));
-          while (num1 * num2 > selectedLimit) {
-            num1 = Math.floor(Math.random() * (selectedLimit + 1));
-            num2 = Math.floor(Math.random() * (selectedLimit + 1));
-          }
-          problemText = `${num1} × ${num2} = ?`;
-          correctAnswer = num1 * num2;
-          break;
-
-        case 'division':
-          num1 = Math.floor(Math.random() * (selectedLimit + 1));
-          num2 = Math.floor(Math.random() * (selectedLimit + 1)) + 1; // Avoid division by 0
-          while (num1 % num2 !== 0 || num1 / num2 > selectedLimit) {
-            num1 = Math.floor(Math.random() * (selectedLimit + 1));
-            num2 = Math.floor(Math.random() * (selectedLimit + 1)) + 1;
-          }
-          problemText = `${num1} ÷ ${num2} = ?`;
-          correctAnswer = num1 / num2;
-          break;
+      if (operation === 0) { // Addition
+        num1 = Math.floor(Math.random() * (maxNumber + 1));
+        num2 = Math.floor(Math.random() * (maxNumber + 1));
+        while (num1 + num2 > maxNumber) {
+          num1 = Math.floor(Math.random() * (maxNumber + 1));
+          num2 = Math.floor(Math.random() * (maxNumber + 1));
+        }
+        question = `${num1} + ${num2}`;
+        currentAnswer = num1 + num2;
+      } else if (operation === 1) { // Subtraction
+        num1 = Math.floor(Math.random() * (maxNumber + 1)) + maxNumber / 2;
+        num2 = Math.floor(Math.random() * (maxNumber + 1));
+        while (num1 - num2 > maxNumber || num1 < num2) {
+          num1 = Math.floor(Math.random() * (maxNumber + 1)) + maxNumber / 2;
+          num2 = Math.floor(Math.random() * (maxNumber + 1));
+        }
+        question = `${num1} - ${num2}`;
+        currentAnswer = num1 - num2;
+      } else if (operation === 2) { // Multiplication
+        num1 = Math.floor(Math.random() * (maxNumber + 1));
+        num2 = Math.floor(Math.random() * (maxNumber + 1));
+        while (num1 * num2 > maxNumber) {
+          num1 = Math.floor(Math.random() * (maxNumber + 1));
+          num2 = Math.floor(Math.random() * (maxNumber + 1));
+        }
+        question = `${num1} * ${num2}`;
+        currentAnswer = num1 * num2;
+      } else { // Division
+        num1 = Math.floor(Math.random() * (maxNumber + 1));
+        num2 = Math.floor(Math.random() * (maxNumber + 1)) + 1;  // Avoid divide by zero
+        while (num1 % num2 !== 0 || num1 / num2 > maxNumber) {
+          num1 = Math.floor(Math.random() * (maxNumber + 1));
+          num2 = Math.floor(Math.random() * (maxNumber + 1)) + 1;
+        }
+        question = `${num1} ÷ ${num2}`;
+        currentAnswer = num1 / num2;
       }
 
-      document.getElementById('problemContainer').innerHTML = problemText;
-      document.getElementById('feedback').innerHTML = ''; // Clear feedback when new problem appears
-      document.getElementById('userAnswer').value = '';  // Clear the input field
+      document.getElementById('question').innerText = `What is ${question}?`;
+      document.getElementById('answer').value = "";
+      document.getElementById('feedback').innerText = ""; // Clear previous feedback
     }
 
-    // Check if the user's answer is correct
+    // Check the user's answer
     function checkAnswer() {
-      const userAnswer = parseFloat(document.getElementById('userAnswer').value);
-      const feedback = document.getElementById('feedback');
+      let userAnswer = parseInt(document.getElementById('answer').value);
+      let feedback = document.getElementById('feedback');
 
-      if (userAnswer === correctAnswer) {
-        feedback.innerHTML = 'Correct!';
-        feedback.style.color = 'green';
+      if (userAnswer === currentAnswer) {
+        feedback.innerText = "Correct! Great job!";
+        feedback.classList.remove('incorrect');
+        feedback.classList.add('correct');
       } else {
-        feedback.innerHTML = `Incorrect! The correct answer is ${correctAnswer}.`;
-        feedback.style.color = 'red';
+        feedback.innerText = "Oops! Try again.";
+        feedback.classList.remove('correct');
+        feedback.classList.add('incorrect');
       }
 
-      // Keep feedback visible but generate the next problem
-      setTimeout(() => {
-        generateProblem(currentOperation); // Generate next problem of the same operation
-      }, 2000); // Wait 2 seconds before generating the next problem
+      // Generate a new problem but keep the feedback visible
+      generateMathProblem();
     }
   </script>
+
 </body>
 </html>
