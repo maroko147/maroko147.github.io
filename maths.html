@@ -334,8 +334,9 @@
         feedback.className = "feedback incorrect";
       }
 
-      // Clear the input box after checking answer
+      // Clear the input box after checking answer and generate new problem
       document.getElementById('answer').value = '';
+      generateMathProblem();
     }
 
     // Generate the first math problem
