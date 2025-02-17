@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome to the Learning Website</title>
+  <title>Learning Website</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -11,7 +11,7 @@
       padding: 0;
       background-color: #f4f4f4;
     }
-    
+
     /* Header styles */
     header {
       background-color: #333;
@@ -63,6 +63,47 @@
       border-radius: 8px;
     }
 
+    /* Button styles for maths practice */
+    .button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 20px 40px;
+      font-size: 24px;
+      margin: 10px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      width: 300px;
+      text-align: center;
+    }
+
+    .button:hover {
+      background-color: #45a049;
+    }
+
+    .button:focus {
+      outline: none;
+    }
+
+    /* Section for hiding and showing content */
+    .hidden {
+      display: none;
+    }
+
+    /* Instructions text */
+    .instructions {
+      font-size: 24px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    /* Questions for each operation */
+    .questions {
+      font-size: 24px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
   </style>
 </head>
 <body>
@@ -73,21 +114,96 @@
   </header>
 
   <!-- Main content with 2 clickable cards -->
-  <div class="container">
+  <div id="main-content" class="container">
     <!-- Card 1 - English -->
-    <a href="english.html" class="card">
+    <div class="card" onclick="showEnglishContent()">
       <h2>English</h2>
       <img src="https://via.placeholder.com/500" alt="English Image">
       <p>Click here to learn English</p>
-    </a>
+    </div>
 
     <!-- Card 2 - Maths -->
-    <a href="maths.html" class="card">
+    <div class="card" onclick="showMathsContent()">
       <h2>Maths</h2>
       <img src="https://via.placeholder.com/500" alt="Maths Image">
       <p>Click here to practice Maths</p>
-    </a>
+    </div>
   </div>
+
+  <!-- Maths content selection (hidden initially) -->
+  <div id="maths-content" class="hidden">
+    <div class="instructions">
+      <p>Choose an operation to practice:</p>
+    </div>
+
+    <!-- Buttons for different operations -->
+    <button class="button" onclick="showMathOperation('addition')">Addition</button>
+    <button class="button" onclick="showMathOperation('subtraction')">Subtraction</button>
+    <button class="button" onclick="showMathOperation('multiplication')">Multiplication</button>
+    <button class="button" onclick="showMathOperation('division')">Division</button>
+
+    <!-- Back button to return to main content -->
+    <button class="button" onclick="backToMainContent()">Back to Main</button>
+  </div>
+
+  <!-- Questions for Addition (hidden initially) -->
+  <div id="addition" class="hidden questions">
+    <h3>Practice Addition</h3>
+    <p>What is 12 + 8?</p>
+    <button class="button">Submit Answer</button>
+  </div>
+
+  <!-- Questions for Subtraction (hidden initially) -->
+  <div id="subtraction" class="hidden questions">
+    <h3>Practice Subtraction</h3>
+    <p>What is 15 - 7?</p>
+    <button class="button">Submit Answer</button>
+  </div>
+
+  <!-- Questions for Multiplication (hidden initially) -->
+  <div id="multiplication" class="hidden questions">
+    <h3>Practice Multiplication</h3>
+    <p>What is 6 x 3?</p>
+    <button class="button">Submit Answer</button>
+  </div>
+
+  <!-- Questions for Division (hidden initially) -->
+  <div id="division" class="hidden questions">
+    <h3>Practice Division</h3>
+    <p>What is 18 ÷ 2?</p>
+    <button class="button">Submit Answer</button>
+  </div>
+
+  <script>
+    // Show Maths content
+    function showMathsContent() {
+      document.getElementById('main-content').classList.add('hidden');
+      document.getElementById('maths-content').classList.remove('hidden');
+    }
+
+    // Show English content (for now just a placeholder)
+    function showEnglishContent() {
+      alert("English content will be available soon!");
+    }
+
+    // Show specific math operation content
+    function showMathOperation(operation) {
+      // Hide all operations
+      document.getElementById('addition').classList.add('hidden');
+      document.getElementById('subtraction').classList.add('hidden');
+      document.getElementById('multiplication').classList.add('hidden');
+      document.getElementById('division').classList.add('hidden');
+      
+      // Show the selected operation
+      document.getElementById(operation).classList.remove('hidden');
+    }
+
+    // Go back to the main content
+    function backToMainContent() {
+      document.getElementById('maths-content').classList.add('hidden');
+      document.getElementById('main-content').classList.remove('hidden');
+    }
+  </script>
 
 </body>
 </html>
