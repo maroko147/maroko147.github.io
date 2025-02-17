@@ -164,9 +164,9 @@
     function generateMathProblem() {
       let num1, num2, question;
 
-      // Based on grade level, restrict operations
-      if (gradeLevel === 1 || gradeLevel === 2) {
-        // Only addition and subtraction for 1st and 2nd grade
+      // Based on grade level, restrict operations and number ranges
+      if (gradeLevel === 1) {
+        // 1st Grade: Only addition and subtraction, numbers between 0-20
         const operation = Math.floor(Math.random() * 2); // 0 = addition, 1 = subtraction
 
         if (operation === 0) {
@@ -188,31 +188,83 @@
           question = `${num1} - ${num2}`;
           currentAnswer = num1 - num2;
         }
-      } else {
-        // For 3rd grade and up, allow all four operations
-        const operation = Math.floor(Math.random() * 4);
+      } else if (gradeLevel === 2) {
+        // 2nd Grade: Only addition and subtraction, numbers between 0-50
+        const operation = Math.floor(Math.random() * 2); // 0 = addition, 1 = subtraction
 
         if (operation === 0) {
           num1 = Math.floor(Math.random() * 51);  // Numbers between 0-50
           num2 = Math.floor(Math.random() * 51);
+          while (num1 + num2 > 50) {
+            num1 = Math.floor(Math.random() * 51);
+            num2 = Math.floor(Math.random() * 51);
+          }
+          question = `${num1} + ${num2}`;
+          currentAnswer = num1 + num2;
+        } else {
+          num1 = Math.floor(Math.random() * 51);  // Numbers between 0-50
+          num2 = Math.floor(Math.random() * 51);
+          while (num1 - num2 < 0) {
+            num1 = Math.floor(Math.random() * 51);
+            num2 = Math.floor(Math.random() * 51);
+          }
+          question = `${num1} - ${num2}`;
+          currentAnswer = num1 - num2;
+        }
+      } else if (gradeLevel === 3) {
+        // 3rd Grade: All operations allowed, numbers up to 100
+        const operation = Math.floor(Math.random() * 4); // 0 = addition, 1 = subtraction, 2 = multiplication, 3 = division
+
+        if (operation === 0) {
+          num1 = Math.floor(Math.random() * 101);  // Numbers between 0-100
+          num2 = Math.floor(Math.random() * 101);
           question = `${num1} + ${num2}`;
           currentAnswer = num1 + num2;
         } else if (operation === 1) {
-          num1 = Math.floor(Math.random() * 51);  // Numbers between 0-50
-          num2 = Math.floor(Math.random() * 51);
+          num1 = Math.floor(Math.random() * 101);  // Numbers between 0-100
+          num2 = Math.floor(Math.random() * 101);
           question = `${num1} - ${num2}`;
           currentAnswer = num1 - num2;
         } else if (operation === 2) {
-          num1 = Math.floor(Math.random() * 21);  // Numbers between 0-20 for multiplication
+          num1 = Math.floor(Math.random() * 21);  // Numbers between 0-20
           num2 = Math.floor(Math.random() * 11);  // Numbers between 0-10
           question = `${num1} * ${num2}`;
           currentAnswer = num1 * num2;
         } else {
-          num1 = Math.floor(Math.random() * 100); // Numbers between 0-100
-          num2 = Math.floor(Math.random() * 10) + 1; // Numbers between 1-10 for division
-          while (num1 % num2 !== 0) {
-            num1 = Math.floor(Math.random() * 100);
+          num1 = Math.floor(Math.random() * 101);  // Numbers between 0-100
+          num2 = Math.floor(Math.random() * 10) + 1;  // Numbers between 1-10
+          while (num1 % num2 !== 0) { // Ensure whole number division
+            num1 = Math.floor(Math.random() * 101);
             num2 = Math.floor(Math.random() * 10) + 1;
+          }
+          question = `${num1} ÷ ${num2}`;
+          currentAnswer = num1 / num2;
+        }
+      } else {
+        // 4th Grade and beyond: All operations allowed, numbers up to 200
+        const operation = Math.floor(Math.random() * 4); // 0 = addition, 1 = subtraction, 2 = multiplication, 3 = division
+
+        if (operation === 0) {
+          num1 = Math.floor(Math.random() * 201);  // Numbers between 0-200
+          num2 = Math.floor(Math.random() * 201);
+          question = `${num1} + ${num2}`;
+          currentAnswer = num1 + num2;
+        } else if (operation === 1) {
+          num1 = Math.floor(Math.random() * 201);  // Numbers between 0-200
+          num2 = Math.floor(Math.random() * 201);
+          question = `${num1} - ${num2}`;
+          currentAnswer = num1 - num2;
+        } else if (operation === 2) {
+          num1 = Math.floor(Math.random() * 31);  // Numbers between 0-30 for multiplication
+          num2 = Math.floor(Math.random() * 21);  // Numbers between 0-20
+          question = `${num1} * ${num2}`;
+          currentAnswer = num1 * num2;
+        } else {
+          num1 = Math.floor(Math.random() * 201);  // Numbers between 0-200
+          num2 = Math.floor(Math.random() * 20) + 1;  // Numbers between 1-20 for division
+          while (num1 % num2 !== 0) {  // Ensure whole number division
+            num1 = Math.floor(Math.random() * 201);
+            num2 = Math.floor(Math.random() * 20) + 1;
           }
           question = `${num1} ÷ ${num2}`;
           currentAnswer = num1 / num2;
