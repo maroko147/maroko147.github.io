@@ -244,6 +244,9 @@
     function backToMainContent() {
       document.getElementById('maths-content').classList.add('hidden');
       document.getElementById('main-content').classList.remove('hidden');
+      
+      // Clear all current problems and inputs
+      resetProblems();
     }
 
     // Generate random problems for each operation based on max number
@@ -301,8 +304,24 @@
         document.getElementById(operation + '-feedback').innerText = "Oops! Try again.";
       }
 
+      // Clear the answer input field
+      document.getElementById(operation + '-answer').value = "";
+
       // Generate a new problem
       generateMathProblem(operation);
+    }
+
+    // Reset all problems and inputs
+    function resetProblems() {
+      document.getElementById('addition-feedback').innerText = "";
+      document.getElementById('subtraction-feedback').innerText = "";
+      document.getElementById('multiplication-feedback').innerText = "";
+      document.getElementById('division-feedback').innerText = "";
+      
+      document.getElementById('addition-answer').value = "";
+      document.getElementById('subtraction-answer').value = "";
+      document.getElementById('multiplication-answer').value = "";
+      document.getElementById('division-answer').value = "";
     }
   </script>
 
