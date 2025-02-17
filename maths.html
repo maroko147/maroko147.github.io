@@ -123,35 +123,64 @@
 
     // Function to generate a random math problem based on selected limit
     function generateProblem(operation) {
-      const num1 = Math.floor(Math.random() * selectedLimit);
-      const num2 = Math.floor(Math.random() * selectedLimit);
+      let num1, num2;
       let problemText = '';
       correctAnswer = 0;
 
       switch (operation) {
         case 'addition':
+          num1 = Math.floor(Math.random() * (selectedLimit + 1));
+          num2 = Math.floor(Math.random() * (selectedLimit + 1));
+          // Ensure the sum doesn't exceed the selected limit
+          while (num1 + num2 > selectedLimit) {
+            num1 = Math.floor(Math.random() * (selectedLimit + 1));
+            num2 = Math.floor(Math.random() * (selectedLimit + 1));
+          }
           problemText = `${num1} + ${num2} = ?`;
           correctAnswer = num1 + num2;
           break;
+
         case 'subtraction':
+          num1 = Math.floor(Math.random() * (selectedLimit + 1));
+          num2 = Math.floor(Math.random() * (num1 + 1));  // Ensure num1 >= num2
+          // Ensure the difference doesn't exceed the selected limit
+          while (num1 - num2 > selectedLimit) {
+            num1 = Math.floor(Math.random() * (selectedLimit + 1));
+            num2 = Math.floor(Math.random() * (num1 + 1));
+          }
           problemText = `${num1} - ${num2} = ?`;
           correctAnswer = num1 - num2;
           break;
+
         case 'multiplication':
+          num1 = Math.floor(Math.random() * (selectedLimit + 1));
+          num2 = Math.floor(Math.random() * (selectedLimit + 1));
+          // Ensure the product doesn't exceed the selected limit
+          while (num1 * num2 > selectedLimit) {
+            num1 = Math.floor(Math.random() * (selectedLimit + 1));
+            num2 = Math.floor(Math.random() * (selectedLimit + 1));
+          }
           problemText = `${num1} × ${num2} = ?`;
           correctAnswer = num1 * num2;
           break;
+
         case 'division':
-          if (num2 === 0) num2 = 1; // Avoid dividing by zero
+          num1 = Math.floor(Math.random() * (selectedLimit + 1));
+          num2 = Math.floor(Math.random() * (selectedLimit + 1)) + 1; // Avoid division by 0
+          // Ensure the division result is a whole number and within the limit
+          while (num1 / num2 > selectedLimit || num1 % num2 !== 0) {
+            num1 = Math.floor(Math.random() * (selectedLimit + 1));
+            num2 = Math.floor(Math.random() * (selectedLimit + 1)) + 1;
+          }
           problemText = `${num1} ÷ ${num2} = ?`;
           correctAnswer = num1 / num2;
           break;
       }
 
-      // Display the problem and keep the feedback visible
+      // Display the problem and clear the feedback
       document.getElementById('problemContainer').innerHTML = problemText;
-      // Clear the answer input field
-      document.getElementById('userAnswer').value = '';
+      document.getElementById('feedback').innerHTML = '';
+      document.getElementById('userAnswer').value = '';  // Clear the input field
     }
 
     // Check if the user's answer is correct
@@ -168,12 +197,7 @@
       }
 
       // Generate the next math problem, but keep the feedback visible
-      const operationButtons = document.querySelectorAll('.button');
-      for (let button of operationButtons) {
-        button.onclick = function () {
-          generateProblem(button.innerHTML.toLowerCase());
-        };
-      }
+      generateProblem(document.querySelector('.buttons .button').innerHTML.toLowerCase());
     }
   </script>
 </body>
