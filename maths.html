@@ -166,7 +166,7 @@
         case 'division':
           num1 = Math.floor(Math.random() * (selectedLimit + 1));
           num2 = Math.floor(Math.random() * (selectedLimit + 1)) + 1; // Avoid division by 0
-          while (num1 / num2 > selectedLimit || num1 % num2 !== 0) {
+          while (num1 % num2 !== 0 || num1 / num2 > selectedLimit) {
             num1 = Math.floor(Math.random() * (selectedLimit + 1));
             num2 = Math.floor(Math.random() * (selectedLimit + 1)) + 1;
           }
