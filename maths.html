@@ -1,339 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Maths Practice</title>
-  <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f1f5f9;
-      color: #333;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-
-    header {
-      background-color: #4CAF50;
-      color: white;
-      padding: 20px;
-      text-align: center;
-      font-size: 40px;
-      font-weight: bold;
-      width: 100%;
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 1000;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    }
-
-    #back-button {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      background-color: #ffffff;
-      color: #4CAF50;
-      border: 2px solid #4CAF50;
-      padding: 12px 25px;
-      font-size: 18px;
-      cursor: pointer;
-      border-radius: 25px;
-      transition: all 0.3s ease;
-    }
-
-    #back-button:hover {
-      background-color: #4CAF50;
-      color: white;
-    }
-
-    .content {
-      text-align: center;
-      margin-top: 120px;
-      padding: 20px;
-      background: linear-gradient(135deg, #ffffff, #e0f7fa);
-      border-radius: 15px;
-      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-      width: 80%;
-      max-width: 500px;
-    }
-
-    select, input[type="number"], button {
-      font-size: 20px;
-      padding: 12px;
-      margin: 15px;
-      border-radius: 8px;
-      border: 2px solid #ddd;
-      transition: all 0.3s ease;
-      width: 80%;
-      max-width: 350px;
-    }
-
-    button {
-      background-color: #4CAF50;
-      color: white;
-      cursor: pointer;
-      font-weight: bold;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #45a049;
-      transform: scale(1.05);
-      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    input[type="number"]:focus, select:focus, button:focus {
-      outline: none;
-      border-color: #4CAF50;
-      box-shadow: 0 0 8px rgba(76, 175, 80, 0.6);
-    }
-
-    .question {
-      font-size: 48px;
-      font-weight: bold;
-      margin-top: 20px;
-      color: #333;
-    }
-
-    .feedback {
-      font-size: 24px;
-      font-weight: bold;
-      margin-top: 20px;
-      transition: all 0.5s ease;
-      padding: 10px;
-      border-radius: 5px;
-      display: inline-block;
-      min-width: 200px;
-    }
-
-    .correct {
-      color: green;
-      background-color: #e8f5e9;
-    }
-
-    .incorrect {
-      color: red;
-      background-color: #ffebee;
-    }
-
-    .dropdown {
-      width: 80%;
-      max-width: 350px;
-      background: linear-gradient(to right, #ffffff, #f1f1f1);
-      border: 2px solid #4CAF50;
-      border-radius: 12px;
-      padding: 10px;
-      font-size: 20px;
-      font-weight: bold;
-      color: #333;
-      transition: all 0.3s ease;
-    }
-
-    .dropdown-container {
-      position: relative;
-      display: inline-block;
-      width: 100%;
-    }
-
-    .dropdown-container:after {
-      content: "▼";
-      font-size: 20px;
-      color: #333;
-      position: absolute;
-      right: 12px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    @media (max-width: 600px) {
-      .question {
-        font-size: 36px;
-      }
-
-      button, input[type="number"], select {
-        width: 90%;
-      }
-
-      header {
-        font-size: 28px;
-      }
-    }
-
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maths Practice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        #question {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        #answer {
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+        input[type="number"] {
+            padding: 10px;
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .feedback {
+            font-size: 1.5em;
+            color: green;
+        }
+    </style>
 </head>
 <body>
 
-  <header>
     <h1>Maths Practice</h1>
-    <button id="back-button" onclick="goToMainPage()">Back to Main</button>
-  </header>
 
-  <div class="content">
-    <h2>Select the grade level:</h2>
-    <div class="dropdown-container">
-      <select id="grade-level" class="dropdown">
-        <option value="1">1st Grade</option>
-        <option value="2">2nd Grade</option>
-        <option value="3">3rd Grade</option>
-        <option value="4">4th Grade</option>
-        <option value="5">5th Grade</option>
-        <option value="6">6th Grade</option>
-        <option value="7">7th Grade</option>
-        <option value="8">8th Grade</option>
-        <option value="9">9th Grade</option>
-      </select>
-    </div>
-    <br>
+    <label for="gradeLevel">Select Grade Level:</label>
+    <select id="gradeLevel">
+        <option value="1">Grade 1</option>
+        <option value="2">Grade 2</option>
+        <option value="3">Grade 3</option>
+        <option value="4">Grade 4</option>
+        <option value="5">Grade 5</option>
+        <option value="6">Grade 6</option>
+    </select>
 
-    <h3 class="question" id="question">What is ?</h3>
-    <input type="number" id="answer" placeholder="Your answer">
-    <button onclick="checkAnswer()">Check Answer</button>
+    <div id="question"></div>
+
+    <input type="number" id="answerInput" placeholder="Enter your answer">
+    <button id="submitAnswer">Submit Answer</button>
 
     <div id="feedback" class="feedback"></div>
-  </div>
 
-  <script>
-    let currentAnswer = 0;
-    let gradeLevel = 1;
+    <script>
+        let gradeLevel = 1;
+        let currentAnswer;
 
-    function goToMainPage() {
-      window.location.href = "index.html";
-    }
+        // Listen for grade level change
+        document.getElementById('gradeLevel').addEventListener('change', function() {
+            gradeLevel = parseInt(this.value);
+            generateMathProblem();
+        });
 
-    // Event listener to handle grade selection change
-    document.getElementById('grade-level').addEventListener('change', function() {
-      gradeLevel = parseInt(this.value);
-      generateMathProblem();
-    });
+        // Listen for submit answer
+        document.getElementById('submitAnswer').addEventListener('click', function() {
+            const userAnswer = parseFloat(document.getElementById('answerInput').value);
+            if (userAnswer === currentAnswer) {
+                document.getElementById('feedback').innerText = "Correct!";
+            } else {
+                document.getElementById('feedback').innerText = "Try again!";
+            }
+            generateMathProblem(); // Generate new problem
+            document.getElementById('answerInput').value = ''; // Clear input field
+        });
 
-    function generateMathProblem() {
-      let num1, num2, question;
+        // Generate a new math problem based on grade level
+        function generateMathProblem() {
+            let num1, num2, question;
 
-      // Based on grade level, restrict operations and number ranges
-      if (gradeLevel === 1) {
-        // 1st Grade: Only addition and subtraction, numbers between 0-20
-        const operation = Math.floor(Math.random() * 2); // 0 = addition, 1 = subtraction
+            // Based on grade level, restrict operations and number ranges
+            if (gradeLevel === 1) {
+                // 1st Grade: Only addition and subtraction, numbers between 0-20
+                const operation = Math.floor(Math.random() * 2); // 0 = addition, 1 = subtraction
 
-        if (operation === 0) {
-          num1 = Math.floor(Math.random() * 21);  // Numbers between 0-20
-          num2 = Math.floor(Math.random() * 21);
-          while (num1 + num2 > 20) {
-            num1 = Math.floor(Math.random() * 21);
-            num2 = Math.floor(Math.random() * 21);
-          }
-          question = `${num1} + ${num2}`;
-          currentAnswer = num1 + num2;
-        } else {
-          num1 = Math.floor(Math.random() * 21);  // Numbers between 0-20
-          num2 = Math.floor(Math.random() * 21);
-          while (num1 - num2 < 0) {
-            num1 = Math.floor(Math.random() * 21);
-            num2 = Math.floor(Math.random() * 21);
-          }
-          question = `${num1} - ${num2}`;
-          currentAnswer = num1 - num2;
+                if (operation === 0) {
+                    num1 = Math.floor(Math.random() * 21);  // Numbers between 0-20
+                    num2 = Math.floor(Math.random() * 21);
+                    while (num1 + num2 > 20) {
+                        num1 = Math.floor(Math.random() * 21);
+                        num2 = Math.floor(Math.random() * 21);
+                    }
+                    question = `${num1} + ${num2}`;
+                    currentAnswer = num1 + num2;
+                } else {
+                    num1 = Math.floor(Math.random() * 21);  // Numbers between 0-20
+                    num2 = Math.floor(Math.random() * 21);
+                    while (num1 - num2 < 0) {
+                        num1 = Math.floor(Math.random() * 21);
+                        num2 = Math.floor(Math.random() * 21);
+                    }
+                    question = `${num1} - ${num2}`;
+                    currentAnswer = num1 - num2;
+                }
+            } else if (gradeLevel === 2) {
+                // 2nd Grade: Only addition and subtraction, numbers between 0-50
+                const operation = Math.floor(Math.random() * 2); // 0 = addition, 1 = subtraction
+
+                if (operation === 0) {
+                    num1 = Math.floor(Math.random() * 51);  // Numbers between 0-50
+                    num2 = Math.floor(Math.random() * 51);
+                    while (num1 + num2 > 50) {
+                        num1 = Math.floor(Math.random() * 51);
+                        num2 = Math.floor(Math.random() * 51);
+                    }
+                    question = `${num1} + ${num2}`;
+                    currentAnswer = num1 + num2;
+                } else {
+                    num1 = Math.floor(Math.random() * 51);  // Numbers between 0-50
+                    num2 = Math.floor(Math.random() * 51);
+                    while (num1 - num2 < 0) {
+                        num1 = Math.floor(Math.random() * 51);
+                        num2 = Math.floor(Math.random() * 51);
+                    }
+                    question = `${num1} - ${num2}`;
+                    currentAnswer = num1 - num2;
+                }
+            } else if (gradeLevel === 3) {
+                // 3rd Grade: Addition, subtraction, multiplication, division (numbers up to 100)
+                const operation = Math.floor(Math.random() * 4); // 0 = addition, 1 = subtraction, 2 = multiplication, 3 = division
+
+                if (operation === 0) {
+                    num1 = Math.floor(Math.random() * 101);  // Numbers between 0-100
+                    num2 = Math.floor(Math.random() * 101);
+                    question = `${num1} + ${num2}`;
+                    currentAnswer = num1 + num2;
+                } else if (operation === 1) {
+                    num1 = Math.floor(Math.random() * 101);  // Numbers between 0-100
+                    num2 = Math.floor(Math.random() * 101);
+                    question = `${num1} - ${num2}`;
+                    currentAnswer = num1 - num2;
+                } else if (operation === 2) {
+                    num1 = Math.floor(Math.random() * 21);  // Numbers between 0-20
+                    num2 = Math.floor(Math.random() * 11);  // Numbers between 0-10
+                    question = `${num1} * ${num2}`;
+                    currentAnswer = num1 * num2;
+                } else {
+                    num1 = Math.floor(Math.random() * 101);  // Numbers between 0-100
+                    num2 = Math.floor(Math.random() * 11);   // Numbers between 0-10
+                    while (num2 === 0) {  // Ensure we don't divide by zero
+                        num2 = Math.floor(Math.random() * 11);
+                    }
+                    question = `${num1} ÷ ${num2}`;
+                    currentAnswer = num1 / num2;
+                }
+            } else if (gradeLevel === 4) {
+                // 4th Grade: Numbers up to 500, additional multiplication and division
+                const operation = Math.floor(Math.random() * 4); // 0 = addition, 1 = subtraction, 2 = multiplication, 3 = division
+
+                if (operation === 0) {
+                    num1 = Math.floor(Math.random() * 501);  // Numbers between 0-500
+                    num2 = Math.floor(Math.random() * 501);
+                    question = `${num1} + ${num2}`;
+                    currentAnswer = num1 + num2;
+                } else if (operation === 1) {
+                    num1 = Math.floor(Math.random() * 501);  // Numbers between 0-500
+                    num2 = Math.floor(Math.random() * 501);
+                    question = `${num1} - ${num2}`;
+                    currentAnswer = num1 - num2;
+                } else if (operation === 2) {
+                    num1 = Math.floor(Math.random() * 21);  // Numbers between 0-20
+                    num2 = Math.floor(Math.random() * 11);  // Numbers between 0-10
+                    question = `${num1} * ${num2}`;
+                    currentAnswer = num1 * num2;
+                } else {
+                    num1 = Math.floor(Math.random() * 501);  // Numbers between 0-500
+                    num2 = Math.floor(Math.random() * 11);   // Numbers between 0-10
+                    while (num2 === 0) {  // Ensure we don't divide by zero
+                        num2 = Math.floor(Math.random() * 11);
+                    }
+                    question = `${num1} ÷ ${num2}`;
+                    currentAnswer = num1 / num2;
+                }
+            } else {
+                // For grade 5 and up, division is allowed but no division by zero
+                const operation = Math.floor(Math.random() * 4); // 0 = addition, 1 = subtraction, 2 = multiplication, 3 = division
+
+                if (operation === 0) {
+                    num1 = Math.floor(Math.random() * 501);  // Numbers between 0-500
+                    num2 = Math.floor(Math.random() * 501);
+                    question = `${num1} + ${num2}`;
+                    currentAnswer = num1 + num2;
+                } else if (operation === 1) {
+                    num1 = Math.floor(Math.random() * 501);  // Numbers between 0-500
+                    num2 = Math.floor(Math.random() * 501);
+                    question = `${num1} - ${num2}`;
+                    currentAnswer = num1 - num2;
+                } else if (operation === 2) {
+                    num1 = Math.floor(Math.random() * 21);  // Numbers between 0-20
+                    num2 = Math.floor(Math.random() * 11);  // Numbers between 0-10
+                    question = `${num1} * ${num2}`;
+                    currentAnswer = num1 * num2;
+                } else {
+                    num1 = Math.floor(Math.random() * 501);  // Numbers between 0-500
+                    num2 = Math.floor(Math.random() * 11);   // Numbers between 0-10
+                    while (num2 === 0) {  // Ensure we don't divide by zero
+                        num2 = Math.floor(Math.random() * 11);
+                    }
+                    question = `${num1} ÷ ${num2}`;
+                    currentAnswer = num1 / num2;
+                }
+            }
+            // Display the question
+            document.getElementById('question').innerText = question;
         }
-      } else if (gradeLevel === 2) {
-        // 2nd Grade: Only addition and subtraction, numbers between 0-50
-        const operation = Math.floor(Math.random() * 2); // 0 = addition, 1 = subtraction
 
-        if (operation === 0) {
-          num1 = Math.floor(Math.random() * 51);  // Numbers between 0-50
-          num2 = Math.floor(Math.random() * 51);
-          while (num1 + num2 > 50) {
-            num1 = Math.floor(Math.random() * 51);
-            num2 = Math.floor(Math.random() * 51);
-          }
-          question = `${num1} + ${num2}`;
-          currentAnswer = num1 + num2;
-        } else {
-          num1 = Math.floor(Math.random() * 51);  // Numbers between 0-50
-          num2 = Math.floor(Math.random() * 51);
-          while (num1 - num2 < 0) {
-            num1 = Math.floor(Math.random() * 51);
-            num2 = Math.floor(Math.random() * 51);
-          }
-          question = `${num1} - ${num2}`;
-          currentAnswer = num1 - num2;
-        }
-      } else if (gradeLevel === 3) {
-        // 3rd Grade: Addition, subtraction, multiplication, division (numbers up to 100)
-        const operation = Math.floor(Math.random() * 4); // 0 = addition, 1 = subtraction, 2 = multiplication, 3 = division
+        // Generate an initial problem when the page loads
+        generateMathProblem();
+    </script>
 
-        if (operation === 0) {
-          num1 = Math.floor(Math.random() * 101);  // Numbers between 0-100
-          num2 = Math.floor(Math.random() * 101);
-          question = `${num1} + ${num2}`;
-          currentAnswer = num1 + num2;
-        } else if (operation === 1) {
-          num1 = Math.floor(Math.random() * 101);  // Numbers between 0-100
-          num2 = Math.floor(Math.random() * 101);
-          question = `${num1} - ${num2}`;
-          currentAnswer = num1 - num2;
-        } else if (operation === 2) {
-          num1 = Math.floor(Math.random() * 21);  // Numbers between 0-20
-          num2 = Math.floor(Math.random() * 11);  // Numbers between 0-10
-          question = `${num1} * ${num2}`;
-          currentAnswer = num1 * num2;
-        } else {
-          num1 = Math.floor(Math.random() * 101);  // Numbers between 0-100
-          num2 = Math.floor(Math.random() * 11);   // Numbers between 0-10
-          question = `${num1} ÷ ${num2}`;
-          currentAnswer = num1 / num2;
-        }
-      } else if (gradeLevel === 4) {
-        // 4th Grade: Numbers up to 500, additional multiplication and division
-        const operation = Math.floor(Math.random() * 4); // 0 = addition, 1 = subtraction, 2 = multiplication, 3 = division
-
-        if (operation === 0) {
-          num1 = Math.floor(Math.random() * 501);  // Numbers between 0-500
-          num2 = Math.floor(Math.random() * 501);
-          question = `${num1} + ${num2}`;
-          currentAnswer = num1 + num2;
-        } else if (operation === 1) {
-          num1 = Math.floor(Math.random() * 501);  // Numbers between 0-500
-          num2 = Math.floor(Math.random() * 501);
-          question = `${num1} - ${num2}`;
-          currentAnswer = num1 - num2;
-        } else if (operation === 2) {
-          num1 = Math.floor(Math.random() * 21);  // Numbers between 0-20
-          num2 = Math.floor(Math.random() * 11);  // Numbers between 0-10
-          question = `${num1} * ${num2}`;
-          currentAnswer = num1 * num2;
-        } else {
-          num1 = Math.floor(Math.random() * 501);  // Numbers between 0-500
-          num2 = Math.floor(Math.random() * 11);   // Numbers between 0-10
-          question = `${num1} ÷ ${num2}`;
-          currentAnswer = num1 / num2;
-        }
-      }
-      // Display the question
-      document.getElementById('question').innerText = question;
-    }
-
-    function checkAnswer() {
-      const userAnswer = parseInt(document.getElementById('answer').value);
-      const feedback = document.getElementById('feedback');
-      if (userAnswer === currentAnswer) {
-        feedback.innerText = "Correct!";
-        feedback.classList.remove('incorrect');
-        feedback.classList.add('correct');
-      } else {
-        feedback.innerText = "Incorrect, try again.";
-        feedback.classList.remove('correct');
-        feedback.classList.add('incorrect');
-      }
-    }
-
-    // Initial problem generation
-    generateMathProblem();
-  </script>
 </body>
 </html>
