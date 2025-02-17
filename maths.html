@@ -328,6 +328,7 @@
 
       document.getElementById('question').innerText = question;
       document.getElementById('answer').value = '';
+      document.getElementById('feedback').innerText = ''; // Clear feedback
     }
 
     function checkAnswer() {
@@ -342,6 +343,8 @@
         document.getElementById('feedback').classList.add("incorrect");
         document.getElementById('feedback').classList.remove("correct");
       }
+
+      generateMathProblem(); // Generate new question when answer is checked
     }
 
     // Generate the first problem on page load
