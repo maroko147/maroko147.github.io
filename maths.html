@@ -131,12 +131,12 @@
   </header>
 
   <div class="content">
-    <h2>Choose the largest number you know:</h2>
-    <select id="max-number" class="dropdown">
-      <option value="10">10</option>
-      <option value="100">100</option>
-      <option value="1000">1000</option>
-      <option value="10000">10000</option>
+    <h2>Select the grade level:</h2>
+    <select id="grade-level" class="dropdown">
+      <option value="1">1st Grade</option>
+      <option value="2">2nd Grade</option>
+      <option value="3">3rd Grade</option>
+      <option value="4">4th Grade</option>
     </select>
     <br>
 
@@ -148,56 +148,75 @@
   </div>
 
   <script>
-    let maxNumber = 10;
     let currentAnswer = 0;
+    let gradeLevel = 1;
 
     function goToMainPage() {
       window.location.href = "index.html";
     }
 
-    function generateMathProblem() {
-      maxNumber = parseInt(document.getElementById('max-number').value);
+    // Event listener to handle grade selection change
+    document.getElementById('grade-level').addEventListener('change', function() {
+      gradeLevel = parseInt(this.value);
+      generateMathProblem();
+    });
 
+    function generateMathProblem() {
       let num1, num2, question;
 
-      const operation = Math.floor(Math.random() * 4);
+      // Based on grade level, restrict operations
+      if (gradeLevel === 1 || gradeLevel === 2) {
+        // Only addition and subtraction for 1st and 2nd grade
+        const operation = Math.floor(Math.random() * 2); // 0 = addition, 1 = subtraction
 
-      if (operation === 0) { 
-        num1 = Math.floor(Math.random() * (maxNumber + 1));
-        num2 = Math.floor(Math.random() * (maxNumber + 1));
-        while (num1 + num2 > maxNumber) {
-          num1 = Math.floor(Math.random() * (maxNumber + 1));
-          num2 = Math.floor(Math.random() * (maxNumber + 1));
+        if (operation === 0) {
+          num1 = Math.floor(Math.random() * 21);  // Numbers between 0-20
+          num2 = Math.floor(Math.random() * 21);
+          while (num1 + num2 > 20) {
+            num1 = Math.floor(Math.random() * 21);
+            num2 = Math.floor(Math.random() * 21);
+          }
+          question = `${num1} + ${num2}`;
+          currentAnswer = num1 + num2;
+        } else {
+          num1 = Math.floor(Math.random() * 21);  // Numbers between 0-20
+          num2 = Math.floor(Math.random() * 21);
+          while (num1 - num2 < 0) {
+            num1 = Math.floor(Math.random() * 21);
+            num2 = Math.floor(Math.random() * 21);
+          }
+          question = `${num1} - ${num2}`;
+          currentAnswer = num1 - num2;
         }
-        question = `${num1} + ${num2}`;
-        currentAnswer = num1 + num2;
-      } else if (operation === 1) { 
-        num1 = Math.floor(Math.random() * (maxNumber + 1)) + maxNumber / 2;
-        num2 = Math.floor(Math.random() * (maxNumber + 1));
-        while (num1 - num2 > maxNumber || num1 < num2) {
-          num1 = Math.floor(Math.random() * (maxNumber + 1)) + maxNumber / 2;
-          num2 = Math.floor(Math.random() * (maxNumber + 1));
+      } else {
+        // For 3rd grade and up, allow all four operations
+        const operation = Math.floor(Math.random() * 4);
+
+        if (operation === 0) {
+          num1 = Math.floor(Math.random() * 51);  // Numbers between 0-50
+          num2 = Math.floor(Math.random() * 51);
+          question = `${num1} + ${num2}`;
+          currentAnswer = num1 + num2;
+        } else if (operation === 1) {
+          num1 = Math.floor(Math.random() * 51);  // Numbers between 0-50
+          num2 = Math.floor(Math.random() * 51);
+          question = `${num1} - ${num2}`;
+          currentAnswer = num1 - num2;
+        } else if (operation === 2) {
+          num1 = Math.floor(Math.random() * 21);  // Numbers between 0-20 for multiplication
+          num2 = Math.floor(Math.random() * 11);  // Numbers between 0-10
+          question = `${num1} * ${num2}`;
+          currentAnswer = num1 * num2;
+        } else {
+          num1 = Math.floor(Math.random() * 100); // Numbers between 0-100
+          num2 = Math.floor(Math.random() * 10) + 1; // Numbers between 1-10 for division
+          while (num1 % num2 !== 0) {
+            num1 = Math.floor(Math.random() * 100);
+            num2 = Math.floor(Math.random() * 10) + 1;
+          }
+          question = `${num1} ÷ ${num2}`;
+          currentAnswer = num1 / num2;
         }
-        question = `${num1} - ${num2}`;
-        currentAnswer = num1 - num2;
-      } else if (operation === 2) { 
-        num1 = Math.floor(Math.random() * (maxNumber + 1));
-        num2 = Math.floor(Math.random() * (maxNumber + 1));
-        while (num1 * num2 > maxNumber) {
-          num1 = Math.floor(Math.random() * (maxNumber + 1));
-          num2 = Math.floor(Math.random() * (maxNumber + 1));
-        }
-        question = `${num1} * ${num2}`;
-        currentAnswer = num1 * num2;
-      } else { 
-        num1 = Math.floor(Math.random() * (maxNumber + 1));
-        num2 = Math.floor(Math.random() * (maxNumber + 1)) + 1;  
-        while (num1 % num2 !== 0 || num1 / num2 > maxNumber) {
-          num1 = Math.floor(Math.random() * (maxNumber + 1));
-          num2 = Math.floor(Math.random() * (maxNumber + 1)) + 1;
-        }
-        question = `${num1} ÷ ${num2}`;
-        currentAnswer = num1 / num2;
       }
 
       document.getElementById('question').innerText = `What is ${question}?`;
