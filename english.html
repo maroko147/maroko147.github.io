@@ -352,46 +352,50 @@
     let currentGrade = 1;
     let currentWord = '';
     let currentAnswer = '';
+    let previousWord = '';
 
     // Event listener to handle grade selection change
-    document.getElementById('grade-level').addEventListener('change', function() {
+    document.getElementById('grade-level').addEventListener('change', function () {
       currentGrade = parseInt(this.value);
-      generateWord();
+      generateNewWord();
     });
 
-    function generateWord() {
-      const wordsList = words[currentGrade];
-      const wordKeys = Object.keys(wordsList);
-      const randomIndex = Math.floor(Math.random() * wordKeys.length);
-      currentWord = wordKeys[randomIndex];
-      currentAnswer = wordsList[currentWord];
+    // Function to generate a new word
+    function generateNewWord() {
+      const wordList = Object.keys(words[currentGrade]);
+      let randomWord = wordList[Math.floor(Math.random() * wordList.length)];
 
-      document.getElementById('question').textContent = `What is "${currentWord}" in Slovak?`;
-      document.getElementById('answer').value = '';  // Clear the input field
-      document.getElementById('feedback').textContent = '';  // Clear the feedback
-    }
-
-    function checkAnswer() {
-      const userAnswer = document.getElementById('answer').value.trim().toLowerCase();
-      const feedback = document.getElementById('feedback');
-
-      if (userAnswer === currentAnswer) {
-        feedback.textContent = "Correct!";
-        feedback.className = "feedback correct";
-      } else {
-        feedback.textContent = "Incorrect, try again!";
-        feedback.className = "feedback incorrect";
+      // Ensure the new word is not the same as the previous word
+      while (randomWord === previousWord) {
+        randomWord = wordList[Math.floor(Math.random() * wordList.length)];
       }
 
-      // Generate next word after feedback is shown
-      setTimeout(() => {
-        generateWord();
-      }, 1500);
+      currentWord = randomWord;
+      previousWord = currentWord;
+      currentAnswer = words[currentGrade][currentWord];
+
+      document.getElementById('question').innerText = `What is the word for "${currentWord}"?`;
+      document.getElementById('answer').value = '';
+      document.getElementById('feedback').innerText = '';
+    }
+
+    // Function to check the user's answer
+    function checkAnswer() {
+      const userAnswer = document.getElementById('answer').value.trim().toLowerCase();
+      if (userAnswer === currentAnswer.toLowerCase()) {
+        document.getElementById('feedback').innerText = 'Correct!';
+        document.getElementById('feedback').className = 'feedback correct';
+      } else {
+        document.getElementById('feedback').innerText = 'Incorrect. Try again.';
+        document.getElementById('feedback').className = 'feedback incorrect';
+      }
+
+      // Generate a new word after checking the answer
+      setTimeout(generateNewWord, 2000);
     }
 
     // Initial word generation
-    generateWord();
+    generateNewWord();
   </script>
-
 </body>
 </html>
