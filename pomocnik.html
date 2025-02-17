@@ -160,7 +160,7 @@
   <!-- Questions for Addition (hidden initially) -->
   <div id="addition" class="hidden questions">
     <h3>Practice Addition</h3>
-    <p>What is 12 + 8?</p>
+    <p id="addition-question"></p>
     <input type="number" class="answer-input" id="addition-answer" placeholder="Enter your answer">
     <button class="button" onclick="checkAnswer('addition')">Submit Answer</button>
     <div id="addition-feedback" class="feedback"></div>
@@ -169,7 +169,7 @@
   <!-- Questions for Subtraction (hidden initially) -->
   <div id="subtraction" class="hidden questions">
     <h3>Practice Subtraction</h3>
-    <p>What is 15 - 7?</p>
+    <p id="subtraction-question"></p>
     <input type="number" class="answer-input" id="subtraction-answer" placeholder="Enter your answer">
     <button class="button" onclick="checkAnswer('subtraction')">Submit Answer</button>
     <div id="subtraction-feedback" class="feedback"></div>
@@ -178,7 +178,7 @@
   <!-- Questions for Multiplication (hidden initially) -->
   <div id="multiplication" class="hidden questions">
     <h3>Practice Multiplication</h3>
-    <p>What is 6 x 3?</p>
+    <p id="multiplication-question"></p>
     <input type="number" class="answer-input" id="multiplication-answer" placeholder="Enter your answer">
     <button class="button" onclick="checkAnswer('multiplication')">Submit Answer</button>
     <div id="multiplication-feedback" class="feedback"></div>
@@ -187,7 +187,7 @@
   <!-- Questions for Division (hidden initially) -->
   <div id="division" class="hidden questions">
     <h3>Practice Division</h3>
-    <p>What is 18 ÷ 2?</p>
+    <p id="division-question"></p>
     <input type="number" class="answer-input" id="division-answer" placeholder="Enter your answer">
     <button class="button" onclick="checkAnswer('division')">Submit Answer</button>
     <div id="division-feedback" class="feedback"></div>
@@ -215,6 +215,9 @@
       
       // Show the selected operation
       document.getElementById(operation).classList.remove('hidden');
+      
+      // Generate a new random question for the selected operation
+      generateMathProblem(operation);
     }
 
     // Go back to the main content
@@ -223,31 +226,63 @@
       document.getElementById('main-content').classList.remove('hidden');
     }
 
+    // Generate random problems for each operation
+    function generateMathProblem(operation) {
+      let num1, num2, question;
+      
+      if (operation === 'addition') {
+        num1 = Math.floor(Math.random() * 20) + 1;
+        num2 = Math.floor(Math.random() * 20) + 1;
+        question = `${num1} + ${num2}`;
+        document.getElementById('addition-question').innerText = `What is ${question}?`;
+        document.getElementById('addition-feedback').innerText = "";
+      } else if (operation === 'subtraction') {
+        num1 = Math.floor(Math.random() * 20) + 10;  // Ensure num1 is larger than num2
+        num2 = Math.floor(Math.random() * 10) + 1;
+        question = `${num1} - ${num2}`;
+        document.getElementById('subtraction-question').innerText = `What is ${question}?`;
+        document.getElementById('subtraction-feedback').innerText = "";
+      } else if (operation === 'multiplication') {
+        num1 = Math.floor(Math.random() * 10) + 1;
+        num2 = Math.floor(Math.random() * 10) + 1;
+        question = `${num1} x ${num2}`;
+        document.getElementById('multiplication-question').innerText = `What is ${question}?`;
+        document.getElementById('multiplication-feedback').innerText = "";
+      } else if (operation === 'division') {
+        num1 = Math.floor(Math.random() * 10) + 1;
+        num2 = Math.floor(Math.random() * 10) + 1;
+        question = `${num1 * num2} ÷ ${num2}`;  // Make sure the division is clean
+        document.getElementById('division-question').innerText = `What is ${question}?`;
+        document.getElementById('division-feedback').innerText = "";
+      }
+
+      // Store the correct answer in a global variable
+      window.currentAnswer = eval(question);
+    }
+
     // Check the answer for each operation
     function checkAnswer(operation) {
-      let correctAnswer;
       let userAnswer;
-
+      
       if (operation === 'addition') {
-        correctAnswer = 12 + 8;
         userAnswer = parseInt(document.getElementById('addition-answer').value);
       } else if (operation === 'subtraction') {
-        correctAnswer = 15 - 7;
         userAnswer = parseInt(document.getElementById('subtraction-answer').value);
       } else if (operation === 'multiplication') {
-        correctAnswer = 6 * 3;
         userAnswer = parseInt(document.getElementById('multiplication-answer').value);
       } else if (operation === 'division') {
-        correctAnswer = 18 / 2;
         userAnswer = parseInt(document.getElementById('division-answer').value);
       }
 
-      // Feedback message
-      if (userAnswer === correctAnswer) {
-        document.getElementById(operation + '-feedback').innerHTML = "Correct! Great job!";
+      // Provide feedback
+      if (userAnswer === window.currentAnswer) {
+        document.getElementById(operation + '-feedback').innerText = "Correct! Great job!";
       } else {
-        document.getElementById(operation + '-feedback').innerHTML = "Oops! Try again.";
+        document.getElementById(operation + '-feedback').innerText = "Oops! Try again.";
       }
+
+      // Generate a new problem
+      generateMathProblem(operation);
     }
   </script>
 
