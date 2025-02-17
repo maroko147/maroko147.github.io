@@ -105,6 +105,56 @@
     .dropdown {
       width: 80%;
       max-width: 350px;
+      background: linear-gradient(to right, #ffffff, #f1f1f1);
+      border: 2px solid #4CAF50;
+      border-radius: 12px;
+      padding: 10px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+      transition: all 0.3s ease;
+    }
+
+    .dropdown option {
+      padding: 10px;
+      background-color: #ffffff;
+      border: none;
+      color: #333;
+    }
+
+    .dropdown:hover {
+      border-color: #45a049;
+      background-color: #f9f9f9;
+    }
+
+    .dropdown:focus {
+      outline: none;
+      border-color: #4CAF50;
+      box-shadow: 0 0 8px rgba(76, 175, 80, 0.6);
+    }
+
+    .dropdown::-ms-expand {
+      display: none;
+    }
+
+    .dropdown::-webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    
+    .dropdown-container {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+    }
+
+    .dropdown-container:after {
+      content: "▼";
+      font-size: 20px;
+      color: #333;
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
     }
 
     @media (max-width: 600px) {
@@ -132,12 +182,14 @@
 
   <div class="content">
     <h2>Select the grade level:</h2>
-    <select id="grade-level" class="dropdown">
-      <option value="1">1st Grade</option>
-      <option value="2">2nd Grade</option>
-      <option value="3">3rd Grade</option>
-      <option value="4">4th Grade</option>
-    </select>
+    <div class="dropdown-container">
+      <select id="grade-level" class="dropdown">
+        <option value="1">1st Grade</option>
+        <option value="2">2nd Grade</option>
+        <option value="3">3rd Grade</option>
+        <option value="4">4th Grade</option>
+      </select>
+    </div>
     <br>
 
     <h3 class="question" id="question">What is ?</h3>
