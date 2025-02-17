@@ -114,11 +114,12 @@
   <script>
     let selectedLimit = 10;
     let correctAnswer = 0;
+    let currentOperation = 'addition'; // Store current operation to generate the next one
 
     // Update the problem limit based on user selection
     function updateProblemLimit() {
       selectedLimit = parseInt(document.getElementById('numberSelect').value);
-      generateProblem('addition'); // Regenerate a problem when the limit changes
+      generateProblem(currentOperation); // Regenerate a problem when the limit changes
     }
 
     // Function to generate a random math problem based on selected limit
@@ -126,12 +127,12 @@
       let num1, num2;
       let problemText = '';
       correctAnswer = 0;
+      currentOperation = operation; // Store the operation for future problem generation
 
       switch (operation) {
         case 'addition':
           num1 = Math.floor(Math.random() * (selectedLimit + 1));
           num2 = Math.floor(Math.random() * (selectedLimit + 1));
-          // Ensure the sum doesn't exceed the selected limit
           while (num1 + num2 > selectedLimit) {
             num1 = Math.floor(Math.random() * (selectedLimit + 1));
             num2 = Math.floor(Math.random() * (selectedLimit + 1));
@@ -143,7 +144,6 @@
         case 'subtraction':
           num1 = Math.floor(Math.random() * (selectedLimit + 1));
           num2 = Math.floor(Math.random() * (num1 + 1));  // Ensure num1 >= num2
-          // Ensure the difference doesn't exceed the selected limit
           while (num1 - num2 > selectedLimit) {
             num1 = Math.floor(Math.random() * (selectedLimit + 1));
             num2 = Math.floor(Math.random() * (num1 + 1));
@@ -155,7 +155,6 @@
         case 'multiplication':
           num1 = Math.floor(Math.random() * (selectedLimit + 1));
           num2 = Math.floor(Math.random() * (selectedLimit + 1));
-          // Ensure the product doesn't exceed the selected limit
           while (num1 * num2 > selectedLimit) {
             num1 = Math.floor(Math.random() * (selectedLimit + 1));
             num2 = Math.floor(Math.random() * (selectedLimit + 1));
@@ -167,7 +166,6 @@
         case 'division':
           num1 = Math.floor(Math.random() * (selectedLimit + 1));
           num2 = Math.floor(Math.random() * (selectedLimit + 1)) + 1; // Avoid division by 0
-          // Ensure the division result is a whole number and within the limit
           while (num1 / num2 > selectedLimit || num1 % num2 !== 0) {
             num1 = Math.floor(Math.random() * (selectedLimit + 1));
             num2 = Math.floor(Math.random() * (selectedLimit + 1)) + 1;
@@ -177,9 +175,8 @@
           break;
       }
 
-      // Display the problem and clear the feedback
       document.getElementById('problemContainer').innerHTML = problemText;
-      document.getElementById('feedback').innerHTML = '';
+      document.getElementById('feedback').innerHTML = ''; // Clear feedback when new problem appears
       document.getElementById('userAnswer').value = '';  // Clear the input field
     }
 
@@ -196,8 +193,10 @@
         feedback.style.color = 'red';
       }
 
-      // Generate the next math problem, but keep the feedback visible
-      generateProblem(document.querySelector('.buttons .button').innerHTML.toLowerCase());
+      // Keep feedback visible but generate the next problem
+      setTimeout(() => {
+        generateProblem(currentOperation); // Generate next problem of the same operation
+      }, 2000); // Wait 2 seconds before generating the next problem
     }
   </script>
 </body>
