@@ -124,6 +124,21 @@
       border: 1px solid #ccc;
     }
 
+    /* Feedback messages */
+    .feedback {
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    .correct {
+      color: green;
+    }
+
+    .incorrect {
+      color: red;
+    }
+
   </style>
 </head>
 <body>
@@ -318,10 +333,15 @@
       }
 
       // Provide feedback
+      let feedbackElement = document.getElementById(operation + '-feedback');
       if (userAnswer === window.currentAnswer) {
-        document.getElementById(operation + '-feedback').innerText = "Correct! Great job!";
+        feedbackElement.innerText = "Correct! Great job!";
+        feedbackElement.classList.remove('incorrect');
+        feedbackElement.classList.add('correct');
       } else {
-        document.getElementById(operation + '-feedback').innerText = "Oops! Try again.";
+        feedbackElement.innerText = "Oops! Try again.";
+        feedbackElement.classList.remove('correct');
+        feedbackElement.classList.add('incorrect');
       }
 
       // Clear the answer input field
