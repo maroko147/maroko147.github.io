@@ -171,6 +171,17 @@
       text-align: center;
     }
 
+    /* Center buttons vertically and horizontally */
+    #maths-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh; /* Full viewport height */
+      gap: 20px; /* Space between buttons */
+      text-align: center;
+    }
+
   </style>
 </head>
 <body>
@@ -202,13 +213,7 @@
   <!-- Maths content selection (hidden initially) -->
   <div id="maths-content" class="hidden">
     <div class="instructions">
-      <p>Choose the largest number you know:</p>
-      <select id="max-number" class="dropdown">
-        <option value="10">10</option>
-        <option value="100">100</option>
-        <option value="1000">1000</option>
-        <option value="10000">10000</option>
-      </select>
+      <p>Choose what you want to practice:</p>
     </div>
 
     <!-- Buttons for different operations -->
@@ -338,71 +343,84 @@
           num1 = Math.floor(Math.random() * (maxNumber + 1));
           num2 = Math.floor(Math.random() * (maxNumber + 1));
         }
-        question = `${num1} x ${num2}`;
+        question = `${num1} × ${num2}`;
         document.getElementById('multiplication-question').innerText = `What is ${question}?`;
         document.getElementById('multiplication-feedback').innerText = "";
         document.getElementById('multiplication-answer-feedback').innerText = "";  // Clear feedback text
       } else if (operation === 'division') {
-        num1 = Math.floor(Math.random() * (maxNumber + 1));
-        num2 = Math.floor(Math.random() * (maxNumber + 1)) + 1;  // Avoid divide by zero
-        // Ensure the division result doesn't exceed max number
-        while (num1 / num2 > maxNumber) {
-          num1 = Math.floor(Math.random() * (maxNumber + 1));
-          num2 = Math.floor(Math.random() * (maxNumber + 1)) + 1;
+        num1 = Math.floor(Math.random() * (maxNumber + 1)) + maxNumber / 2;  // Ensure numerator is larger
+        num2 = Math.floor(Math.random() * (maxNumber / 2) + 1);  // Ensure num2 is non-zero
+        while (num1 % num2 !== 0 || num1 / num2 > maxNumber) {  // Ensure it's divisible evenly
+          num1 = Math.floor(Math.random() * (maxNumber + 1)) + maxNumber / 2;
+          num2 = Math.floor(Math.random() * (maxNumber / 2) + 1);
         }
-        question = `${num1 * num2} ÷ ${num2}`;  // Make sure division is exact
+        question = `${num1} ÷ ${num2}`;
         document.getElementById('division-question').innerText = `What is ${question}?`;
         document.getElementById('division-feedback').innerText = "";
         document.getElementById('division-answer-feedback').innerText = "";  // Clear feedback text
       }
-
-      // Store the correct answer in a global variable
-      window.currentAnswer = eval(question);
     }
 
     // Check the answer for each operation
     function checkAnswer(operation) {
+      let correctAnswer;
       let userAnswer;
-      
+      let feedbackElement;
+      let answerElement;
+
       if (operation === 'addition') {
+        const question = document.getElementById('addition-question').innerText.split(' ');
+        const num1 = parseInt(question[1]);
+        const num2 = parseInt(question[3]);
+        correctAnswer = num1 + num2;
         userAnswer = parseInt(document.getElementById('addition-answer').value);
+        feedbackElement = document.getElementById('addition-feedback');
+        answerElement = document.getElementById('addition-answer-feedback');
       } else if (operation === 'subtraction') {
+        const question = document.getElementById('subtraction-question').innerText.split(' ');
+        const num1 = parseInt(question[1]);
+        const num2 = parseInt(question[3]);
+        correctAnswer = num1 - num2;
         userAnswer = parseInt(document.getElementById('subtraction-answer').value);
+        feedbackElement = document.getElementById('subtraction-feedback');
+        answerElement = document.getElementById('subtraction-answer-feedback');
       } else if (operation === 'multiplication') {
+        const question = document.getElementById('multiplication-question').innerText.split(' ');
+        const num1 = parseInt(question[1]);
+        const num2 = parseInt(question[3]);
+        correctAnswer = num1 * num2;
         userAnswer = parseInt(document.getElementById('multiplication-answer').value);
+        feedbackElement = document.getElementById('multiplication-feedback');
+        answerElement = document.getElementById('multiplication-answer-feedback');
       } else if (operation === 'division') {
+        const question = document.getElementById('division-question').innerText.split(' ');
+        const num1 = parseInt(question[1]);
+        const num2 = parseInt(question[3]);
+        correctAnswer = num1 / num2;
         userAnswer = parseInt(document.getElementById('division-answer').value);
+        feedbackElement = document.getElementById('division-feedback');
+        answerElement = document.getElementById('division-answer-feedback');
       }
 
-      let feedbackElement = document.getElementById(operation + '-feedback');
-      let answerFeedbackElement = document.getElementById(operation + '-answer-feedback');  // New element for feedback
-
-      if (userAnswer === window.currentAnswer) {
-        feedbackElement.innerText = "Correct! Great job!";
-        feedbackElement.classList.remove('incorrect');
+      // Compare and give feedback
+      if (userAnswer === correctAnswer) {
+        feedbackElement.innerText = "Correct!";
         feedbackElement.classList.add('correct');
-
-        answerFeedbackElement.innerText = "Your answer is correct!";
-        answerFeedbackElement.classList.remove('incorrect');
-        answerFeedbackElement.classList.add('correct');
+        feedbackElement.classList.remove('incorrect');
+        answerElement.innerText = "Your answer is correct!";
+        answerElement.classList.add('correct');
+        answerElement.classList.remove('incorrect');
       } else {
-        feedbackElement.innerText = "Oops! Try again.";
-        feedbackElement.classList.remove('correct');
+        feedbackElement.innerText = "Incorrect. Try again!";
         feedbackElement.classList.add('incorrect');
-
-        answerFeedbackElement.innerText = "Your answer is incorrect. Try again!";
-        answerFeedbackElement.classList.remove('correct');
-        answerFeedbackElement.classList.add('incorrect');
+        feedbackElement.classList.remove('correct');
+        answerElement.innerText = "Your answer is incorrect.";
+        answerElement.classList.add('incorrect');
+        answerElement.classList.remove('correct');
       }
-
-      // Clear the answer input field
-      document.getElementById(operation + '-answer').value = "";
-
-      // Generate a new problem
-      generateMathProblem(operation);
     }
 
-    // Reset all problems and feedbacks when going back to the main content
+    // Reset all problems, answers and feedback when going back
     function resetProblems() {
       document.getElementById('addition-feedback').innerText = "";
       document.getElementById('subtraction-feedback').innerText = "";
