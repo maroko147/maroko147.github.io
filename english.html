@@ -178,7 +178,13 @@
         "child": "dieťa",
         "bird": "vták",
         "fish": "ryba",
-        "star": "hviezda"
+        "star": "hviezda",
+        "grass": "tráva",
+        "sky": "nebo",
+        "cloud": "oblak",
+        "rainbow": "dúha",
+        "water": "voda",
+        "food": "jedlo"
       },
       2: {
         "tree": "strom",
@@ -199,7 +205,11 @@
         "phone": "telefón",
         "pen": "pero",
         "pencil": "ceruzka",
-        "bookcase": "knižnica"
+        "bookcase": "knižnica",
+        "clock": "hodiny",
+        "bed": "posteľ",
+        "computer": "počítač",
+        "shoes": "topánky"
       },
       3: {
         "friend": "priateľ",
@@ -213,14 +223,17 @@
         "family": "rodina",
         "vacation": "dovolenka",
         "holiday": "prázdniny",
-        "holiday": "prázdniny",
         "soccer": "futbal",
         "swimming": "plávanie",
         "guitar": "gitara",
         "ball": "lopta",
         "music": "hudba",
         "teacher": "učiteľ",
-        "student": "študent"
+        "student": "študent",
+        "shirt": "košeľa",
+        "pants": "nohavice",
+        "shoes": "topánky",
+        "house": "dom"
       },
       4: {
         "family": "rodina",
@@ -241,7 +254,13 @@
         "color": "farba",
         "animals": "zvieratá",
         "friendship": "priateľstvo",
-        "basketball": "basketbal"
+        "basketball": "basketbal",
+        "shirt": "košeľa",
+        "pants": "nohavice",
+        "teacher": "učiteľ",
+        "student": "študent",
+        "holiday": "prázdniny",
+        "summer": "leto"
       },
       5: {
         "library": "knižnica",
@@ -262,7 +281,10 @@
         "energy": "energia",
         "research": "výskum",
         "discover": "objavovať",
-        "innovation": "inovácia"
+        "innovation": "inovácia",
+        "invention": "vynález",
+        "math": "matematika",
+        "book": "kniha"
       },
       6: {
         "universe": "vesmír",
@@ -283,7 +305,9 @@
         "biology": "biológia",
         "physics": "fyzika",
         "mathematics": "matematika",
-        "computation": "výpočty"
+        "computation": "výpočty",
+        "computer": "počítač",
+        "education": "vzdelanie"
       },
       7: {
         "environment": "prostredie",
@@ -317,44 +341,48 @@
         "freedom": "sloboda",
         "peace": "mier",
         "justice": "spravodlivosť",
-        "constitution": "ústava",
-        "law": "zákon",
-        "revolution": "revolúcia",
-        "history": "história",
-        "globalization": "globalizácia",
+        "environment": "prostredie",
         "pollution": "znečistenie",
-        "scientific research": "vedecký výskum",
-        "sustainability": "udržateľnosť"
+        "law": "zákon",
+        "education": "vzdelanie",
+        "knowledge": "znalosť",
+        "world": "svet",
+        "globalization": "globalizácia",
+        "culture": "kultúra",
+        "ethics": "etika",
+        "history": "história"
       },
       9: {
         "philosophy": "filozofia",
-        "artificial intelligence": "umelá inteligencia",
-        "global warming": "globálne otepľovanie",
-        "politics": "politika",
-        "literature": "literatúra",
-        "psychology": "psychológia",
-        "sociology": "sociológia",
-        "chemistry": "chémia",
-        "engineering": "inžinierstvo",
-        "space exploration": "prieskum vesmíru",
-        "climate change": "zmena klímy",
-        "economics": "ekonómia",
-        "social media": "sociálne médiá",
-        "research": "výskum",
-        "universe": "vesmír",
-        "mathematics": "matematika",
-        "statistics": "štatistika",
+        "revolution": "revolúcia",
+        "constitution": "ústava",
+        "government": "vláda",
+        "science": "veda",
+        "civilization": "civilizácia",
+        "freedom": "sloboda",
+        "independence": "nezávislosť",
+        "justice": "spravodlivosť",
+        "democracy": "demokracia",
+        "development": "rozvoj",
+        "globalization": "globalizácia",
+        "culture": "kultúra",
+        "society": "spoločnosť",
+        "economy": "ekonomika",
+        "ethics": "etika",
+        "human rights": "ľudské práva",
+        "environment": "prostredie",
+        "pollution": "znečistenie",
         "biology": "biológia",
-        "engineering": "inžinierstvo"
+        "mathematics": "matematika"
       }
     };
 
     let currentGrade = 1;
+    let previousWord = '';
     let currentWord = '';
     let currentAnswer = '';
-    let previousWord = '';
 
-    // Event listener to handle grade selection change
+    // Update grade level
     document.getElementById('grade-level').addEventListener('change', function () {
       currentGrade = parseInt(this.value);
       generateNewWord();
@@ -397,5 +425,6 @@
     // Initial word generation
     generateNewWord();
   </script>
+
 </body>
 </html>
