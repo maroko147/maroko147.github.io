@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Two Cards Layout</title>
+  <title>Clickable Cards Layout</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -55,6 +55,13 @@
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       text-align: center;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      text-decoration: none;
+    }
+
+    .card:hover {
+      transform: scale(1.05); /* Zoom effect on hover */
     }
 
     .card h2 {
@@ -89,21 +96,21 @@
     <a href="#">Contact</a>
   </nav>
 
-  <!-- Main content with 2 cards -->
+  <!-- Main content with 2 clickable cards -->
   <div class="container">
     <!-- Card 1 -->
-    <div class="card">
+    <a href="page1.html" class="card">
       <h2>Card 1 Title</h2>
       <img src="https://via.placeholder.com/500" alt="Placeholder Image">
-      <p>This is a description of the first card. It could contain details, features, or any other content you'd like to display.</p>
-    </div>
+      <p>This is a description of the first card. Click here to visit the first page.</p>
+    </a>
 
     <!-- Card 2 -->
-    <div class="card">
+    <a href="page2.html" class="card">
       <h2>Card 2 Title</h2>
       <img src="https://via.placeholder.com/500" alt="Placeholder Image">
-      <p>This is a description of the second card. It could also include different content such as features, services, or any other important info.</p>
-    </div>
+      <p>This is a description of the second card. Click here to visit the second page.</p>
+    </a>
   </div>
 
 </body>
