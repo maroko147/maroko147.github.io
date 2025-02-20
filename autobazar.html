@@ -1,161 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Car Autobazar</title>
+    <title>Autobazár BMW</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #333;
-            color: white;
-            padding: 10px 0;
-            text-align: center;
-        }
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            padding: 20px;
-        }
-        .car-card {
-            background-color: white;
-            width: 250px;
-            margin: 10px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            cursor: pointer;
-        }
-        .car-card img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-        }
-        .car-card .car-info {
-            padding: 15px;
-            text-align: center;
-        }
-        .car-card .car-info h3 {
-            margin: 10px 0;
-        }
-        .car-card .car-info p {
-            color: #555;
-        }
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            justify-content: center;
-            align-items: center;
-        }
-        .modal-content {
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            position: relative;
-        }
-        .modal-content .close {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 24px;
-            cursor: pointer;
-        }
-        .car-cards {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-        }
+        body { font-family: Arial, sans-serif; }
+        .car-list { list-style: none; padding: 0; }
+        .car-item { margin: 20px 0; cursor: pointer; }
+        #car-model-container { margin-top: 40px; }
+        #color-picker { margin-top: 20px; }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
 </head>
 <body>
+    <h1>Autobazár BMW</h1>
+    <ul class="car-list">
+        <li class="car-item" onclick="showCarModel('bmw-x5')">BMW X5</li>
+        <li class="car-item" onclick="showCarModel('bmw-m3')">BMW M3</li>
+        <!-- Pridaj ďalšie autá podľa potreby -->
+    </ul>
 
-<header>
-    <h1>BMW Autobazar</h1>
-    <p>Explore our selection of BMW cars</p>
-</header>
+    <div id="car-model-container"></div>
+    <input type="color" id="color-picker" value="#ffffff" onchange="changeColor(this.value)">
 
-<div class="container">
-    <div class="car-card" onclick="showModal('car1')">
-        <img src="https://example.com/bmw1.jpg" alt="BMW 1">
-        <div class="car-info">
-            <h3>BMW M3</h3>
-            <p>Price: $50,000</p>
-        </div>
-    </div>
-    <div class="car-card" onclick="showModal('car2')">
-        <img src="https://example.com/bmw2.jpg" alt="BMW 2">
-        <div class="car-info">
-            <h3>BMW X5</h3>
-            <p>Price: $45,000</p>
-        </div>
-    </div>
-    <div class="car-card" onclick="showModal('car3')">
-        <img src="https://example.com/bmw3.jpg" alt="BMW 3">
-        <div class="car-info">
-            <h3>BMW Z4</h3>
-            <p>Price: $40,000</p>
-        </div>
-    </div>
-</div>
+    <script>
+        function showCarModel(model) {
+            const container = document.getElementById('car-model-container');
+            container.innerHTML = `<canvas id="${model}-canvas"></canvas>`;
+            const canvas = document.getElementById(`${model}-canvas`);
+            const renderer = new THREE.WebGLRenderer({ canvas });
+            renderer.setSize(window.innerWidth, window.innerHeight);
 
-<div class="modal" id="modal" onclick="closeModal(event)">
-    <div class="modal-content" onclick="event.stopPropagation()">
-        <span class="close" onclick="closeModal()">×</span>
-        <div id="3d-model" style="width: 500px; height: 500px;"></div>
-    </div>
-</div>
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 5;
 
-<script src="https://cdn.jsdelivr.net/npm/three@0.136.0/build/three.min.js"></script>
-<script>
-    function showModal(car) {
-        var modal = document.getElementById('modal');
-        var modelContainer = document.getElementById('3d-model');
-        
-        // Initialize the 3D Model (Example)
-        var scene = new THREE.Scene();
-        var camera = new THREE.PerspectiveCamera(75, 500 / 500, 0.1, 1000);
-        var renderer = new THREE.WebGLRenderer();
-        renderer.setSize(500, 500);
-        modelContainer.appendChild(renderer.domElement);
+            const loader = new THREE.GLTFLoader();
+            loader.load(`path/to/${model}.gltf`, (gltf) => {
+                const car = gltf.scene;
+                scene.add(car);
+                animate();
+            });
 
-        var geometry = new THREE.BoxGeometry();
-        var material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-        var cube = new THREE.Mesh(geometry, material);
-        scene.add(cube);
-        
-        camera.position.z = 5;
+            function animate() {
+                requestAnimationFrame(animate);
+                renderer.render(scene, camera);
+            }
 
-        function animate() {
-            requestAnimationFrame(animate);
-            cube.rotation.x += 0.01;
-            cube.rotation.y += 0.01;
-            renderer.render(scene, camera);
+            // Funkcia na zmenu farby auta
+            window.changeColor = function(color) {
+                const carMaterial = scene.getObjectByName('CarMaterialName').material;
+                carMaterial.color.set(color);
+            };
         }
-
-        animate();
-        
-        modal.style.display = 'flex';
-    }
-
-    function closeModal(event) {
-        var modal = document.getElementById('modal');
-        var modelContainer = document.getElementById('3d-model');
-        
-        modelContainer.innerHTML = ''; // Clear 3D model when closing modal
-        modal.style.display = 'none';
-    }
-</script>
-
+    </script>
 </body>
 </html>
