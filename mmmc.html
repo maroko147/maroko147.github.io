@@ -93,6 +93,7 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
+                padding-bottom: 10vw;
             }
             .karta {
                 border: 0.3vw solid rgba(120, 120, 120, 0.7);
@@ -104,7 +105,7 @@
                 margin-top: 5vw;
             }
             .karta:hover {
-                scale: 1.2;
+                scale: 1.2 ease-in;
                 transition-duration: 0.5s;
             }
             .karta img {
@@ -147,6 +148,12 @@
                 font-size: 2.5vw;
                 line-height: 0.4vw;
                 margin-right: 3vw;
+            }
+            @media screen and (max-width: 700px) {
+                .container, .sluzby {   
+            flex-direction: column;
+            height: auto;
+             }
             }
         </style>
     </head>
