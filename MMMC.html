@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MMM Corporation</title>
+    <style>
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #606c38;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            padding: 0em 2em;
+        }
+        .logo {
+            color: #283618;
+            font-size: 3em;
+            font-weight: 1000;
+        }
+        .menu {
+            display: inline-block;
+            padding: 1em;
+        }
+        .menu li {
+            list-style-type: none;
+            float: left;
+        }
+        a {
+            display: block;
+            text-decoration: none;
+            border: 0.3vw solid rgba(254, 250, 224, 0.3);
+            border-radius: 1vw;
+            padding: 0.4vw 1.2vw;
+            margin-right: 1vw;
+            margin-bottom: 0.3vw;
+            font-size: 1.5vw;
+            color: #FEFAE0;
+        }
+        a:hover {
+            scale: 1.15;
+            transition-duration: 0.5s;
+            background: rgba(40, 54, 1, 0.7);
+            border: 0.3vw solid rgba(254, 250, 224, 0.3);
+        }
+        .hero {
+            background: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80') no-repeat center center/cover;
+            border-bottom-right-radius: 1em;
+            border-bottom-left-radius: 1em;
+            min-height: 45vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #FEFAE0;
+            font-size: 4em;
+            text-shadow: 10px 10px 20px black ;
+        }
+        .hero h1 {
+            color: #BC6C25;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 2em;
+            margin-bottom: 2em;
+        }
+        .sekcia {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            min-height: 10em;
+            background: rgba(40, 54, 1, 0.7);
+            margin-bottom: 2em;
+            border-radius: 2em;
+            border: 0.3vw solid rgba(254, 250, 224, 0.7)
+        }
+        .text {
+            width: 1fr;
+            margin-left: 1em;
+            font-size: 2.6em;
+            color: #FEFAE0;
+        }
+        .text strong {
+            color: #BC6C25;
+        }
+        .img {
+            width: 1fr;
+            margin: 0.5em;
+            margin-left: 10em;
+        }
+        .img img {
+            height: 30em;
+            width: auto;
+            border-radius: 25em;
+        }
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #283618;
+            color: #FEFAE0;
+            border-top: 0.3vw solid rgba(254, 250, 224, 0.7);
+            border-top-left-radius: 2em;
+            border-top-right-radius: 2em;
+            padding: 2em;
+        }
+        .left {
+            padding: 2em;
+            margin-left: 3em;
+        }
+        .left h1 {
+            color: #BC6C25;
+            font-size: 4em;
+        }
+        .left p {
+            font-size: 3em;
+            line-height: 0.3vw;
+            margin-left: 2em;
+        }
+        .right {
+            padding: 2em;
+            margin-right: 3em;
+        }
+        .right h1 {
+            color: #BC6C25;
+            font-size: 4em;
+        }
+        .right p {
+            font-size: 3em;
+            line-height: 0.3vw;
+            margin-left: 2em;
+        }
+    </style>
+</head>
+<body>
+    <section class="navbar">
+        <div class="logo">MMM Corporation</div>
+        <div class="menu">
+            <ul>
+                <li><a href="https://maroko147.github.io/autobazar.html">MMM Cars</a></li>
+                <li><a href="#">Práce</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="hero">
+        <h1>MMM Corporation</h1>
+        <p>Jsme korporace která funguje v mnoha odvětví!</p>
+    </section>
+
+    <section class="container">
+        <div class="sekcia">
+            <div class="text">
+                <p><strong>MMM Cars</strong> - Náš autobazár,<br>
+                špičkové káry se spičkovím tuningem!</p>
+            </div>
+            <div class="img">
+                <img src="https://maroko147.github.io/Leonardo_Phoenix_10_can_you_generate_an_image_of_a_dream_garag_3%20-%20Copy.jpg" alt="autobazár">
+            </div>
+        </div>
+        <div class="sekcia">
+            <div class="text">
+                <p><strong>Pracovní poměr</strong> - Přidej se k nám<br>
+                a vydelávej obrovské obnosy peněz!</p>
+            </div>
+            <div class="img">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Euro_coins_and_banknotes_%28cropped%29.jpg" alt="money">
+            </div>
+        </div>
+    </section>
+
+    <section class="footer" id="contact">
+        <div class="left">
+            <h1>Provozovatel</h1>
+            <p>Will Villalon</p>
+            <p>Thomas Hunt</p>
+            <p>Viktorie Raulova</p>
+            <p>Nelson Reyes</p>
+        </div>
+        <div class="right">
+            <h1>Kontakt</h1>
+            <p>will.villalon@post.ic</p>
+            <p>thomas.hunt@post.ic</p>
+            <p>viktorie.raulova@post.ic</p>
+            <p>nelso.reyes@post.ic</p>
+        </div>
+    </section>
+</body>
+</html>
