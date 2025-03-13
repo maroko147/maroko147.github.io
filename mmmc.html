@@ -9,6 +9,9 @@
             font-family: Verdana, Geneva, Tahoma, sans-serif;
             margin: 0;
             padding: 0;
+            width: 100%;
+            overflow-x: hidden;
+            overflow-y: scroll;
             background: #606c38;
         }
         .navbar {
@@ -102,42 +105,43 @@
             width: auto;
             border-radius: 25em;
         }
-        .footer {
+        .contact {
             display: flex;
             justify-content: space-between;
             align-items: center;
             background: #283618;
             color: #FEFAE0;
-            border-top: 0.3vw solid rgba(254, 250, 224, 0.7);
-            border-top-left-radius: 2em;
-            border-top-right-radius: 2em;
-            padding: 2em;
+            border-top: 0.5vw solid rgba(254, 250, 224, 0.7);
+            min-height: auto;
+            width: 100%;
+            line-height: 1vw;
+            padding-bottom: 5em;
+            margin-top: 5em;
+            border-top-left-radius: 2vw;
+            border-top-right-radius: 2vw;
         }
         .left {
-            padding: 2em;
-            margin-left: 3em;
+            margin-left: 10vw;
         }
         .left h1 {
             color: #BC6C25;
-            font-size: 4em;
+            font-size: 3.5vw;
         }
         .left p {
-            font-size: 3em;
-            line-height: 0.3vw;
-            margin-left: 2em;
+            font-size: 3vw;
+            margin-left: 2vw;
         }
         .right {
-            padding: 2em;
-            margin-right: 3em;
+            margin-right: 10vw;
+            text-align: right;
         }
         .right h1 {
             color: #BC6C25;
-            font-size: 4em;
+            font-size: 3.5vw;
         }
         .right p {
-            font-size: 3em;
-            line-height: 0.3vw;
-            margin-left: 2em;
+            font-size: 3vw;
+            margin-right: 2vw;
         }
     </style>
 </head>
@@ -146,7 +150,7 @@
         <div class="logo">MMM Corporation</div>
         <div class="menu">
             <ul>
-                <li><a href="autobazar.html">MMM Cars</a></li>
+                <li><a href="mmmcars.html">MMM Cars</a></li>
                 <li><a href="#">Práce</a></li>
                 <li><a href="#contact">Kontakt</a></li>
             </ul>
@@ -155,14 +159,14 @@
 
     <section class="hero">
         <h1>MMM Corporation</h1>
-        <p>Jsme korporace která funguje v mnoha odvětví!</p>
+        <p>Jsme korporace která funguje v mnoha odvětvích</p>
     </section>
 
     <section class="container">
         <div class="sekcia">
             <div class="text">
                 <p><strong>MMM Cars</strong> - Náš autobazár,<br>
-                špičkové káry se spičkovím tuningem!</p>
+                    špičkové káry se špičkovým tuningem!</p>
             </div>
             <div class="img">
                 <img src="https://maroko147.github.io/Leonardo_Phoenix_10_can_you_generate_an_image_of_a_dream_garag_3%20-%20Copy.jpg" alt="autobazár">
@@ -171,7 +175,7 @@
         <div class="sekcia">
             <div class="text">
                 <p><strong>Pracovní poměr</strong> - Přidej se k nám<br>
-                a vydelávej obrovské obnosy peněz!</p>
+                a vydelávej obrovské obnosi peněz!</p>
             </div>
             <div class="img">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Euro_coins_and_banknotes_%28cropped%29.jpg" alt="money">
@@ -179,7 +183,7 @@
         </div>
     </section>
 
-    <section class="footer" id="contact">
+    <section class="contact" id="contact">
         <div class="left">
             <h1>Provozovatel</h1>
             <p>Will Villalon</p>
