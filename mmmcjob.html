@@ -12,6 +12,7 @@
             overflow-x: hidden;
             overflow-y: scroll;
             background: #406E8E;
+            color: #FEFAE0;
         }
         .navbar {
             display: flex;
@@ -33,7 +34,7 @@
             list-style-type: none;
             float: left;
         }
-        a {
+        .menu a {
             display: block;
             text-decoration: none;
             border: 0.3vw solid rgba(254, 250, 224, 0.3);
@@ -44,7 +45,7 @@
             font-size: 1.5vw;
             color: #FEFAE0;
         }
-        a:hover {
+        .menu a:hover {
             scale: 1.15;
             transition-duration: 0.5s;
             background: rgba(22, 25, 37, 0.7);
@@ -65,7 +66,157 @@
             text-shadow: 10px 10px 20px black ;
         }
         .hero h1 {
-            color: #161925;
+            color: #BC6C25;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 3vw 0vw 5vw 0vw;
+        }
+        .job {
+            width: 80%;
+            background: rgba(22, 25, 37, 0.7);
+            border: 0.3vw solid rgba(254, 250, 224, 0.7);
+            border-radius: 3vw;
+        }
+        .info {
+            font-size: 3.5vw;
+        }
+        .info h1 {
+            color: #BC6C25;
+            font-size: 7vw;
+        }
+        .positions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 33%;
+            border: 0.3vw solid rgba(254, 250, 224, 0.3);
+            background: rgba(22, 25, 37, 0.7);
+            border-radius: 3vw;
+            margin: 2vw;
+        }
+        .card:hover {
+            scale: 1.05;
+            transition-duration: 0.5s;
+            background: rgb(22, 25, 37);
+        }
+        .card h1 {
+            color: #BC6C25;
+            font-size: 2vw;
+        }
+        .card img {
+            border: 1px solid black;
+            width: 90%;
+            border-radius: 3vw;
+        }
+        .card p {
+            font-size: 2vw;
+        }
+        .pay {
+            width: 100%;
+        }
+        .table {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            row-gap: 5vw;
+        }
+        .salary, .bonus {
+            border-collapse: collapse;
+            width: 90%;
+            text-align: center;
+            font-size: 1vw;
+        }
+        .salary th, .salary td, .bonus th, .bonus td{
+            width: 50%;
+            border: 1px solid #FEFAE0;
+            padding: 0.5vw;
+        }
+        .salary tr:nth-child(even){background: rgba(22, 25, 37, 0.4)}
+        
+        .salary tr:hover {background-color: rgba(22, 25, 37, 0.7);}
+
+        .salary th, .bonus th {
+            padding-top: 1vw;
+            padding-bottom: 1vw;
+            font-size: 1.6vw;
+            background-color: #161925;
+            color: #BC6C25;
+        }
+        .bonus tr:nth-child(even){background: rgba(22, 25, 37, 0.4)}
+
+        .bonus tr:hover {background-color: rgba(22, 25, 37, 0.7);}
+
+        .premie {
+            background: rgba(22, 25, 37, 0.3);
+        }
+        .location {
+            padding-top: 10vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .loc {
+            padding: 2vw;
+            width: 80%;
+            color: #BC6C25;
+            font-size: 4vw;
+            background: #161925;
+            border-radius: 3vw;
+            border: 0.3vw solid rgba(254, 250, 224, 0.7);
+        }
+        .loc img {
+            width: 90%;
+            border-radius: 3vw;
+            border: 0.3vw solid #BC6C25;
+        }
+        .contact {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #161925;
+            color: #FEFAE0;
+            border-top: 0.5vw solid rgba(254, 250, 224, 0.7);
+            min-height: auto;
+            width: 100%;
+            line-height: 1vw;
+            padding-bottom: 5em;
+            margin-top: 5em;
+            border-top-left-radius: 2vw;
+            border-top-right-radius: 2vw;
+        }
+        .left {
+            margin-left: 10vw;
+        }
+        .left h1 {
+            color: #BC6C25;
+            font-size: 3.5vw;
+        }
+        .left p {
+            font-size: 3vw;
+            margin-left: 2vw;
+        }
+        .right {
+            margin-right: 10vw;
+            text-align: right;
+        }
+        .right h1 {
+            color: #BC6C25;
+            font-size: 3.5vw;
+        }
+        .right p {
+            font-size: 3vw;
+            margin-right: 2vw;
         }
     </style>
 </head>
@@ -96,19 +247,19 @@
             <div class="positions">
                 <div class="card">
                     <h1>Opravar el. vedení</h1>
-                    <img src="" alt="el.vedení">
-                    <p>jezdi po San Andreas a opravuj<br>
+                    <img src="https://maroko147.github.io/electricalpoles.jpg" alt="el.vedení">
+                    <p>Jezdi po San Andreas a opravuj<br>
                         elektrické vedení</p>
                 </div>
                 <div class="card">
                     <h1>Kurýr účtů za energie</h1>
-                    <img src="" alt="účet">
+                    <img src="https://maroko147.github.io/utillity.jpg" alt="účet">
                     <p>Rozvážej účty za energie<br>
                         po San Andreas</p>
                 </div>
                 <div class="card">
                     <h1>Rozvozce pošty</h1>
-                    <img src="" alt="pošta">
+                    <img src="https://maroko147.github.io/postman.jpg" alt="pošta">
                     <p>Rozvážej poštu <br>
                         po Red County</p>
                 </div>
@@ -118,7 +269,7 @@
 
     <section class="pay" id="pay">
         <div class="table">
-            <table>
+            <table class="salary">
                 <tr>
                     <th>Platová třída</th>
                     <th>Plat</th>
@@ -149,8 +300,8 @@
                 </tr>
             </table>
 
-            <table>
-                <tr>
+            <table class="bonus">
+                <tr class="premie">
                     <th colspan="2">Prémie</th>
                 </tr>
                 <tr>
@@ -166,15 +317,17 @@
                     <td>20%</td>
                 </tr>
                 <tr>
-                    <td colspan="2">Při výdělku <span>500.000;-Kč</span> prémie ve výši <span>100.000;-Kč</span></td>
+                    <td colspan="2">(Při výdělku <span>500.000;-Kč</span> prémie ve výši <span>100.000;-Kč)</span></td>
                 </tr>
             </table>
         </div>
     </section>
 
     <section class="location">
-        <h1>kde sídlíme?</h1>
-        <img src="https://maroko147.github.io/mapa.jpg" alt="horní Los Santos">
+        <div class="loc">
+            <h1>Kde sídlíme?</h1>
+            <img src="https://maroko147.github.io/mapa.jpg" alt="horní Los Santos">
+        </div>
     </section>
 
     <section class="contact" id="contact">
@@ -187,10 +340,10 @@
         </div>
         <div class="right">
             <h1>Kontakt</h1>
-            <p>will.villalon@post.ic</p>
-            <p>thomas.hunt@post.ic</p>
-            <p>viktorie.raulova@post.ic</p>
-            <p>nelson.reyes@post.ic</p>
+            <p>will.villalon@post.ic</a></p>
+            <p>thomas.hunt@post.ic</a></p>
+            <p>viktorie.raulova@post.ic</a></p>
+            <p>nelson.reyes@post.ic</a></p>
         </div>
     </section>
 </body>
